@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		538AD4D51E51B699009D06BE /* searchMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538AD4D41E51B699009D06BE /* searchMenuViewController.swift */; };
+		538AD4D71E51BC17009D06BE /* leftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538AD4D61E51BC17009D06BE /* leftMenuViewController.swift */; };
 		53D3BE391E51A397000D3B87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3BE381E51A397000D3B87 /* AppDelegate.swift */; };
 		53D3BE3B1E51A397000D3B87 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3BE3A1E51A397000D3B87 /* ViewController.swift */; };
 		53D3BE3E1E51A397000D3B87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53D3BE3C1E51A397000D3B87 /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		538AD4D41E51B699009D06BE /* searchMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = searchMenuViewController.swift; path = searchMenu/searchMenuViewController.swift; sourceTree = "<group>"; };
+		538AD4D61E51BC17009D06BE /* leftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = leftMenuViewController.swift; path = leftMenu/leftMenuViewController.swift; sourceTree = "<group>"; };
 		53D3BE351E51A397000D3B87 /* Zboobee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zboobee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53D3BE381E51A397000D3B87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53D3BE3A1E51A397000D3B87 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 				53D3BE381E51A397000D3B87 /* AppDelegate.swift */,
 				53D3BE3A1E51A397000D3B87 /* ViewController.swift */,
 				53D3BE3C1E51A397000D3B87 /* Main.storyboard */,
+				538AD4D61E51BC17009D06BE /* leftMenuViewController.swift */,
+				538AD4D41E51B699009D06BE /* searchMenuViewController.swift */,
 				53D3BE421E51A398000D3B87 /* Assets.xcassets */,
 				53D3BE441E51A398000D3B87 /* LaunchScreen.storyboard */,
 				53D3BE471E51A398000D3B87 /* Info.plist */,
@@ -264,7 +270,9 @@
 			files = (
 				53D3BE3B1E51A397000D3B87 /* ViewController.swift in Sources */,
 				53D3BE391E51A397000D3B87 /* AppDelegate.swift in Sources */,
+				538AD4D71E51BC17009D06BE /* leftMenuViewController.swift in Sources */,
 				53D3BE411E51A398000D3B87 /* Zboobee.xcdatamodeld in Sources */,
+				538AD4D51E51B699009D06BE /* searchMenuViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,6 +517,7 @@
 				53D3BE621E51A398000D3B87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		53D3BE631E51A398000D3B87 /* Build configuration list for PBXNativeTarget "ZboobeeTests" */ = {
 			isa = XCConfigurationList;
@@ -517,6 +526,7 @@
 				53D3BE651E51A398000D3B87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		53D3BE661E51A398000D3B87 /* Build configuration list for PBXNativeTarget "ZboobeeUITests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +535,7 @@
 				53D3BE681E51A398000D3B87 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
