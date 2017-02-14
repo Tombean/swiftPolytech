@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		53839C571E52FE2A00312F64 /* loginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53839C561E52FE2A00312F64 /* loginController.swift */; };
 		538AD4D51E51B699009D06BE /* searchMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538AD4D41E51B699009D06BE /* searchMenuViewController.swift */; };
 		538AD4D71E51BC17009D06BE /* leftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538AD4D61E51BC17009D06BE /* leftMenuViewController.swift */; };
 		53D3BE391E51A397000D3B87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3BE381E51A397000D3B87 /* AppDelegate.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		53839C561E52FE2A00312F64 /* loginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = loginController.swift; path = login/loginController.swift; sourceTree = "<group>"; };
 		538AD4D41E51B699009D06BE /* searchMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = searchMenuViewController.swift; path = searchMenu/searchMenuViewController.swift; sourceTree = "<group>"; };
 		538AD4D61E51BC17009D06BE /* leftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = leftMenuViewController.swift; path = leftMenu/leftMenuViewController.swift; sourceTree = "<group>"; };
 		53D3BE351E51A397000D3B87 /* Zboobee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zboobee.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +108,7 @@
 				53D3BE381E51A397000D3B87 /* AppDelegate.swift */,
 				53D3BE3A1E51A397000D3B87 /* ViewController.swift */,
 				53D3BE3C1E51A397000D3B87 /* Main.storyboard */,
+				53839C561E52FE2A00312F64 /* loginController.swift */,
 				538AD4D61E51BC17009D06BE /* leftMenuViewController.swift */,
 				538AD4D41E51B699009D06BE /* searchMenuViewController.swift */,
 				53D3BE421E51A398000D3B87 /* Assets.xcassets */,
@@ -271,6 +274,7 @@
 				53D3BE3B1E51A397000D3B87 /* ViewController.swift in Sources */,
 				53D3BE391E51A397000D3B87 /* AppDelegate.swift in Sources */,
 				538AD4D71E51BC17009D06BE /* leftMenuViewController.swift in Sources */,
+				53839C571E52FE2A00312F64 /* loginController.swift in Sources */,
 				53D3BE411E51A398000D3B87 /* Zboobee.xcdatamodeld in Sources */,
 				538AD4D51E51B699009D06BE /* searchMenuViewController.swift in Sources */,
 			);
