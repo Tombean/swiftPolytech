@@ -8,7 +8,7 @@
 
 import UIKit
 
-class loginController: UIViewController {
+class loginController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var emailF: UITextField!
@@ -17,13 +17,13 @@ class loginController: UIViewController {
     @IBOutlet weak var registerButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
     }
     
 

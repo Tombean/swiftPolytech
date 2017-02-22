@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24E806521E5DC3B3009BE202 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E806511E5DC3B3009BE202 /* LoginViewController.swift */; };
+		24E806541E5DCEB5009BE202 /* WallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E806531E5DCEB5009BE202 /* WallViewController.swift */; };
 		53839C571E52FE2A00312F64 /* loginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53839C561E52FE2A00312F64 /* loginController.swift */; };
 		538AD4D51E51B699009D06BE /* searchMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538AD4D41E51B699009D06BE /* searchMenuViewController.swift */; };
 		538AD4D71E51BC17009D06BE /* leftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538AD4D61E51BC17009D06BE /* leftMenuViewController.swift */; };
@@ -38,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		24E8064D1E5DC352009BE202 /* Zboobee-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Zboobee-Bridging-Header.h"; sourceTree = "<group>"; };
+		24E806511E5DC3B3009BE202 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Zboobee/login/LoginViewController.swift; sourceTree = "<group>"; };
+		24E806531E5DCEB5009BE202 /* WallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallViewController.swift; sourceTree = "<group>"; };
 		53839C561E52FE2A00312F64 /* loginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = loginController.swift; path = login/loginController.swift; sourceTree = "<group>"; };
 		538AD4D41E51B699009D06BE /* searchMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = searchMenuViewController.swift; path = searchMenu/searchMenuViewController.swift; sourceTree = "<group>"; };
 		538AD4D61E51BC17009D06BE /* leftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = leftMenuViewController.swift; path = leftMenu/leftMenuViewController.swift; sourceTree = "<group>"; };
@@ -85,10 +90,12 @@
 		53D3BE2C1E51A395000D3B87 = {
 			isa = PBXGroup;
 			children = (
+				24E806511E5DC3B3009BE202 /* LoginViewController.swift */,
 				53D3BE371E51A397000D3B87 /* Zboobee */,
 				53D3BE4F1E51A398000D3B87 /* ZboobeeTests */,
 				53D3BE5A1E51A398000D3B87 /* ZboobeeUITests */,
 				53D3BE361E51A397000D3B87 /* Products */,
+				24E8064D1E5DC352009BE202 /* Zboobee-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,6 +114,7 @@
 			children = (
 				53D3BE381E51A397000D3B87 /* AppDelegate.swift */,
 				53D3BE3A1E51A397000D3B87 /* ViewController.swift */,
+				24E806531E5DCEB5009BE202 /* WallViewController.swift */,
 				53D3BE3C1E51A397000D3B87 /* Main.storyboard */,
 				53839C561E52FE2A00312F64 /* loginController.swift */,
 				538AD4D61E51BC17009D06BE /* leftMenuViewController.swift */,
@@ -205,6 +213,7 @@
 				TargetAttributes = {
 					53D3BE341E51A395000D3B87 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
 					53D3BE4B1E51A398000D3B87 = {
@@ -271,7 +280,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24E806521E5DC3B3009BE202 /* LoginViewController.swift in Sources */,
 				53D3BE3B1E51A397000D3B87 /* ViewController.swift in Sources */,
+				24E806541E5DCEB5009BE202 /* WallViewController.swift in Sources */,
 				53D3BE391E51A397000D3B87 /* AppDelegate.swift in Sources */,
 				538AD4D71E51BC17009D06BE /* leftMenuViewController.swift in Sources */,
 				53839C571E52FE2A00312F64 /* loginController.swift in Sources */,
@@ -428,10 +439,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Zboobee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zboobee.Zboobee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Zboobee-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -440,10 +454,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Zboobee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zboobee.Zboobee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Zboobee-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
