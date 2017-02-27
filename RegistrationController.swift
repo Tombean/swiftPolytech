@@ -1,32 +1,36 @@
 //
-//  WallViewController.swift
+//  RegistrationController.swift
 //  Zboobee
 //
-//  Created by Tom SOMERVILLE-ROBERTS on 22/02/2017.
+//  Created by Tom SOMERVILLE-ROBERTS on 27/02/2017.
 //  Copyright © 2017 Laure MARCHAL. All rights reserved.
 //
 
-// A LIRE
-
 import UIKit
 
-class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
-    @IBOutlet weak var tittleLabel: UILabel!
-    @IBOutlet weak var channelPicker: UIPickerView!
-    @IBOutlet weak var messageToPostLabel: UILabel!
-    @IBOutlet weak var messageTF: UITextField!
-    @IBOutlet weak var messagesTable: UITableView!
-    @IBOutlet weak var searchToolbar: UIToolbar!
-    @IBOutlet weak var menuToolbar: UIToolbar!
-    @IBOutlet weak var sendButton: UIButton!
-    // Temporary :  needs to be changed with channel allowed from DB
-    let pickerData = ["All","Class","Class - Teachers","Class - Office"]
+    
+    @IBOutlet weak var firstNameTF: UITextField!
+    @IBOutlet weak var lastNameTF: UITextField!
+    @IBOutlet weak var emailTF: UITextField!
+    @IBOutlet weak var passwordTF: UITextField!
+    @IBOutlet weak var confirmpasswordTF: UITextField!
+    @IBOutlet weak var validateButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var promoPV: UIPickerView!
+    
+    let pickerData = ["IG3","IG4","IG5","Teacher"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.channelPicker.dataSource = self
-        self.channelPicker.delegate = self
-        self.messageTF.delegate = self
+        self.promoPV.dataSource = self
+        self.promoPV.delegate = self
+        self.firstNameTF.delegate = self
+        self.lastNameTF.delegate = self
+        self.emailTF.delegate = self
+        self.passwordTF.delegate = self
+        self.confirmpasswordTF.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -57,10 +61,10 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected objec
     }
-
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-    
+        
 }

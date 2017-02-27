@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24AE82C01E645FB6005B94D4 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AE82BF1E645FB6005B94D4 /* RegistrationController.swift */; };
 		24E806521E5DC3B3009BE202 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E806511E5DC3B3009BE202 /* LoginViewController.swift */; };
 		24E806541E5DCEB5009BE202 /* WallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E806531E5DCEB5009BE202 /* WallViewController.swift */; };
 		53839C571E52FE2A00312F64 /* loginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53839C561E52FE2A00312F64 /* loginController.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		24AE82BF1E645FB6005B94D4 /* RegistrationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		24E8064D1E5DC352009BE202 /* Zboobee-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Zboobee-Bridging-Header.h"; sourceTree = "<group>"; };
 		24E806511E5DC3B3009BE202 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Zboobee/login/LoginViewController.swift; sourceTree = "<group>"; };
 		24E806531E5DCEB5009BE202 /* WallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 		53D3BE2C1E51A395000D3B87 = {
 			isa = PBXGroup;
 			children = (
+				24AE82BF1E645FB6005B94D4 /* RegistrationController.swift */,
 				24E806511E5DC3B3009BE202 /* LoginViewController.swift */,
 				53D3BE371E51A397000D3B87 /* Zboobee */,
 				53D3BE4F1E51A398000D3B87 /* ZboobeeTests */,
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24E806521E5DC3B3009BE202 /* LoginViewController.swift in Sources */,
+				24AE82C01E645FB6005B94D4 /* RegistrationController.swift in Sources */,
 				53D3BE3B1E51A397000D3B87 /* ViewController.swift in Sources */,
 				24E806541E5DCEB5009BE202 /* WallViewController.swift in Sources */,
 				53D3BE391E51A397000D3B87 /* AppDelegate.swift in Sources */,
