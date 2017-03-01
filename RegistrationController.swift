@@ -18,7 +18,6 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var confirmpasswordTF: UITextField!
    
-    
     @IBAction func validateButton(_ sender: Any) {
         
         print("bouton valider cliqué")
@@ -50,15 +49,24 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
             return
         }
         guard passwordConfirmation != "" else{
+            print("No password confirmation ")
+            return
+        }
+        guard passwordConfirmation != password else{
             print("Password does not match password confirmation")
             return
         }
         
-        
         return
-
         
     }
+    /*
+    @IBAction func validateButton(_ sender: Any) {
+        
+     
+
+        
+    } */
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var promoPV: UIPickerView!
