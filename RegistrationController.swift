@@ -27,33 +27,54 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
         let email : String? = self.emailTF.text
         let password : String? = self.passwordTF.text
         let passwordConfirmation : String? = self.confirmpasswordTF.text
-        print("coucou")
+        var errorMessage: String = ""
+        let errorPopup: UIAlertController = UIAlertController(title: "Registration is incomplete",
+                                                              message: "",
+                                                              preferredStyle: .alert)
+        let cancelPopup = UIAlertAction(title: "Annuler",
+                                        style: .default)
+        errorPopup.addAction(cancelPopup)
+        
         guard firstName != "" else{
-            print("No first name")
+            errorMessage = errorMessage+"\nNo first name \n"
+            errorPopup.message = errorMessage
+            present(errorPopup, animated: true)
             return
         }
         guard lastName != "" else{
-            print("No last name")
+            errorMessage = errorMessage+"\nNo last name"
+            errorPopup.message = errorMessage
+            present(errorPopup, animated: true)
             return
         }
         guard email != "" else{
-            print("No email address")
+            errorMessage = errorMessage+"\nNo email address"
+            errorPopup.message = errorMessage
+            present(errorPopup, animated: true)
             return
         }
         guard password != "" else{
-            print("No password")
+            errorMessage = errorMessage+"\nNo password"
+            errorPopup.message = errorMessage
+            present(errorPopup, animated: true)
             return
         }
         guard passwordConfirmation != "" else{
-            print("No password confirmation")
+            errorMessage = errorMessage+"\nNo password confirmation"
+            errorPopup.message = errorMessage
+            present(errorPopup, animated: true)
             return
         }
         guard passwordConfirmation != "" else{
-            print("No password confirmation ")
+            errorMessage = errorMessage+"\nNo password confirmation"
+            errorPopup.message = errorMessage
+            present(errorPopup, animated: true)
             return
         }
         guard passwordConfirmation != password else{
-            print("Password does not match password confirmation")
+            errorMessage = errorMessage+"\nPassword does not match password confirmation"
+            errorPopup.message = errorMessage
+            present(errorPopup, animated: true)
             return
         }
         
