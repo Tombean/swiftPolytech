@@ -307,7 +307,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dg2-0F-D7d" userLabel="idTF">
                                 <rect key="frame" x="437" y="255" width="150" height="30"/>
@@ -346,6 +346,9 @@
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="titleShadowColor" red="0.3460596313" green="0.88480895339999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="loginButton:" destination="ts6-in-JWW" eventType="touchUpInside" id="nh0-1J-QmW"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvd-I4-cRK">
                                         <rect key="frame" x="0.0" y="50" width="150" height="30"/>
@@ -354,6 +357,9 @@
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="titleShadowColor" red="0.3460596313" green="0.88480895339999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="resetPasswordButton:" destination="ts6-in-JWW" eventType="touchUpInside" id="qAj-VZ-IkP"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xng-d4-ej8">
                                         <rect key="frame" x="0.0" y="100" width="150" height="30"/>
@@ -390,10 +396,8 @@
                     <navigationItem key="navigationItem" id="X1P-W0-DeA"/>
                     <connections>
                         <outlet property="emailF" destination="Dg2-0F-D7d" id="Nez-FL-ep1"/>
-                        <outlet property="loginButton" destination="fns-u8-dvb" id="xXg-Tq-tLG"/>
                         <outlet property="passwordTF" destination="g9M-hP-Lbo" id="Gfs-UA-zmB"/>
                         <outlet property="registerButton" destination="Xng-d4-ej8" id="K1X-AI-Mz3"/>
-                        <outlet property="resetPasswordButton" destination="bvd-I4-cRK" id="89r-mU-7lz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JU5-Yf-gj1" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -12,8 +12,37 @@ class loginController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var emailF: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var resetPasswordButton: UIButton!
+    
+    @IBAction func loginButton(_ sender: Any) {
+        
+        let email : String? = self.emailF.text
+        let password : String? = self.passwordTF.text
+        var errorMessage: String = ""
+        let errorPopup: UIAlertController = UIAlertController(title: "Registration is incomplete",
+                                                              message: "",
+                                                              preferredStyle: .alert)
+        let cancelPopup = UIAlertAction(title: "Annuler",
+                                        style: .default)
+        errorPopup.addAction(cancelPopup)
+        
+        guard email != "" else{
+            errorMessage = errorMessage+"\nNo email address or format is not correct"
+            errorPopup.message = errorMessage
+            present(errorPopup, animated: true)
+            return
+        }
+        guard password != "" else{
+            errorMessage = errorMessage+"\nNo password or has less than 6 caracters"
+            errorPopup.message = errorMessage
+            present(errorPopup, animated: true)
+            return
+        }
+       
+
+        
+    }
+    @IBAction func resetPasswordButton(_ sender: Any) {
+    }
     @IBOutlet weak var registerButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()

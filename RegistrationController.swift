@@ -20,7 +20,7 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
    
     @IBAction func validateButton(_ sender: Any) {
         
-        print("bouton valider cliqué")
+        print("bouton \"valider\" dans REGISTRATION cliqué")
         
         let firstName : String? = self.firstNameTF.text
         let lastName : String? = self.lastNameTF.text
@@ -47,19 +47,19 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
             present(errorPopup, animated: true)
             return
         }
-        guard email != "" else{
-            errorMessage = errorMessage+"\nNo email address"
+        guard email != "" && isValidEmail(testStr: email!) else{
+            errorMessage = errorMessage+"\nNo email address or format is not correct"
             errorPopup.message = errorMessage
             present(errorPopup, animated: true)
             return
         }
-        guard password != "" else{
-            errorMessage = errorMessage+"\nNo password"
+        guard password != "" && (password?.characters.count)! >= 6 else{
+            errorMessage = errorMessage+"\nNo password or has less than 6 caracters"
             errorPopup.message = errorMessage
             present(errorPopup, animated: true)
             return
         }
-        guard passwordConfirmation != "" else{
+        guard passwordConfirmation != "" && (passwordConfirmation?.characters.count)! >= 6 else{
             errorMessage = errorMessage+"\nNo password confirmation"
             errorPopup.message = errorMessage
             present(errorPopup, animated: true)
@@ -71,27 +71,55 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
             present(errorPopup, animated: true)
             return
         }
-        guard passwordConfirmation != password else{
+        
+        guard passwordConfirmation == password else{
             errorMessage = errorMessage+"\nPassword does not match password confirmation"
             errorPopup.message = errorMessage
             present(errorPopup, animated: true)
             return
         }
         
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Application failed")
+        }
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let newUser: User = User(context: context)
+        newUser.firstname = firstName
+        newUser.lastname = lastName
+        newUser.mailUniv = email
+        // ATTENTION CRYPTER LE PASSWORD PLUS TARD
+        newUser.password = password
+        if self.selectedRole == "Teacher"{
+            
+            let role: Teacher = Teacher(context: context)
+            role.specialty = "info"
+            newUser.role = role
+        } else{
+            let role: Student = Student(context: context)
+            var a = self.selectedRole.characters.map { String($0) }
+            role.year = Int16(a[2])!
+            newUser.role = role
+            print("ROLE... Ou promo... : "+String(role.year))
+
+        }
+        
+        do {
+            try context.save()
+
+        } catch let error as NSError {
+            // Raise error
+        }
+        
+        
         return
         
     }
-    /*
-    @IBAction func validateButton(_ sender: Any) {
-        
-     
-
-        
-    } */
+    
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var promoPV: UIPickerView!
-    
+    var selectedRole: String = ""
     let pickerData = ["IG3","IG4","IG5","Teacher"]
     
         override func viewDidLoad() {
@@ -121,6 +149,7 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     //MARK: Delegates
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        self.selectedRole = pickerData[row]
         return pickerData[row]
     }
     
@@ -139,39 +168,12 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
         return true
     }
     
-    /*
-    func saveButton() -> Bool {
-        let firstName : String? = self.firstNameTF.text
-        let lastName : String? = self.lastNameTF.text
-        let email : String? = self.emailTF.text
-        let password : String? = self.passwordTF.text
-        let passwordConfirmation : String? = self.confirmpasswordTF.text
+    func isValidEmail(testStr:String) -> Bool {
+        // print("validate calendar: \(testStr)")
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@etu.umontpellier.fr"
         
-        guard firstName != nil else{
-            print("No first name")
-            return false
-        }
-        guard lastName != nil else{
-            print("No last name")
-            return false
-        }
-        guard email != nil else{
-            print("No email address")
-            return false
-        }
-        guard password != nil else{
-            print("No password")
-            return false
-        }
-        guard passwordConfirmation != nil else{
-            print("No password confirmation")
-            return false
-        }
-        guard passwordConfirmation != password else{
-            print("Password does not match password confirmation")
-            return false
-        }
-        return true
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
     }
- */
+    
 }

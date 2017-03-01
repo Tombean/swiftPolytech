@@ -8,48 +8,48 @@
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="isCreated" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="creates" inverseEntity="User" syncable="YES"/>
+        <relationship name="isCreated" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="events" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Manager" representedClassName="Manager" parentEntity="Teacher" syncable="YES" codeGenerationType="class"/>
     <entity name="Message" representedClassName="Message" syncable="YES" codeGenerationType="class">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="length" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="isPosted" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="post" inverseEntity="User" syncable="YES"/>
+        <relationship name="isPosted" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="messages" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Role" representedClassName="Role" isAbstract="YES" syncable="YES" codeGenerationType="class">
-        <relationship name="isUser" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="has" inverseEntity="User" syncable="YES"/>
+        <relationship name="isUser" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="role" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Secretariat" representedClassName="Secretariat" parentEntity="Role" syncable="YES" codeGenerationType="class"/>
     <entity name="Specialty" representedClassName="Specialty" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="hasUsers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="isIn" inverseEntity="User" syncable="YES"/>
+        <relationship name="hasUsers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="specialty" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Student" representedClassName="Student" parentEntity="Role" syncable="YES" codeGenerationType="class">
         <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="Teacher" representedClassName="Teacher" parentEntity="Role" syncable="YES" codeGenerationType="class">
-        <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="specialty" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="firstname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mailUniv" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="creates" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="isCreated" inverseEntity="Event" syncable="YES"/>
-        <relationship name="has" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Role" inverseName="isUser" inverseEntity="Role" syncable="YES"/>
-        <relationship name="isIn" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Specialty" inverseName="hasUsers" inverseEntity="Specialty" syncable="YES"/>
-        <relationship name="post" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="isPosted" inverseEntity="Message" syncable="YES"/>
+        <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="isCreated" inverseEntity="Event" syncable="YES"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="isPosted" inverseEntity="Message" syncable="YES"/>
+        <relationship name="role" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Role" inverseName="isUser" inverseEntity="Role" syncable="YES"/>
+        <relationship name="specialty" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Specialty" inverseName="hasUsers" inverseEntity="Specialty" syncable="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="-306" positionY="-115" width="128" height="163"/>
-        <element name="Message" positionX="-252" positionY="123" width="128" height="88"/>
         <element name="Document" positionX="-252" positionY="294" width="128" height="73"/>
-        <element name="Role" positionX="115" positionY="-58" width="128" height="58"/>
-        <element name="Specialty" positionX="7" positionY="-225" width="128" height="73"/>
         <element name="Event" positionX="-252" positionY="-279" width="128" height="103"/>
+        <element name="Manager" positionX="-27" positionY="225" width="128" height="45"/>
+        <element name="Message" positionX="-252" positionY="123" width="128" height="88"/>
+        <element name="Role" positionX="115" positionY="-58" width="128" height="58"/>
+        <element name="Secretariat" positionX="322" positionY="99" width="128" height="45"/>
+        <element name="Specialty" positionX="7" positionY="-225" width="128" height="73"/>
         <element name="Student" positionX="160" positionY="90" width="128" height="58"/>
         <element name="Teacher" positionX="-27" positionY="90" width="128" height="58"/>
-        <element name="Secretariat" positionX="322" positionY="99" width="128" height="43"/>
-        <element name="Manager" positionX="-27" positionY="225" width="128" height="43"/>
+        <element name="User" positionX="-306" positionY="-115" width="128" height="163"/>
     </elements>
 </model>

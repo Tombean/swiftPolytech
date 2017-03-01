@@ -16,7 +16,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Application failed")
+        }
+        let context = appDelegate.persistentContainer.viewContext
+        let IG3 : Specialty = Specialty(context: context)
+        IG3.name = "IG3"
+        let IG4 : Specialty = Specialty(context: context)
+        IG4.name = "IG4"
+        let IG5 : Specialty = Specialty(context: context)
+        IG5.name = "IG5"
+        
+        do {
+            try context.save()
+            
+        } catch let error as NSError {
+            // Raise error
+        }
+        
         return true
     }
 
