@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ts6-in-JWW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="DYn-XW-hsB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -89,7 +89,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="validateButton:" destination="0Oz-dX-mgm" eventType="touchUpInside" id="Gu2-gc-yvH"/>
+                                    <action selector="validateButton:" destination="0Oz-dX-mgm" eventType="touchUpInside" id="bAX-zx-8Rt"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMh-WX-vir">
@@ -110,7 +110,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ts6-in-JWW" kind="show" id="azF-fV-9HK"/>
+                                    <segue destination="ts6-in-JWW" kind="show" id="p5D-nP-VBi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -150,7 +150,6 @@
                         <outlet property="lastNameTF" destination="2zv-y4-ES1" id="Mhy-cd-Xys"/>
                         <outlet property="passwordTF" destination="vBl-DJ-rBo" id="GF8-qa-zca"/>
                         <outlet property="promoPV" destination="vMh-WX-vir" id="Ytt-1l-eTb"/>
-                        <outlet property="validateButton" destination="gAD-s7-Wtn" id="0cB-1u-pAP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9p-uX-WbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -231,7 +230,7 @@
                                     <barButtonItem title="Calendar" id="dkt-gh-fTA"/>
                                     <barButtonItem title="logout" id="63S-hO-n7l">
                                         <connections>
-                                            <segue destination="ts6-in-JWW" kind="show" id="nZy-L1-tqi"/>
+                                            <segue destination="ts6-in-JWW" kind="show" id="YTk-p5-HlF"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -372,7 +371,7 @@
                                     <color key="titleShadowColor" red="0.3460596313" green="0.88480895339999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="0Oz-dX-mgm" kind="show" id="ObN-Jg-Ffn"/>
+                                    <segue destination="0Oz-dX-mgm" kind="show" id="0SE-BS-Fsi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -436,6 +435,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="azF-fV-9HK"/>
+        <segue reference="p5D-nP-VBi"/>
     </inferredMetricsTieBreakers>
 </document>

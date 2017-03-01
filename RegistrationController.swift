@@ -18,6 +18,7 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var confirmpasswordTF: UITextField!
    
+    
     @IBAction func validateButton(_ sender: Any) {
         
         print("bouton valider cliqué")
@@ -55,14 +56,16 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         
         return
+
         
     }
+    
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var promoPV: UIPickerView!
     
     let pickerData = ["IG3","IG4","IG5","Teacher"]
     
-    override func viewDidLoad() {
+        override func viewDidLoad() {
         super.viewDidLoad()
         self.promoPV.dataSource = self
         self.promoPV.delegate = self
