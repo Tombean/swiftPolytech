@@ -11,7 +11,7 @@ import CoreData
 
 class UsersSet{
     
-    /// <#Description#>
+    /// Retrieve the user that has the email address used as parameter.
     ///
     /// - Parameter email: email address of the user
     /// - Returns: Returns the user who has the email given as a parameter, nothing if no user was found
@@ -28,18 +28,15 @@ func finduser(email: String)->User?{
     return users[0]
 }
     
-    /// <#Description#>
+    /// check if a user can login based on email and password
     ///
     /// - Parameter email: email address of the user
     /// - Parameter password: password of the user
     /// - Returns: Returns the user who has the email given as a parameter, nothing if no user was found
-func canLogin(email: String, password: String)->Bool{
-    let user : User? = self.finduser(email: email)
-    return user?.password == password
-}
-    
-    func aaaa(){
-        print("aaa")
+    func canLogin(email: String, password: String)->Bool{
+        let user : User? = self.finduser(email: email)
+        return user?.password == password
     }
+
     
 }
