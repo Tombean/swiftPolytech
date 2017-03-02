@@ -15,9 +15,18 @@ class UsersSet{
     ///
     /// - Parameter email: email address of the user
     /// - Returns: Returns the user who has the email given as a parameter, nothing if no user was found
-//    func finduser(email: String)->User?{
-//        
-//    }
+func finduser(email: String)->User?{
+    var users : [User]
+    let context = CoreDataManager.context
+    let requestUser: NSFetchRequest<User> = User.fetchRequest()
+    requestUser.predicate = NSPredicate(format: "email == %@", email)
+    do{
+        try users = context.fetch(requestUser)
+    }catch{
+        return nil
+    }
+    return users[0]
+}
     
     /// <#Description#>
     ///
