@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CoreData
 
 class loginController: UIViewController, UITextFieldDelegate {
 
+    var users: [User] = []
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var emailF: UITextField!
     
@@ -17,7 +19,6 @@ class loginController: UIViewController, UITextFieldDelegate {
         
         let email : String? = self.emailF.text
         let password : String? = self.passwordTF.text
-        var errorMessage: String = ""
         let errorPopup: UIAlertController = UIAlertController(title: "Registration is incomplete",
                                                               message: "",
                                                               preferredStyle: .alert)
@@ -26,19 +27,30 @@ class loginController: UIViewController, UITextFieldDelegate {
         errorPopup.addAction(cancelPopup)
         
         guard email != "" else{
-            errorMessage = errorMessage+"\nNo email address or format is not correct"
-            errorPopup.message = errorMessage
-            present(errorPopup, animated: true)
+            DialogBoxHelper.alert(view: self, withTitle: "No Email", andMessage: "Please enter a valid email or register")
             return
         }
-        guard password != "" else{
-            errorMessage = errorMessage+"\nNo password or has less than 6 caracters"
-            errorPopup.message = errorMessage
-            present(errorPopup, animated: true)
+        guard (password?.characters.count)! >= 6 else{
+            DialogBoxHelper.alert(view: self, withTitle: "Incorrect Password", andMessage: "Password is at least 6-caracter long")
             return
         }
+        
+        
+        let context =  CoreDataManager.context
+        let requestUsers: NSFetchRequest<User> = User.fetchRequest()
+        do{
+            try self.users = context.fetch(requestUsers)
+        }catch let error as NSError{
+            DialogBoxHelper.alert(view: self, error: error)
+        }
+        let indexOfUser = findUserInContext(withName: email!)
+        guard userCanLogin(email: email!, password: password!, indexOfUser: indexOfUser) else{
+            print("login failed")
+            return
+        }
+        print("login OK")
+        // SEGUE A FAIRE
        
-
         
     }
     @IBAction func resetPasswordButton(_ sender: Any) {
@@ -55,6 +67,24 @@ class loginController: UIViewController, UITextFieldDelegate {
         
     }
     
+    func findUserInContext(withName email : String)->Int{
+        var indexOfUser: Int = 0
+        while indexOfUser < self.users.count-1 || self.users[indexOfUser].mailUniv != email{
+            indexOfUser = indexOfUser+1
+        }
+        return indexOfUser
+    }
+    func userCanLogin( email : String, password : String, indexOfUser : Int)->Bool{
+        guard indexOfUser >= self.users.count-1 else{
+            DialogBoxHelper.alert(view: self, withTitle: "User not found", andMessage: "Please enter a valid email or register")
+            return false
+        }
+        guard email == self.users[indexOfUser].mailUniv else{
+            DialogBoxHelper.alert(view: self, withTitle: "Invalid email", andMessage: "Please enter a valid email or register")
+            return false
+        }
+        return true
+    }
 
     /*
     // MARK: - Navigation

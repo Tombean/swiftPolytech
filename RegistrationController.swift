@@ -27,62 +27,34 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
         let email : String? = self.emailTF.text
         let password : String? = self.passwordTF.text
         let passwordConfirmation : String? = self.confirmpasswordTF.text
-        var errorMessage: String = ""
-        let errorPopup: UIAlertController = UIAlertController(title: "Registration is incomplete",
-                                                              message: "",
-                                                              preferredStyle: .alert)
-        let cancelPopup = UIAlertAction(title: "Annuler",
-                                        style: .default)
-        errorPopup.addAction(cancelPopup)
+        let context = CoreDataManager.context
         
         guard firstName != "" else{
-            errorMessage = errorMessage+"\nNo first name \n"
-            errorPopup.message = errorMessage
-            present(errorPopup, animated: true)
+            DialogBoxHelper.alert(view: self, withTitle: "Registration is incomplete", andMessage: "No first name")
             return
         }
         guard lastName != "" else{
-            errorMessage = errorMessage+"\nNo last name"
-            errorPopup.message = errorMessage
-            present(errorPopup, animated: true)
+            DialogBoxHelper.alert(view: self, withTitle: "Registration is incomplete", andMessage: "No last name")
             return
         }
         guard email != "" && isValidEmail(testStr: email!) else{
-            errorMessage = errorMessage+"\nNo email address or format is not correct"
-            errorPopup.message = errorMessage
-            present(errorPopup, animated: true)
+            DialogBoxHelper.alert(view: self, withTitle: "Registration is incomplete", andMessage: "No email or invalid format : please use your @etu.umontpellier.fr email address")
             return
         }
         guard password != "" && (password?.characters.count)! >= 6 else{
-            errorMessage = errorMessage+"\nNo password or has less than 6 caracters"
-            errorPopup.message = errorMessage
-            present(errorPopup, animated: true)
+            DialogBoxHelper.alert(view: self, withTitle: "Registration is incomplete", andMessage: "No password, password must contain at least 6 characters")
             return
         }
         guard passwordConfirmation != "" && (passwordConfirmation?.characters.count)! >= 6 else{
-            errorMessage = errorMessage+"\nNo password confirmation"
-            errorPopup.message = errorMessage
-            present(errorPopup, animated: true)
+            DialogBoxHelper.alert(view: self, withTitle: "Registration is incomplete", andMessage: "No password confirmation, password confirmation must contain at least 6 characters")
             return
         }
-        guard passwordConfirmation != "" else{
-            errorMessage = errorMessage+"\nNo password confirmation"
-            errorPopup.message = errorMessage
-            present(errorPopup, animated: true)
-            return
-        }
-        
         guard passwordConfirmation == password else{
-            errorMessage = errorMessage+"\nPassword does not match password confirmation"
-            errorPopup.message = errorMessage
-            present(errorPopup, animated: true)
+            DialogBoxHelper.alert(view: self, withTitle: "Registration is incomplete", andMessage: "Password does not match password confirmation")
             return
         }
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            fatalError("Application failed")
-        }
-        let context = appDelegate.persistentContainer.viewContext
+        
         
         let newUser: User = User(context: context)
         newUser.firstname = firstName
@@ -93,14 +65,13 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
         if self.selectedRole == "Teacher"{
             
             let role: Teacher = Teacher(context: context)
-            role.specialty = "info"
+            role.specialty = "Information technology"
             newUser.role = role
         } else{
             let role: Student = Student(context: context)
             var a = self.selectedRole.characters.map { String($0) }
             role.year = Int16(a[2])!
             newUser.role = role
-            print("ROLE... Ou promo... : "+String(role.year))
 
         }
         
@@ -170,7 +141,7 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func isValidEmail(testStr:String) -> Bool {
         // print("validate calendar: \(testStr)")
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@etu.umontpellier.fr"
+        let emailRegEx = "[A-Z0-9a-z._%+-]+.[A-Z0-9a-z._%+-]+@etu.umontpellier.fr"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
