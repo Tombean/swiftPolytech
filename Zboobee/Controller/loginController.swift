@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class loginController: UIViewController, UITextFieldDelegate {
-
+    
     var users: [User] = []
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var emailF: UITextField!
@@ -35,22 +35,13 @@ class loginController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        
-        let context =  CoreDataManager.context
-        let requestUsers: NSFetchRequest<User> = User.fetchRequest()
-        do{
-            try self.users = context.fetch(requestUsers)
-        }catch let error as NSError{
-            DialogBoxHelper.alert(view: self, error: error)
-        }
-        let indexOfUser = findUserInContext(withName: email!)
-        guard userCanLogin(email: email!, password: password!, indexOfUser: indexOfUser) else{
-            print("login failed")
+        guard UsersSet.canLogin(email: email!, password: password!) else{
+            DialogBoxHelper.alert(view: self, withTitle: "Login Failed", andMessage: "Email or password is incorrect")
             return
         }
         print("login OK")
         // SEGUE A FAIRE
-       
+        
         
     }
     @IBAction func resetPasswordButton(_ sender: Any) {
@@ -60,40 +51,21 @@ class loginController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
         
     }
     
-    func findUserInContext(withName email : String)->Int{
-        var indexOfUser: Int = 0
-        while indexOfUser < self.users.count-1 || self.users[indexOfUser].mailUniv != email{
-            indexOfUser = indexOfUser+1
-        }
-        return indexOfUser
-    }
-    func userCanLogin( email : String, password : String, indexOfUser : Int)->Bool{
-        guard indexOfUser >= self.users.count-1 else{
-            DialogBoxHelper.alert(view: self, withTitle: "User not found", andMessage: "Please enter a valid email or register")
-            return false
-        }
-        guard email == self.users[indexOfUser].mailUniv else{
-            DialogBoxHelper.alert(view: self, withTitle: "Invalid email", andMessage: "Please enter a valid email or register")
-            return false
-        }
-        return true
-    }
-
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

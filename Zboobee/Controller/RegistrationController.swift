@@ -62,7 +62,7 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
         newUser.password = password
         do {
             try context.save()
-            } catch let error as NSError {
+            } catch {
                 // Raise error
         }
        
@@ -125,6 +125,6 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
         let emailRegEx = "[A-Z0-9a-z._%+-]+.[A-Z0-9a-z._%+-]+@etu.umontpellier.fr"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: testStr)
+        return (emailTest.evaluate(with: testStr) && (UsersSet.findUser(email:testStr) == nil))
     }
 }

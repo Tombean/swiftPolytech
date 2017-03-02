@@ -20,17 +20,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             fatalError("Application failed")
         }
         let context = appDelegate.persistentContainer.viewContext
-        let IG3 : Specialty = Specialty(context: context)
-        IG3.name = "IG3"
-        let IG4 : Specialty = Specialty(context: context)
-        IG4.name = "IG4"
-        let IG5 : Specialty = Specialty(context: context)
-        IG5.name = "IG5"
+//        let IG3 : Specialty = Specialty(context: context)
+//        IG3.name = "IG3"
+//        let IG4 : Specialty = Specialty(context: context)
+//        IG4.name = "IG4"
+//        let IG5 : Specialty = Specialty(context: context)
+//        IG5.name = "IG5"
         
         do {
             try context.save()
             
-        } catch let error as NSError {
+        } catch {
             // Raise error
         }
         
