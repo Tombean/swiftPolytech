@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16A323" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Document" representedClassName="Document" parentEntity="Message" syncable="YES" codeGenerationType="class">
         <attribute name="format" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
@@ -22,6 +22,7 @@
     </entity>
     <entity name="Message" representedClassName="Message" syncable="YES" codeGenerationType="class">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="length" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="isPosted" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="messages" inverseEntity="User" syncable="YES"/>
@@ -40,8 +41,8 @@
     <elements>
         <element name="Document" positionX="-252" positionY="294" width="128" height="73"/>
         <element name="Event" positionX="-828" positionY="-166" width="128" height="163"/>
-        <element name="Message" positionX="-252" positionY="51" width="128" height="118"/>
-        <element name="User" positionX="-522" positionY="-184" width="128" height="163"/>
         <element name="Group" positionX="-567" positionY="170" width="128" height="103"/>
+        <element name="Message" positionX="-252" positionY="51" width="128" height="135"/>
+        <element name="User" positionX="-522" positionY="-184" width="128" height="163"/>
     </elements>
 </model>
