@@ -33,9 +33,10 @@ func finduser(email: String)->User?{
     /// - Parameter email: email address of the user
     /// - Parameter password: password of the user
     /// - Returns: Returns the user who has the email given as a parameter, nothing if no user was found
-//    func canLogin(email: String, password: String)->Bool{
-//        
-//    }
+func canLogin(email: String, password: String)->Bool{
+    let user : User? = self.finduser(email: email)
+    return user?.password == password
+}
     
     
     
