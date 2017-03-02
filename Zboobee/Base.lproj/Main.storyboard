@@ -354,6 +354,7 @@
                                         </state>
                                         <connections>
                                             <action selector="loginButton:" destination="ts6-in-JWW" eventType="touchUpInside" id="nh0-1J-QmW"/>
+                                            <segue destination="lKh-jD-ET7" kind="show" identifier="showHomeSegue" id="4X2-Bh-CLN"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvd-I4-cRK">
@@ -426,6 +427,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Nc9-Q5-hor"/>
+        <segue reference="YTk-p5-HlF"/>
     </inferredMetricsTieBreakers>
 </document>

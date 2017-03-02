@@ -20,14 +20,12 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     @IBAction func validateButton(_ sender: Any) {
     
-        print("bouton \"valider\" dans REGISTRATION cliqué")
-        
         let firstName : String? = self.firstNameTF.text
         let lastName : String? = self.lastNameTF.text
         let email : String? = self.emailTF.text
         let password : String? = self.passwordTF.text
         let passwordConfirmation : String? = self.confirmpasswordTF.text
-        let context = CoreDataManager.context
+        //let context = CoreDataManager.context
 
         guard firstName != "" else{
             DialogBoxHelper.alert(view: self, withTitle: "Registration is incomplete", andMessage: "No first name")
@@ -53,18 +51,17 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
             DialogBoxHelper.alert(view: self, withTitle: "Registration is incomplete", andMessage: "Password does not match password confirmation")
             return
         }
-       
-        let newUser: User = User(context: context)
-        newUser.firstname = firstName
-        newUser.lastname = lastName
-        newUser.mailUniv = email
-        // ATTENTION CRYPTER LE PASSWORD PLUS TARD
-        newUser.password = password
-        do {
-            try context.save()
-            } catch {
-                // Raise error
+        //Verify that the email is not in the database
+        guard UsersSet.findUser(email: email!) == nil else{
+            DialogBoxHelper.alert(view: self, withTitle: "Register Failed", andMessage: "This email already exists")
+            return
         }
+        //create a new user
+        guard UsersSet.addUser(firstname: firstName!, lastname: lastName!, email: email!, password: password!, type: selectedRole) else{
+            DialogBoxHelper.alert(view: self, withTitle: "Register Failed", andMessage: "Verify your information")
+            return
+        }
+        print("register ok")
        
         return
         }
@@ -72,7 +69,7 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var promoPV: UIPickerView!
     var selectedRole: String = ""
-    let pickerData = ["IG3","IG4","IG5","Teacher"]
+    let pickerData = ["IG3","IG4","IG5","Teacher","Manager"]
         
     override func viewDidLoad() {
         super.viewDidLoad()
