@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2428B0341E682DF5007A4917 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428B0331E682DF5007A4917 /* RegistrationController.swift */; };
 		245C84FB1E6817AB00862038 /* UserExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245C84FA1E6817AB00862038 /* UserExtension.swift */; };
 		245C84FD1E681A8400862038 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245C84FC1E681A8400862038 /* CoreDataManager.swift */; };
 		245C84FF1E681BF400862038 /* DiablogBoxHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245C84FE1E681BF400862038 /* DiablogBoxHelper.swift */; };
 		245C85011E68264800862038 /* UsersSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245C85001E68264800862038 /* UsersSet.swift */; };
-		24AE82C01E645FB6005B94D4 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AE82BF1E645FB6005B94D4 /* RegistrationController.swift */; };
+		24AE82C01E645FB6005B94D4 /* Controller in Sources */ = {isa = PBXBuildFile; fileRef = 24AE82BF1E645FB6005B94D4 /* Controller */; };
 		24E806541E5DCEB5009BE202 /* WallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E806531E5DCEB5009BE202 /* WallViewController.swift */; };
 		53839C571E52FE2A00312F64 /* loginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53839C561E52FE2A00312F64 /* loginController.swift */; };
 		53D3BE391E51A397000D3B87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3BE381E51A397000D3B87 /* AppDelegate.swift */; };
@@ -42,17 +43,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		245C84FA1E6817AB00862038 /* UserExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserExtension.swift; path = Zboobee/ModelExtensions/UserExtension.swift; sourceTree = "<group>"; };
-		245C84FC1E681A8400862038 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		2428B0331E682DF5007A4917 /* RegistrationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationController.swift; path = Zboobee/Controller/RegistrationController.swift; sourceTree = "<group>"; };
+		245C84FA1E6817AB00862038 /* UserExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserExtension.swift; path = Zboobee/Model/Extensions/UserExtension.swift; sourceTree = "<group>"; };
+		245C84FC1E681A8400862038 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = Zboobee/CoreDataManager.swift; sourceTree = "<group>"; };
 		245C84FE1E681BF400862038 /* DiablogBoxHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiablogBoxHelper.swift; path = Zboobee/DiablogBoxHelper.swift; sourceTree = "<group>"; };
 		245C85001E68264800862038 /* UsersSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersSet.swift; path = Model/UsersSet.swift; sourceTree = "<group>"; };
-		24AE82BF1E645FB6005B94D4 /* RegistrationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationController.swift; path = ../RegistrationController.swift; sourceTree = "<group>"; };
+		24AE82BF1E645FB6005B94D4 /* Controller */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = Controller; sourceTree = "<group>"; };
 		24E8064D1E5DC352009BE202 /* Zboobee-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Zboobee-Bridging-Header.h"; sourceTree = "<group>"; };
 		24E806531E5DCEB5009BE202 /* WallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WallViewController.swift; sourceTree = "<group>"; };
-		53839C561E52FE2A00312F64 /* loginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = loginController.swift; path = login/loginController.swift; sourceTree = "<group>"; };
+		53839C561E52FE2A00312F64 /* loginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = loginController.swift; path = Controller/loginController.swift; sourceTree = "<group>"; };
 		53D3BE351E51A397000D3B87 /* Zboobee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zboobee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53D3BE381E51A397000D3B87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		53D3BE3A1E51A397000D3B87 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		53D3BE3A1E51A397000D3B87 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = View/ViewController.swift; sourceTree = "<group>"; };
 		53D3BE3D1E51A397000D3B87 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		53D3BE401E51A398000D3B87 /* Zboobee.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Zboobee.xcdatamodel; sourceTree = "<group>"; };
 		53D3BE421E51A398000D3B87 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 		53D3BE2C1E51A395000D3B87 = {
 			isa = PBXGroup;
 			children = (
+				2428B0331E682DF5007A4917 /* RegistrationController.swift */,
 				245C84FA1E6817AB00862038 /* UserExtension.swift */,
 				245C84FC1E681A8400862038 /* CoreDataManager.swift */,
 				245C84FE1E681BF400862038 /* DiablogBoxHelper.swift */,
@@ -118,7 +121,7 @@
 		53D3BE371E51A397000D3B87 /* Zboobee */ = {
 			isa = PBXGroup;
 			children = (
-				24AE82BF1E645FB6005B94D4 /* RegistrationController.swift */,
+				24AE82BF1E645FB6005B94D4 /* Controller */,
 				245C85001E68264800862038 /* UsersSet.swift */,
 				53D3BE381E51A397000D3B87 /* AppDelegate.swift */,
 				53D3BE3A1E51A397000D3B87 /* ViewController.swift */,
@@ -286,12 +289,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24AE82C01E645FB6005B94D4 /* RegistrationController.swift in Sources */,
+				24AE82C01E645FB6005B94D4 /* Controller in Sources */,
 				53D3BE3B1E51A397000D3B87 /* ViewController.swift in Sources */,
 				24E806541E5DCEB5009BE202 /* WallViewController.swift in Sources */,
 				53D3BE391E51A397000D3B87 /* AppDelegate.swift in Sources */,
 				245C84FF1E681BF400862038 /* DiablogBoxHelper.swift in Sources */,
 				245C84FB1E6817AB00862038 /* UserExtension.swift in Sources */,
+				2428B0341E682DF5007A4917 /* RegistrationController.swift in Sources */,
 				53839C571E52FE2A00312F64 /* loginController.swift in Sources */,
 				245C85011E68264800862038 /* UsersSet.swift in Sources */,
 				245C84FD1E681A8400862038 /* CoreDataManager.swift in Sources */,

@@ -146,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9p-uX-WbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="542" y="878"/>
+            <point key="canvasLocation" x="71" y="1023"/>
         </scene>
         <!--Wall View Controller-->
         <scene sceneID="0iM-bJ-N2z">
@@ -289,7 +289,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="929" y="124"/>
+            <point key="canvasLocation" x="71" y="-708"/>
         </scene>
         <!--Login-->
         <scene sceneID="QYl-Ch-UNv">
@@ -424,6 +424,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Nc9-Q5-hor"/>
+        <segue reference="YTk-p5-HlF"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -15,18 +15,18 @@ class UsersSet{
     ///
     /// - Parameter email: email address of the user
     /// - Returns: Returns the user who has the email given as a parameter, nothing if no user was found
-    func finduser(email: String)->User?{
-        
-    }
+//    func finduser(email: String)->User?{
+//        
+//    }
     
     /// <#Description#>
     ///
     /// - Parameter email: email address of the user
     /// - Parameter password: password of the user
     /// - Returns: Returns the user who has the email given as a parameter, nothing if no user was found
-    func canLogin(email: String, password: String)->Bool{
-        
-    }
+//    func canLogin(email: String, password: String)->Bool{
+//        
+//    }
     
     
     
