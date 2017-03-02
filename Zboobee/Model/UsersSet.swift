@@ -38,6 +38,8 @@ func canLogin(email: String, password: String)->Bool{
     return user?.password == password
 }
     
-    
+    func aaaa(){
+        print("aaa")
+    }
     
 }
