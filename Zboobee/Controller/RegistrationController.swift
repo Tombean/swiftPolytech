@@ -122,6 +122,6 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
         let emailRegEx = "[A-Z0-9a-z._%+-]+.[A-Z0-9a-z._%+-]+@etu.umontpellier.fr"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return (emailTest.evaluate(with: testStr) && (UsersSet.findUser(email:testStr) == nil))
+        return emailTest.evaluate(with: testStr)
     }
 }

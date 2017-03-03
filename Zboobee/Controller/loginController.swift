@@ -39,8 +39,7 @@ class loginController: UIViewController, UITextFieldDelegate {
             DialogBoxHelper.alert(view: self, withTitle: "Login Failed", andMessage: "Email or password is incorrect")
             return
         }
-        print("login OK")
-        // SEGUE A FAIRE
+        self.performSegue(withIdentifier: "showHomeSegue", sender: self)
         
         
     }
