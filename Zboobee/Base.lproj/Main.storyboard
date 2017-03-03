@@ -102,6 +102,7 @@
                                         </state>
                                         <connections>
                                             <action selector="validateButton:" destination="0Oz-dX-mgm" eventType="touchUpInside" id="NRp-T9-UNw"/>
+                                            <segue destination="ts6-in-JWW" kind="show" identifier="segueToLogin" id="gbx-Uz-d8v"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -427,6 +428,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YTk-p5-HlF"/>
+        <segue reference="Nc9-Q5-hor"/>
     </inferredMetricsTieBreakers>
 </document>

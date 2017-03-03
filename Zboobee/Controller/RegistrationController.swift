@@ -61,8 +61,8 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
             DialogBoxHelper.alert(view: self, withTitle: "Register Failed", andMessage: "Verify your information")
             return
         }
-        print("register ok")
-       
+        DialogBoxHelper.alert(view: self, withTitle: "Register complete", andMessage: "Thank you for your registration ! You can now login and enjoy Zboobee")
+       self.performSegue(withIdentifier: "segueToLogin", sender: self)
         return
         }
     

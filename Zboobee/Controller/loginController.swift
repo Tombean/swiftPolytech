@@ -19,12 +19,6 @@ class loginController: UIViewController, UITextFieldDelegate {
         
         let email : String? = self.emailF.text
         let password : String? = self.passwordTF.text
-        let errorPopup: UIAlertController = UIAlertController(title: "Registration is incomplete",
-                                                              message: "",
-                                                              preferredStyle: .alert)
-        let cancelPopup = UIAlertAction(title: "Annuler",
-                                        style: .default)
-        errorPopup.addAction(cancelPopup)
         
         guard email != "" else{
             DialogBoxHelper.alert(view: self, withTitle: "No Email", andMessage: "Please enter a valid email or register")
@@ -39,11 +33,15 @@ class loginController: UIViewController, UITextFieldDelegate {
             DialogBoxHelper.alert(view: self, withTitle: "Login Failed", andMessage: "Email or password is incorrect")
             return
         }
+        // initialize the user object that matches the user who logged in
+        let user : User = UsersSet.findUser(email: email!)!
+        // passes the user to the wall view
         self.performSegue(withIdentifier: "showHomeSegue", sender: self)
         
         
     }
     @IBAction func resetPasswordButton(_ sender: Any) {
+        DialogBoxHelper.alert(view: self, withTitle: "Password reset", andMessage: "Not available yet")
     }
     @IBOutlet weak var registerButton: UIButton!
     override func viewDidLoad() {
