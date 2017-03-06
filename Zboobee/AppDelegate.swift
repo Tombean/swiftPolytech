@@ -16,23 +16,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            fatalError("Application failed")
+        let context =  CoreDataManager.context
+        guard UsersSet.findAllPromotion() != nil else {
+            let IG3 : Promotion = Promotion(context: context)
+            IG3.specialty = "IG"
+            IG3.graduationYear = 2019
+            let IG4 : Promotion = Promotion(context: context)
+            IG4.specialty = "IG"
+            IG4.graduationYear = 2018
+            let IG5 : Promotion = Promotion(context: context)
+            IG5.specialty = "IG"
+            IG5.graduationYear = 2017
+            do {
+                try context.save()
+                
+            } catch {
+                print("couldn't save context when saving promos")
+            }
+            return true
         }
-        let context = appDelegate.persistentContainer.viewContext
-//        let IG3 : Specialty = Specialty(context: context)
-//        IG3.name = "IG3"
-//        let IG4 : Specialty = Specialty(context: context)
-//        IG4.name = "IG4"
-//        let IG5 : Specialty = Specialty(context: context)
-//        IG5.name = "IG5"
         
-        do {
-            try context.save()
-            
-        } catch {
-            // Raise error
-        }
+        
         
         return true
     }

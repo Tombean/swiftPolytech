@@ -11,11 +11,13 @@ import CoreData
 
 class UsersSet{
     
+    // MARK: - User management -
+    
     /// Retrieve the user that has the email address used as parameter.
     ///
     /// - Parameter email: email address of the user
     /// - Returns: Returns the user who has the email given as a parameter, nothing if no user was found
-    class func findUser(email: String)->User?{
+    static func findUser(email: String)->User?{
         var users : [User] = []
         let context = CoreDataManager.context
         let requestUser: NSFetchRequest<User> = User.fetchRequest()
@@ -39,7 +41,7 @@ class UsersSet{
     /// - Parameter email: email address of the user
     /// - Parameter password: password of the user
     /// - Returns: Returns the user who has the email given as a parameter, nothing if no user was found
-    class func canLogin(email: String, password: String)->Bool{
+    static func canLogin(email: String, password: String)->Bool{
         let user : User? = self.findUser(email: email)
         let canlogin: Bool = (user?.password == password) as Bool
         print(canlogin)
@@ -55,15 +57,29 @@ class UsersSet{
     ///   - password: password of the user
     ///   - type: type of the user (Teacher, Manager, Secretariat,Student)
     /// - Returns: true if the user is added, false if not
-    class func addUser(firstname: String,lastname: String, email: String, password: String, type : String)->Bool{
+    static func addUser(firstname: String,lastname: String, email: String, password: String, type : Int)->Bool{
         let context = CoreDataManager.context
-        let newUser: User = User(context: context)
+        guard type != nil else{
+            return false
+        }
+        var newUser: User
+        if type is Promotion{
+            newUser = Student(context: context)
+            newUser.promotion = type
+        }
+        if type is Teacher{
+             newUser = Teacher(context: context)
+        }
+        
+        
         newUser.firstname = firstname
         newUser.lastname = lastname
         newUser.mailUniv = email
+        
+        //newUser.accountValidate = false
         // ATTENTION CRYPTER LE PASSWORD PLUS TARD
         newUser.password = password
-        newUser.type = type
+        //newUser.type = type
         do {
             try context.save()
         } catch {
@@ -74,5 +90,39 @@ class UsersSet{
         return true
     }
     
+    // MARK: - Promo management -
+    static func findAllPromotion()->[Promotion]?{
+        var promo : [Promotion] = []
+        let requestPromo: NSFetchRequest<Promotion> = Promotion.fetchRequest()
+        let context = CoreDataManager.context
+        do{
+            try promo = context.fetch(requestPromo)
+        }catch{
+            return nil
+        }
+        if promo.count > 0{
+            return promo
+        }
+        else{
+            return nil
+        }
+    }
     
+    static func findOnePromotion(specialty : String, year : Int)->Promotion?{
+        var promo : [Promotion] = []
+        let requestPromo: NSFetchRequest<Promotion> = Promotion.fetchRequest()
+        requestPromo.predicate = NSPredicate(format: "specialty == %@ and graduationYear == %A", specialty, year)
+        let context = CoreDataManager.context
+        do{
+            try promo = context.fetch(requestPromo)
+        }catch{
+            return nil
+        }
+        if promo.count > 0{
+            return promo[0]
+        }
+        else{
+            return nil
+        }
+    }
 }

@@ -61,18 +61,35 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
             DialogBoxHelper.alert(view: self, withTitle: "Register Failed", andMessage: "Verify your information")
             return
         }
-        DialogBoxHelper.alert(view: self, withTitle: "Register complete", andMessage: "Thank you for your registration ! You can now login and enjoy Zboobee")
-       self.performSegue(withIdentifier: "segueToLogin", sender: self)
+        print("tout est OK")
+        let dismissAction = UIAlertAction(title: "Ok", style: .default, handler: self.dismissSelf)
+        DialogBoxHelper.alert(view: self, withTitle: "Register complete", andMessage: "Thank you for your registration ! You can now login and enjoy Zboobee", action: dismissAction)
         return
         }
     
-    @IBOutlet weak var cancelButton: UIButton!
+    
+    @IBAction func cancelButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBOutlet weak var promoPV: UIPickerView!
-    var selectedRole: String = ""
-    let pickerData = ["IG3","IG4","IG5","Teacher","Manager"]
+    var selectedRole: Any?
+    //let pickerData = ["IG3","IG4","IG5","Teacher","Manager"]
+    var pickerData : [String] = []
+    
+    private func dismissSelf(_ :UIAlertAction) -> Void{
+        self.dismiss(animated: true, completion: nil)
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        let promos = UsersSet.findAllPromotion()
+        guard promos != nil else{
+            return
+        }
+        for promo in promos!{
+            self.pickerData.append("\(promo.specialty) \(String(promo.graduationYear))")
+        }
+        self.pickerData.append("Teacher")
         self.promoPV.dataSource = self
         self.promoPV.delegate = self
         self.firstNameTF.delegate = self
@@ -97,9 +114,24 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     //MARK: Delegates
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        self.selectedRole = pickerData[row]
-        return pickerData[row]
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> Int? {
+//        let promos = UsersSet.findAllPromotion()
+//        guard promos != nil else{
+//            self.selectedRole = nil
+//            return nil
+//        }
+//        if row < (promos?.count)! {
+//            self.selectedRole = promos?[row]
+//            return promos?[row]
+//        }
+//        if row == promos?.count {
+//            let teacher : Teacher
+//            self.selectedRole =  teacher
+//            return teacher
+//        }
+//        return nil
+        self.selectedRole = row
+        return row
     }
     
     override func didReceiveMemoryWarning() {

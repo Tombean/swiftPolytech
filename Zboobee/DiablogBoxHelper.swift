@@ -21,8 +21,16 @@ class DialogBoxHelper{
         view.present(alert, animated: true)
     }
     
+    class func alert(view: UIViewController, withTitle title : String, andMessage message: String = "", action: UIAlertAction){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(action)
+        view.present(alert, animated: true)
+    }
+    
     //shows an alert to inform about an error
     class func alert(view : UIViewController, error : NSError){
         self.alert(view : view, withTitle : "\(error)", andMessage: "\(error.userInfo)")
     }
+    
+    
 }

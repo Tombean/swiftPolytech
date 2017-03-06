@@ -91,7 +91,7 @@
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="ts6-in-JWW" kind="presentation" id="Nc9-Q5-hor"/>
+                                            <action selector="cancelButton:" destination="0Oz-dX-mgm" eventType="touchUpInside" id="kJg-2v-PEj"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9WE-BL-cq9">
@@ -102,7 +102,6 @@
                                         </state>
                                         <connections>
                                             <action selector="validateButton:" destination="0Oz-dX-mgm" eventType="touchUpInside" id="NRp-T9-UNw"/>
-                                            <segue destination="ts6-in-JWW" kind="show" identifier="segueToLogin" id="gbx-Uz-d8v"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -139,7 +138,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="cancelButton" destination="yXB-x1-SGf" id="cEY-rh-8Yn"/>
                         <outlet property="confirmpasswordTF" destination="hrg-f3-WPH" id="F04-TZ-kTF"/>
                         <outlet property="emailTF" destination="emj-r7-Vu6" id="8f4-To-97K"/>
                         <outlet property="firstNameTF" destination="6ZW-Ex-cEy" id="jSz-X4-VFf"/>
@@ -427,7 +425,4 @@
             <point key="canvasLocation" x="-868" y="123.68815592203899"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Nc9-Q5-hor"/>
-    </inferredMetricsTieBreakers>
 </document>
