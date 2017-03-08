@@ -25,7 +25,7 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
         let email : String? = self.emailTF.text
         let password : String? = self.passwordTF.text
         let passwordConfirmation : String? = self.confirmpasswordTF.text
-        //let context = CoreDataManager.context
+        let context = CoreDataManager.context
 
         guard firstName != "" else{
             DialogBoxHelper.alert(view: self, withTitle: "Registration is incomplete", andMessage: "No first name")
@@ -57,10 +57,36 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
             return
         }
         //create a new user
-        guard UsersSet.addUser(firstname: firstName!, lastname: lastName!, email: email!, password: password!, type: selectedRole) else{
+        let rowOfPromo = self.selectedRole
+        let promos = UsersSet.findAllPromotion()
+        guard promos != nil else{
+            self.selectedRole = nil
+            return
+        }
+        if rowOfPromo < Int((promos?.count)!) {
+            let userToAdd : Student = Student(context: context)
+            userToAdd.promotion = promos?[rowOfPromo]
+            userToAdd.accountValidate = false
+        }
+        if rowOfPromo == promos?.count {
+            let userToAdd : Teacher = Teacher(context: context)
+        }
+        userToAdd.lastName = lastName!
+        userToAdd.firstName = firstName!
+        userToAdd.mailUniv = email!
+        userToAdd.password = password!
+        
+        
+        
+        guard UsersSet.addUser(user : userToAdd) else{
             DialogBoxHelper.alert(view: self, withTitle: "Register Failed", andMessage: "Verify your information")
             return
         }
+        
+//        guard UsersSet.addUser(firstname: firstName!, lastname: lastName!, email: email!, password: password!, type: selectedRole) else{
+//            DialogBoxHelper.alert(view: self, withTitle: "Register Failed", andMessage: "Verify your information")
+//            return
+//        }
         print("tout est OK")
         let dismissAction = UIAlertAction(title: "Ok", style: .default, handler: self.dismissSelf)
         DialogBoxHelper.alert(view: self, withTitle: "Register complete", andMessage: "Thank you for your registration ! You can now login and enjoy Zboobee", action: dismissAction)

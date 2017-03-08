@@ -58,20 +58,9 @@ class UsersSet{
     ///   - type: type of the user (Teacher, Manager, Secretariat,Student)
     /// - Returns: true if the user is added, false if not
     static func addUser(firstname: String,lastname: String, email: String, password: String, type : Int)->Bool{
+        
         let context = CoreDataManager.context
-        guard type != nil else{
-            return false
-        }
-        var newUser: User
-        if type is Promotion{
-            newUser = Student(context: context)
-            newUser.promotion = type
-        }
-        if type is Teacher{
-             newUser = Teacher(context: context)
-        }
-        
-        
+        var newUser : User =  User(context: context)
         newUser.firstname = firstname
         newUser.lastname = lastname
         newUser.mailUniv = email
@@ -86,6 +75,32 @@ class UsersSet{
             return false
         }
 
+        
+        return true
+    }
+    
+    static func addUser(userToAdd : User)->Bool{
+        let context = CoreDataManager.context
+        guard userToAdd != nil else{
+            return false
+        }
+        let user
+        if userToAdd is Student{
+            user = Student(context: context)
+            user = userToAdd
+        }
+        if userToAdd is Teacher{
+            user = Teacher(context: context)
+            user = userToAdd
+        }
+        //newUser.accountValidate = false
+        // ATTENTION CRYPTER LE PASSWORD PLUS TARD
+        do {
+            try context.save()
+        } catch {
+            return false
+        }
+        
         
         return true
     }
