@@ -47,63 +47,55 @@ class UsersSet{
         print(canlogin)
         return canlogin
     }
+ 
     
-    /// add a user in the database
+    /// add a student to the collection
     ///
-    /// - Parameters:
-    ///   - firstname: firstname of the user
-    ///   - lastname: lastname
-    ///   - email: email address of the user
-    ///   - password: password of the user
-    ///   - type: type of the user (Teacher, Manager, Secretariat,Student)
-    /// - Returns: true if the user is added, false if not
-    static func addUser(firstname: String,lastname: String, email: String, password: String, type : Int)->Bool{
-        
-        let context = CoreDataManager.context
-        var newUser : User =  User(context: context)
-        newUser.firstname = firstname
-        newUser.lastname = lastname
-        newUser.mailUniv = email
-        
-        //newUser.accountValidate = false
-        // ATTENTION CRYPTER LE PASSWORD PLUS TARD
-        newUser.password = password
-        //newUser.type = type
+    /// - Parameter studentToAdd: object student
+    /// - Returns: true if the student is added
+    static func addStudent(studentToAdd : Student)->Bool{
+        let context = studentToAdd.managedObjectContext
         do {
-            try context.save()
+            try context?.save()
         } catch {
             return false
         }
-
-        
         return true
     }
     
-    static func addUser(userToAdd : User)->Bool{
-        let context = CoreDataManager.context
-        guard userToAdd != nil else{
+    /// add a teacher to the collection
+    ///
+    /// - Parameter teacherToAdd: object teacher
+    /// - Returns: true if the teacher is added
+    static func addTeacher(teacherToAdd : Teacher)->Bool{
+        let context = teacherToAdd.managedObjectContext
+        do {
+            try context?.save()
+        } catch {
             return false
         }
-        let user
-        if userToAdd is Student{
-            user = Student(context: context)
-            user = userToAdd
+        return true
+    }
+    
+    /// add an office to the collection
+    ///
+    /// - Parameter officeToAdd: object office
+    /// - Returns: true if the office is added
+    static func addOffice(officeToAdd : Office?)->Bool{
+        let context = CoreDataManager.context
+        guard officeToAdd != nil else{
+            return false
         }
-        if userToAdd is Teacher{
-            user = Teacher(context: context)
-            user = userToAdd
-        }
-        //newUser.accountValidate = false
-        // ATTENTION CRYPTER LE PASSWORD PLUS TARD
+        var user : Office =  Office(context: context)
+        user  =  officeToAdd!
         do {
             try context.save()
         } catch {
             return false
         }
-        
-        
         return true
     }
+
     
     // MARK: - Promo management -
     static func findAllPromotion()->[Promotion]?{

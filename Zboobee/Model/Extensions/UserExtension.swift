@@ -7,19 +7,27 @@
 //
 
 import Foundation
-import CoreData
+
 
 extension User{
-   func findUser(email: String)->User?{
-        var users : [User]
-        let context = CoreDataManager.context
-        let requestUser: NSFetchRequest<User> = User.fetchRequest()
-        requestUser.predicate = NSPredicate(format: "email == %@", email)
-        do{
-            try users = context.fetch(requestUser)
-        }catch{
-            return nil
-        }
-    return users[0]
+    
+    /// creates a new user
+    ///
+    /// - Parameters:
+    ///   - firstname: firstname of the user
+    ///   - lastname: lastname
+    ///   - email: email address of the user
+    ///   - password: password of the user
+    /// - Returns: true if the user is added, false if not
+    static func createUser(firstname: String,lastname: String, email: String, password: String)->User?{
+        
+        let newUser : User? =  nil
+        newUser?.firstname = firstname
+        newUser?.lastname = lastname
+        newUser?.mailUniv = email
+        // ATTENTION CRYPTER LE PASSWORD PLUS TARD
+        newUser?.password = password
+        
+        return newUser
     }
 }

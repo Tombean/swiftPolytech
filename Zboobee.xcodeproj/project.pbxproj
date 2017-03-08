@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2428B0341E682DF5007A4917 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428B0331E682DF5007A4917 /* RegistrationController.swift */; };
+		24582EDF1E700433006802C2 /* StudentExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24582EDE1E700433006802C2 /* StudentExtension.swift */; };
+		24582EE11E700766006802C2 /* TeacherExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24582EE01E700766006802C2 /* TeacherExtension.swift */; };
+		24582EE31E700805006802C2 /* OfficeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24582EE21E700805006802C2 /* OfficeExtension.swift */; };
 		245C84FB1E6817AB00862038 /* UserExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245C84FA1E6817AB00862038 /* UserExtension.swift */; };
 		245C84FD1E681A8400862038 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245C84FC1E681A8400862038 /* CoreDataManager.swift */; };
 		245C84FF1E681BF400862038 /* DiablogBoxHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245C84FE1E681BF400862038 /* DiablogBoxHelper.swift */; };
@@ -44,6 +47,9 @@
 
 /* Begin PBXFileReference section */
 		2428B0331E682DF5007A4917 /* RegistrationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationController.swift; path = Zboobee/Controller/RegistrationController.swift; sourceTree = "<group>"; };
+		24582EDE1E700433006802C2 /* StudentExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentExtension.swift; path = Zboobee/Model/Extensions/StudentExtension.swift; sourceTree = "<group>"; };
+		24582EE01E700766006802C2 /* TeacherExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeacherExtension.swift; path = Zboobee/Model/Extensions/TeacherExtension.swift; sourceTree = "<group>"; };
+		24582EE21E700805006802C2 /* OfficeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfficeExtension.swift; path = Zboobee/Model/Extensions/OfficeExtension.swift; sourceTree = "<group>"; };
 		245C84FA1E6817AB00862038 /* UserExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserExtension.swift; path = Zboobee/Model/Extensions/UserExtension.swift; sourceTree = "<group>"; };
 		245C84FC1E681A8400862038 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = Zboobee/CoreDataManager.swift; sourceTree = "<group>"; };
 		245C84FE1E681BF400862038 /* DiablogBoxHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiablogBoxHelper.swift; path = Zboobee/DiablogBoxHelper.swift; sourceTree = "<group>"; };
@@ -98,6 +104,9 @@
 			children = (
 				2428B0331E682DF5007A4917 /* RegistrationController.swift */,
 				245C84FA1E6817AB00862038 /* UserExtension.swift */,
+				24582EE21E700805006802C2 /* OfficeExtension.swift */,
+				24582EDE1E700433006802C2 /* StudentExtension.swift */,
+				24582EE01E700766006802C2 /* TeacherExtension.swift */,
 				245C84FC1E681A8400862038 /* CoreDataManager.swift */,
 				245C84FE1E681BF400862038 /* DiablogBoxHelper.swift */,
 				53D3BE371E51A397000D3B87 /* Zboobee */,
@@ -290,10 +299,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				24AE82C01E645FB6005B94D4 /* Controller in Sources */,
+				24582EE31E700805006802C2 /* OfficeExtension.swift in Sources */,
 				53D3BE3B1E51A397000D3B87 /* ViewController.swift in Sources */,
 				24E806541E5DCEB5009BE202 /* WallViewController.swift in Sources */,
 				53D3BE391E51A397000D3B87 /* AppDelegate.swift in Sources */,
+				24582EE11E700766006802C2 /* TeacherExtension.swift in Sources */,
 				245C84FF1E681BF400862038 /* DiablogBoxHelper.swift in Sources */,
+				24582EDF1E700433006802C2 /* StudentExtension.swift in Sources */,
 				245C84FB1E6817AB00862038 /* UserExtension.swift in Sources */,
 				2428B0341E682DF5007A4917 /* RegistrationController.swift in Sources */,
 				53839C571E52FE2A00312F64 /* loginController.swift in Sources */,

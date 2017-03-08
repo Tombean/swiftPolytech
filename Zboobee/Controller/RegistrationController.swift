@@ -17,6 +17,7 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var confirmpasswordTF: UITextField!
+    var indexOfRole : Int = 0
     
     @IBAction func validateButton(_ sender: Any) {
     
@@ -25,7 +26,6 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
         let email : String? = self.emailTF.text
         let password : String? = self.passwordTF.text
         let passwordConfirmation : String? = self.confirmpasswordTF.text
-        let context = CoreDataManager.context
 
         guard firstName != "" else{
             DialogBoxHelper.alert(view: self, withTitle: "Registration is incomplete", andMessage: "No first name")
@@ -57,49 +57,43 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
             return
         }
         //create a new user
-        let rowOfPromo = self.selectedRole
+        guard self.selectedRole != nil else{
+            return
+        }
+        let rowOfPromo : Int = Int(self.indexOfRole)
         let promos = UsersSet.findAllPromotion()
         guard promos != nil else{
             self.selectedRole = nil
+            DialogBoxHelper.alert(view: self, withTitle: "Registration incomplete", andMessage: "No promotion entered")
             return
         }
         if rowOfPromo < Int((promos?.count)!) {
-            let userToAdd : Student = Student(context: context)
-            userToAdd.promotion = promos?[rowOfPromo]
-            userToAdd.accountValidate = false
-        }
-        if rowOfPromo == promos?.count {
-            let userToAdd : Teacher = Teacher(context: context)
-        }
-        userToAdd.lastName = lastName!
-        userToAdd.firstName = firstName!
-        userToAdd.mailUniv = email!
-        userToAdd.password = password!
-        
-        
-        
-        guard UsersSet.addUser(user : userToAdd) else{
-            DialogBoxHelper.alert(view: self, withTitle: "Register Failed", andMessage: "Verify your information")
+            let student : Student = Student.createStudent(firstname: firstName!, lastname: lastName!, email: email!, password: password!, accountValidate: false, promotion: promos![rowOfPromo])
+            guard UsersSet.addStudent(studentToAdd : student ) else{
+                DialogBoxHelper.alert(view: self, withTitle: "Register Failed", andMessage: "Verify your information")
             return
+            }
         }
         
-//        guard UsersSet.addUser(firstname: firstName!, lastname: lastName!, email: email!, password: password!, type: selectedRole) else{
-//            DialogBoxHelper.alert(view: self, withTitle: "Register Failed", andMessage: "Verify your information")
-//            return
-//        }
-        print("tout est OK")
+        if rowOfPromo == promos?.count{
+            let teacher :  Teacher =  Teacher.createTeacher(firstname: firstName!, lastname: lastName!, email: email!, password: password!, accountValidate: false, promotions: nil)
+            guard UsersSet.addTeacher(teacherToAdd : teacher ) else{
+                DialogBoxHelper.alert(view: self, withTitle: "Register Failed", andMessage: "Verify your information")
+            return
+            }
+        }
+
         let dismissAction = UIAlertAction(title: "Ok", style: .default, handler: self.dismissSelf)
         DialogBoxHelper.alert(view: self, withTitle: "Register complete", andMessage: "Thank you for your registration ! You can now login and enjoy Zboobee", action: dismissAction)
         return
-        }
+    }
     
     
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     @IBOutlet weak var promoPV: UIPickerView!
-    var selectedRole: Any?
-    //let pickerData = ["IG3","IG4","IG5","Teacher","Manager"]
+    var selectedRole: String?
     var pickerData : [String] = []
     
     private func dismissSelf(_ :UIAlertAction) -> Void{
@@ -140,24 +134,15 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     //MARK: Delegates
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> Int? {
-//        let promos = UsersSet.findAllPromotion()
-//        guard promos != nil else{
-//            self.selectedRole = nil
-//            return nil
-//        }
-//        if row < (promos?.count)! {
-//            self.selectedRole = promos?[row]
-//            return promos?[row]
-//        }
-//        if row == promos?.count {
-//            let teacher : Teacher
-//            self.selectedRole =  teacher
-//            return teacher
-//        }
-//        return nil
-        self.selectedRole = row
-        return row
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        print("row : ")
+        print(row)
+        self.selectedRole = pickerData[row]
+        print("role :")
+        print(selectedRole)
+        self.indexOfRole = row
+        return self.selectedRole
+        
     }
     
     override func didReceiveMemoryWarning() {

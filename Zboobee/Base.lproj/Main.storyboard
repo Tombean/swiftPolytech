@@ -106,11 +106,12 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMh-WX-vir">
-                                <rect key="frame" x="362" y="227" width="300" height="120"/>
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vMh-WX-vir">
+                                <rect key="frame" x="362" y="225" width="163" height="120"/>
                                 <accessibility key="accessibilityConfiguration" label="promoPV"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="hKP-ew-Jpk"/>
+                                    <constraint firstAttribute="width" constant="150" id="myV-rf-vWs"/>
                                 </constraints>
                             </pickerView>
                         </subviews>
@@ -126,8 +127,6 @@
                             <constraint firstItem="6ZW-Ex-cEy" firstAttribute="top" secondItem="MRt-7b-DeD" secondAttribute="bottom" constant="20" id="Px4-k4-ofv"/>
                             <constraint firstItem="emj-r7-Vu6" firstAttribute="centerX" secondItem="FZt-j9-abG" secondAttribute="centerX" id="Qdt-K2-J5T"/>
                             <constraint firstItem="2zv-y4-ES1" firstAttribute="centerX" secondItem="FZt-j9-abG" secondAttribute="centerX" id="U2k-WG-Xvw"/>
-                            <constraint firstItem="vMh-WX-vir" firstAttribute="trailing" secondItem="2zv-y4-ES1" secondAttribute="trailing" id="UN8-Cs-BqM"/>
-                            <constraint firstItem="vMh-WX-vir" firstAttribute="width" secondItem="hrg-f3-WPH" secondAttribute="width" id="dII-Mp-KJV"/>
                             <constraint firstItem="vBl-DJ-rBo" firstAttribute="centerX" secondItem="FZt-j9-abG" secondAttribute="centerX" id="fjR-FS-QOi"/>
                             <constraint firstItem="vBl-DJ-rBo" firstAttribute="top" secondItem="emj-r7-Vu6" secondAttribute="bottom" constant="30" id="hyG-gE-Ayt"/>
                             <constraint firstItem="emj-r7-Vu6" firstAttribute="top" secondItem="2zv-y4-ES1" secondAttribute="bottom" constant="130" id="jfD-UG-IV9"/>
@@ -148,7 +147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9p-uX-WbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="71" y="1023"/>
+            <point key="canvasLocation" x="70.8984375" y="1022.65625"/>
         </scene>
         <!--Wall View Controller-->
         <scene sceneID="0iM-bJ-N2z">
