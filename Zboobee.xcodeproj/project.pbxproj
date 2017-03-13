@@ -26,6 +26,8 @@
 		53D3BE461E51A398000D3B87 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53D3BE441E51A398000D3B87 /* LaunchScreen.storyboard */; };
 		53D3BE511E51A398000D3B87 /* ZboobeeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3BE501E51A398000D3B87 /* ZboobeeTests.swift */; };
 		53D3BE5C1E51A398000D3B87 /* ZboobeeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3BE5B1E51A398000D3B87 /* ZboobeeUITests.swift */; };
+		647D6C0E1E770B3500B2BABD /* MessageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D6C0D1E770B3500B2BABD /* MessageExtension.swift */; };
+		647D6C101E770B4900B2BABD /* MessagesSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D6C0F1E770B4900B2BABD /* MessagesSet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +74,8 @@
 		53D3BE571E51A398000D3B87 /* ZboobeeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZboobeeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53D3BE5B1E51A398000D3B87 /* ZboobeeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZboobeeUITests.swift; sourceTree = "<group>"; };
 		53D3BE5D1E51A398000D3B87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		647D6C0D1E770B3500B2BABD /* MessageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageExtension.swift; path = Model/Extensions/MessageExtension.swift; sourceTree = "<group>"; };
+		647D6C0F1E770B4900B2BABD /* MessagesSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesSet.swift; path = Model/MessagesSet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,8 @@
 				53D3BE3A1E51A397000D3B87 /* ViewController.swift */,
 				24E806531E5DCEB5009BE202 /* WallViewController.swift */,
 				53D3BE3C1E51A397000D3B87 /* Main.storyboard */,
+				647D6C0D1E770B3500B2BABD /* MessageExtension.swift */,
+				647D6C0F1E770B4900B2BABD /* MessagesSet.swift */,
 				53839C561E52FE2A00312F64 /* loginController.swift */,
 				53D3BE421E51A398000D3B87 /* Assets.xcassets */,
 				53D3BE441E51A398000D3B87 /* LaunchScreen.storyboard */,
@@ -298,11 +304,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				647D6C101E770B4900B2BABD /* MessagesSet.swift in Sources */,
 				24AE82C01E645FB6005B94D4 /* Controller in Sources */,
 				24582EE31E700805006802C2 /* OfficeExtension.swift in Sources */,
 				53D3BE3B1E51A397000D3B87 /* ViewController.swift in Sources */,
 				24E806541E5DCEB5009BE202 /* WallViewController.swift in Sources */,
 				53D3BE391E51A397000D3B87 /* AppDelegate.swift in Sources */,
+				647D6C0E1E770B3500B2BABD /* MessageExtension.swift in Sources */,
 				24582EE11E700766006802C2 /* TeacherExtension.swift in Sources */,
 				245C84FF1E681BF400862038 /* DiablogBoxHelper.swift in Sources */,
 				24582EDF1E700433006802C2 /* StudentExtension.swift in Sources */,

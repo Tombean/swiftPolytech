@@ -43,9 +43,8 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="toto.titi@etu.umontpellier.fr" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="emj-r7-Vu6">
-                                <rect key="frame" x="362" y="347" width="300" height="30"/>
+                                <rect key="frame" x="360" y="347" width="304" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="VTS-T9-vSO"/>
                                     <constraint firstAttribute="height" constant="30" id="glA-Fk-GYg"/>
                                 </constraints>
                                 <nil key="textColor"/>
@@ -106,12 +105,11 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vMh-WX-vir">
-                                <rect key="frame" x="362" y="225" width="163" height="120"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMh-WX-vir">
+                                <rect key="frame" x="360" y="227" width="304" height="120"/>
                                 <accessibility key="accessibilityConfiguration" label="promoPV"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="hKP-ew-Jpk"/>
-                                    <constraint firstAttribute="width" constant="150" id="myV-rf-vWs"/>
                                 </constraints>
                             </pickerView>
                         </subviews>
@@ -121,19 +119,23 @@
                             <constraint firstItem="uMB-Q0-flG" firstAttribute="width" secondItem="hrg-f3-WPH" secondAttribute="width" id="1zn-II-AvN"/>
                             <constraint firstItem="vBl-DJ-rBo" firstAttribute="top" secondItem="emj-r7-Vu6" secondAttribute="bottom" constant="30" id="6HE-w8-sie"/>
                             <constraint firstItem="vMh-WX-vir" firstAttribute="top" secondItem="MRt-7b-DeD" secondAttribute="bottom" constant="120" id="JoN-a5-yRU"/>
+                            <constraint firstItem="vMh-WX-vir" firstAttribute="top" secondItem="2zv-y4-ES1" secondAttribute="bottom" constant="10" id="KiO-Jn-j1u"/>
                             <constraint firstItem="6ZW-Ex-cEy" firstAttribute="centerX" secondItem="FZt-j9-abG" secondAttribute="centerX" id="Mzu-bX-Ua9"/>
                             <constraint firstItem="MRt-7b-DeD" firstAttribute="top" secondItem="S9B-gC-H5I" secondAttribute="bottom" constant="50" id="Pc5-14-lbm"/>
                             <constraint firstItem="hrg-f3-WPH" firstAttribute="top" secondItem="vBl-DJ-rBo" secondAttribute="bottom" constant="30" id="PuY-50-8Wp"/>
                             <constraint firstItem="6ZW-Ex-cEy" firstAttribute="top" secondItem="MRt-7b-DeD" secondAttribute="bottom" constant="20" id="Px4-k4-ofv"/>
-                            <constraint firstItem="emj-r7-Vu6" firstAttribute="centerX" secondItem="FZt-j9-abG" secondAttribute="centerX" id="Qdt-K2-J5T"/>
                             <constraint firstItem="2zv-y4-ES1" firstAttribute="centerX" secondItem="FZt-j9-abG" secondAttribute="centerX" id="U2k-WG-Xvw"/>
                             <constraint firstItem="vBl-DJ-rBo" firstAttribute="centerX" secondItem="FZt-j9-abG" secondAttribute="centerX" id="fjR-FS-QOi"/>
                             <constraint firstItem="vBl-DJ-rBo" firstAttribute="top" secondItem="emj-r7-Vu6" secondAttribute="bottom" constant="30" id="hyG-gE-Ayt"/>
                             <constraint firstItem="emj-r7-Vu6" firstAttribute="top" secondItem="2zv-y4-ES1" secondAttribute="bottom" constant="130" id="jfD-UG-IV9"/>
+                            <constraint firstItem="emj-r7-Vu6" firstAttribute="width" secondItem="vMh-WX-vir" secondAttribute="width" id="krZ-Qm-Tfr"/>
                             <constraint firstItem="MRt-7b-DeD" firstAttribute="centerX" secondItem="FZt-j9-abG" secondAttribute="centerX" id="nJ1-d6-ZZC"/>
+                            <constraint firstItem="emj-r7-Vu6" firstAttribute="leading" secondItem="vMh-WX-vir" secondAttribute="leading" id="nOu-WA-AKz"/>
                             <constraint firstItem="hrg-f3-WPH" firstAttribute="centerX" secondItem="FZt-j9-abG" secondAttribute="centerX" id="qJP-YE-byL"/>
                             <constraint firstItem="uMB-Q0-flG" firstAttribute="centerX" secondItem="FZt-j9-abG" secondAttribute="centerX" id="qS0-Cj-d8a"/>
                             <constraint firstItem="2zv-y4-ES1" firstAttribute="top" secondItem="6ZW-Ex-cEy" secondAttribute="bottom" constant="30" id="sTx-JN-CyW"/>
+                            <constraint firstItem="vMh-WX-vir" firstAttribute="centerX" secondItem="FZt-j9-abG" secondAttribute="centerX" id="tZ0-hL-whM"/>
+                            <constraint firstItem="emj-r7-Vu6" firstAttribute="leading" secondItem="FZt-j9-abG" secondAttribute="leading" constant="360" id="yzS-ag-inI"/>
                         </constraints>
                     </view>
                     <connections>
@@ -228,13 +230,19 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AEo-RH-1W4">
-                                <rect key="frame" x="16" y="289" width="343" height="334"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AEo-RH-1W4">
+                                <rect key="frame" x="28" y="287" width="968" height="334"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="334" id="dN8-or-0kL"/>
+                                </constraints>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOR-Ww-yhR">
                                 <rect key="frame" x="951" y="244" width="36" height="30"/>
                                 <state key="normal" title="Send"/>
+                                <connections>
+                                    <action selector="sendButton:" destination="lKh-jD-ET7" eventType="touchUpInside" id="ex7-cb-D3S"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -19,7 +19,33 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var messagesTable: UITableView!
     @IBOutlet weak var searchToolbar: UIToolbar!
     @IBOutlet weak var menuToolbar: UIToolbar!
-    @IBOutlet weak var sendButton: UIButton!
+    
+    
+    @IBAction func sendButton(_ sender: Any) {
+        
+        let textMessage : String? = self.messageTF.text
+        
+        guard textMessage != "" else{
+            DialogBoxHelper.alert(view: self, withTitle: "NPost incomplete", andMessage: "No Message")
+            return
+        }
+        let lengthMsg : Int? = textMessage?.lengthOfBytes(using: UTF8)
+        guard lengthMsg != nil else{
+            DialogBoxHelper.alert(view: self, withTitle: "Post wrong", andMessage: "The message is empty")
+
+            return
+        }
+        guard lengthMsg <= 500 else{
+            DialogBoxHelper.alert(view: self, withTitle: "Post wrong", andMessage: "The message does more than 500 charaters")
+            return
+        }
+        //create a new message
+        let message : Message = Message.create(title : title, content : textMessage, lengthMax : lengthMsg)
+        MessagesSet.add(messageToAdd : message)
+    }
+    
+    
+    
     // Temporary :  needs to be changed with channel allowed from DB
     let pickerData = ["All","Class","Class - Teachers","Class - Office"]
     override func viewDidLoad() {
@@ -29,6 +55,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.messageTF.delegate = self
         // Do any additional setup after loading the view, typically from a nib.
     }
+    
     
     //MARK: - Delegates and data sources
     //MARK: Data Sources
