@@ -29,19 +29,19 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             DialogBoxHelper.alert(view: self, withTitle: "NPost incomplete", andMessage: "No Message")
             return
         }
-        let lengthMsg : Int? = textMessage?.lengthOfBytes(using: UTF8)
-        guard lengthMsg != nil else{
-            DialogBoxHelper.alert(view: self, withTitle: "Post wrong", andMessage: "The message is empty")
-
-            return
-        }
-        guard lengthMsg <= 500 else{
-            DialogBoxHelper.alert(view: self, withTitle: "Post wrong", andMessage: "The message does more than 500 charaters")
-            return
-        }
+//        let lengthMsg : Int? = textMessage?.lengthOfBytes(using: UTF8)
+//        guard lengthMsg != nil else{
+//            DialogBoxHelper.alert(view: self, withTitle: "Post wrong", andMessage: "The message is empty")
+//
+//            return
+//        }
+//        guard lengthMsg <= 500 else{
+//            DialogBoxHelper.alert(view: self, withTitle: "Post wrong", andMessage: "The message does more than 500 charaters")
+//            return
+//        }
         //create a new message
-        let message : Message = Message.create(title : title, content : textMessage, lengthMax : lengthMsg)
-        MessagesSet.add(messageToAdd : message)
+        let message : Message = Message.createMessage(title : title, content : textMessage, lengthMax : lengthMsg)
+        MessagesSet.addMessage(messageToAdd : message)
     }
     
     

@@ -17,15 +17,15 @@
     <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="group" inverseEntity="Event" syncable="YES"/>
-        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="group" inverseEntity="Message" syncable="YES"/>
-        <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="group" inverseEntity="User" syncable="YES"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="groups" inverseEntity="Message" syncable="YES"/>
+        <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="groups" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Message" representedClassName="Message" syncable="YES" codeGenerationType="class">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="maxLength" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="messages" inverseEntity="Group" syncable="YES"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="messages" inverseEntity="Group" syncable="YES"/>
         <relationship name="isPosted" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="messages" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Office" representedClassName="Office" parentEntity="User" syncable="YES" codeGenerationType="class">
@@ -53,18 +53,18 @@
         <attribute name="mailUniv" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="events" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Event" inverseName="isCreated" inverseEntity="Event" syncable="YES"/>
-        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="users" inverseEntity="Group" syncable="YES"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Group" inverseName="users" inverseEntity="Group" syncable="YES"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="isPosted" inverseEntity="Message" syncable="YES"/>
     </entity>
     <elements>
         <element name="Document" positionX="-173" positionY="216" width="128" height="73"/>
         <element name="Event" positionX="-1019" positionY="-72" width="128" height="163"/>
+        <element name="Group" positionX="-641" positionY="-441" width="128" height="103"/>
         <element name="Message" positionX="-207" positionY="-54" width="128" height="133"/>
-        <element name="User" positionX="-648" positionY="-160" width="128" height="148"/>
-        <element name="Student" positionX="-882" positionY="194" width="128" height="73"/>
-        <element name="Teacher" positionX="-659" positionY="197" width="128" height="88"/>
         <element name="Office" positionX="-459" positionY="171" width="128" height="58"/>
         <element name="Promotion" positionX="-677" positionY="386" width="128" height="118"/>
-        <element name="Group" positionX="-641" positionY="-441" width="128" height="103"/>
+        <element name="Student" positionX="-882" positionY="194" width="128" height="73"/>
+        <element name="Teacher" positionX="-659" positionY="197" width="128" height="88"/>
+        <element name="User" positionX="-648" positionY="-160" width="128" height="148"/>
     </elements>
 </model>
