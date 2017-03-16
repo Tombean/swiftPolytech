@@ -20,6 +20,8 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var searchToolbar: UIToolbar!
     @IBOutlet weak var menuToolbar: UIToolbar!
     
+    //Variable user get from the login
+    var user : User? = nil
     
     @IBAction func sendButton(_ sender: Any) {
         
@@ -39,9 +41,13 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
 //            DialogBoxHelper.alert(view: self, withTitle: "Post wrong", andMessage: "The message does more than 500 charaters")
 //            return
 //        }
+        
+        //Get the groups of the pickerView
+        let selectedGroups : [Group]?  = nil
+        
         //create a new message
-        let message : Message = Message.createMessage(title : title, content : textMessage, lengthMax : lengthMsg)
-        MessagesSet.addMessage(messageToAdd : message)
+        //let message : Message = Message.createMessage(title: "first msg", text: textMessage!, date: NSDate() as Date, lengthMax: 500, originator: user!, groups: selectedGroups! as NSSet)
+        //MessagesSet.addMessage(messageToAdd : message)
     }
     
     

@@ -35,6 +35,7 @@ class loginController: UIViewController, UITextFieldDelegate {
         }
         // initialize the user object that matches the user who logged in
         let user : User = UsersSet.findUser(email: email!)!
+        users.append(user)
         // passes the user to the wall view
         self.performSegue(withIdentifier: "showHomeSegue", sender: self)
         
@@ -55,14 +56,20 @@ class loginController: UIViewController, UITextFieldDelegate {
         
     }
     
-    /*
+    
      // MARK: - Navigation
+    
+    let segueHome = "showHomeSegue"
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
+        if segue.identifier == self.segueHome{
+            let showWallViewController = segue.destination as! WallViewController
+            showWallViewController.user = self.users[0]
+        }
      }
-     */
+    
     
 }
