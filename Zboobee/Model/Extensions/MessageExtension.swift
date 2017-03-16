@@ -30,7 +30,7 @@ extension Message{
         newMessage.date = date as NSDate?
         newMessage.maxLength = lengthMax
         newMessage.isPosted = originator
-        //newMessage.groups = groups
+        newMessage.groups = groups
         
         return newMessage
     }

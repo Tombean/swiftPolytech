@@ -21,7 +21,6 @@ class UsersSet{
         var users : [User] = []
         let context = CoreDataManager.context
         let requestUser: NSFetchRequest<User> = User.fetchRequest()
-        print("email=\(email)")
         requestUser.predicate = NSPredicate(format: "mailUniv == %@", email)
         do{
             try users = context.fetch(requestUser)

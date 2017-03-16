@@ -36,7 +36,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
         
-        
+        guard GroupsSet.findAllGroups() != nil else {
+            let IG3Class : Group = Group(context: context)
+            IG3Class.name = "IG3"
+            let IG4Class : Group = Group(context: context)
+            IG4Class.name = "IG4"
+            let IG5Class : Group = Group(context: context)
+            IG5Class.name = "IG5"
+            let IG3ClassTeacher : Group = Group(context: context)
+            IG3ClassTeacher.name = "IG3 - Teacher"
+            let IG4ClassTeacher : Group = Group(context: context)
+            IG4ClassTeacher.name = "IG4 - Teacher"
+            let IG5ClassTeacher : Group = Group(context: context)
+            IG5ClassTeacher.name = "IG5 - Teacher"
+            do {
+                try context.save()
+                
+            } catch {
+                print("couldn't save context when saving promos")
+            }
+            return true
+        }
         
         return true
     }
