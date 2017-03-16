@@ -27,11 +27,37 @@ extension Student{
         newStudent.firstname = firstname
         newStudent.lastname = lastname
         newStudent.mailUniv = email
-        // ATTENTION CRYPTER LE PASSWORD PLUS TARD
+        //TODO ATTENTION CRYPTER LE PASSWORD PLUS TARD
         newStudent.password = password
         newStudent.accountValidate = accountValidate
         newStudent.promotion = promotion
-        
+        var  groups : NSSet
+        if promotion == nil{
+            groups = [GroupsSet.findGroupByName(name: "Students")]
+        }
+        else{
+            switch(promotion?.graduationYear as Int){
+            case 2017:
+                groups = [GroupsSet.findGroupByName(name: "Students"),
+                          GroupsSet.findGroupByName(name: "IG5"),
+                          GroupsSet.findGroupByName(name: "IG5 - Teacher"),
+                          GroupsSet.findGroupByName(name: "Office")]
+            case 2018:
+                groups = [GroupsSet.findGroupByName(name: "Students"),
+                          GroupsSet.findGroupByName(name: "IG4"),
+                          GroupsSet.findGroupByName(name: "IG4 - Teacher"),
+                          GroupsSet.findGroupByName(name: "Office")]
+            case 2019:
+                groups = [GroupsSet.findGroupByName(name: "Students"),
+                          GroupsSet.findGroupByName(name: "IG3"),
+                          GroupsSet.findGroupByName(name: "IG3 - Teacher"),
+                          GroupsSet.findGroupByName(name: "Office")]
+            default:
+                groups = [GroupsSet.findGroupByName(name: "Students"),
+                          GroupsSet.findGroupByName(name: "Office")]
+            }
+        }
+        newStudent.groups = groups
         return newStudent
     }
 }

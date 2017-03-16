@@ -49,6 +49,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             IG4ClassTeacher.name = "IG4 - Teacher"
             let IG5ClassTeacher : Group = Group(context: context)
             IG5ClassTeacher.name = "IG5 - Teacher"
+            let teachers : Group = Group(context: context)
+            teachers.name = "Teacher"
+            let office : Group = Group(context: context)
+            office.name = "Office"
+            let students : Group = Group(context: context)
+            students.name = "Students"
             do {
                 try context.save()
                 
