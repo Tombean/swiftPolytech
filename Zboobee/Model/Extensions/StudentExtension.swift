@@ -33,28 +33,33 @@ extension Student{
         newStudent.promotion = promotion
         var  groups : NSSet
         if promotion == nil{
-            groups = [GroupsSet.findGroupByName(name: "Students")]
+            groups = [GroupsSet.findGroupByName(name: "Students")!]
         }
         else{
-            switch(promotion?.graduationYear as Int){
+            let promo : Int = Int((promotion?.graduationYear)!)
+            switch(promo){
             case 2017:
-                groups = [GroupsSet.findGroupByName(name: "Students"),
-                          GroupsSet.findGroupByName(name: "IG5"),
-                          GroupsSet.findGroupByName(name: "IG5 - Teacher"),
-                          GroupsSet.findGroupByName(name: "Office")]
+                groups = [GroupsSet.findGroupByName(name: "Students")!,
+                          GroupsSet.findGroupByName(name: "IG5")!,
+                          GroupsSet.findGroupByName(name: "IG5 - Teacher")!,
+                          GroupsSet.findGroupByName(name: "Office")!]
             case 2018:
-                groups = [GroupsSet.findGroupByName(name: "Students"),
-                          GroupsSet.findGroupByName(name: "IG4"),
-                          GroupsSet.findGroupByName(name: "IG4 - Teacher"),
-                          GroupsSet.findGroupByName(name: "Office")]
+                groups = [GroupsSet.findGroupByName(name: "Students")!,
+                          GroupsSet.findGroupByName(name: "IG4")!,
+                          GroupsSet.findGroupByName(name: "IG4 - Teacher")!,
+                          GroupsSet.findGroupByName(name: "Office")!]
             case 2019:
-                groups = [GroupsSet.findGroupByName(name: "Students"),
-                          GroupsSet.findGroupByName(name: "IG3"),
-                          GroupsSet.findGroupByName(name: "IG3 - Teacher"),
-                          GroupsSet.findGroupByName(name: "Office")]
+                print("student 2019")
+                let g = GroupsSet.findGroupByName(name: "Students")!
+                print("group students")
+                print(g)
+                groups = [g,
+                          GroupsSet.findGroupByName(name: "IG3")!,
+                          GroupsSet.findGroupByName(name: "IG3 - Teacher")!,
+                          GroupsSet.findGroupByName(name: "Office")!]
             default:
-                groups = [GroupsSet.findGroupByName(name: "Students"),
-                          GroupsSet.findGroupByName(name: "Office")]
+                groups = [GroupsSet.findGroupByName(name: "Students")!,
+                          GroupsSet.findGroupByName(name: "Office")!]
             }
         }
         newStudent.groups = groups

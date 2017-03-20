@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 class MessagesSet{
     
@@ -23,6 +24,23 @@ class MessagesSet{
             return false
         }
         return true
+    }
+    
+    static func findAllMessages()->[Message]?{
+        var messages : [Message] = []
+        let context = CoreDataManager.context
+        let requestMessage: NSFetchRequest<Message> = Message.fetchRequest()
+        do{
+            try messages = context.fetch(requestMessage)
+        }catch{
+            return nil
+        }
+        if messages.count > 0{
+            return messages
+        }
+        else{
+            return nil
+        }
     }
     
 }

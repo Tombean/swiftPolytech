@@ -29,6 +29,7 @@
 		643056B51E7A81A9001291E4 /* GroupsSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643056B41E7A81A9001291E4 /* GroupsSet.swift */; };
 		647D6C0E1E770B3500B2BABD /* MessageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D6C0D1E770B3500B2BABD /* MessageExtension.swift */; };
 		647D6C101E770B4900B2BABD /* MessagesSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D6C0F1E770B4900B2BABD /* MessagesSet.swift */; };
+		64EE5F441E8032A000A46D3D /* messageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EE5F431E8032A000A46D3D /* messageTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		643056B41E7A81A9001291E4 /* GroupsSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsSet.swift; sourceTree = "<group>"; };
 		647D6C0D1E770B3500B2BABD /* MessageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageExtension.swift; path = Model/Extensions/MessageExtension.swift; sourceTree = "<group>"; };
 		647D6C0F1E770B4900B2BABD /* MessagesSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesSet.swift; path = Model/MessagesSet.swift; sourceTree = "<group>"; };
+		64EE5F431E8032A000A46D3D /* messageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = messageTableViewCell.swift; path = View/messageTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				53D3BE3A1E51A397000D3B87 /* ViewController.swift */,
 				24E806531E5DCEB5009BE202 /* WallViewController.swift */,
 				53D3BE3C1E51A397000D3B87 /* Main.storyboard */,
+				64EE5F431E8032A000A46D3D /* messageTableViewCell.swift */,
 				647D6C0D1E770B3500B2BABD /* MessageExtension.swift */,
 				647D6C0F1E770B4900B2BABD /* MessagesSet.swift */,
 				53839C561E52FE2A00312F64 /* loginController.swift */,
@@ -322,6 +325,7 @@
 				2428B0341E682DF5007A4917 /* RegistrationController.swift in Sources */,
 				53839C571E52FE2A00312F64 /* loginController.swift in Sources */,
 				245C85011E68264800862038 /* UsersSet.swift in Sources */,
+				64EE5F441E8032A000A46D3D /* messageTableViewCell.swift in Sources */,
 				245C84FD1E681A8400862038 /* CoreDataManager.swift in Sources */,
 				53D3BE411E51A398000D3B87 /* Zboobee.xcdatamodeld in Sources */,
 			);

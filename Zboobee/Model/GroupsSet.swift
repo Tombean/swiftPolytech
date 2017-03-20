@@ -17,14 +17,20 @@ class GroupsSet{
         let requestGroup: NSFetchRequest<Group> = Group.fetchRequest()
         requestGroup.predicate = NSPredicate(format: "name == %@", name)
         do{
+            print("coucou")
+            print(name)
             try groups = context.fetch(requestGroup)
+            print("ok")
         }catch{
+            print("pas marché")
             return nil
         }
         if groups.count > 0{
+            print("ok group",groups[0])
             return groups[0]
         }
         else{
+            print("pas de groupe")
             return nil
         }
     }

@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let context =  CoreDataManager.context
+        //set the promotions in the base at the start of the application
         guard UsersSet.findAllPromotion() != nil else {
             let IG3 : Promotion = Promotion(context: context)
             IG3.specialty = "IG"
@@ -35,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             return true
         }
-        
+        //set the groups in the base at the start of the application
         guard GroupsSet.findAllGroups() != nil else {
             let IG3Class : Group = Group(context: context)
             IG3Class.name = "IG3"

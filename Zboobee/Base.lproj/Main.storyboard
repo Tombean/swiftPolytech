@@ -234,7 +234,11 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="bc7-up-WUB"/>
                                     <barButtonItem title="Calendar" id="dkt-gh-fTA"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="b9m-Ns-GRr"/>
-                                    <barButtonItem title="logout" id="63S-hO-n7l"/>
+                                    <barButtonItem title="Logout" id="63S-hO-n7l">
+                                        <connections>
+                                            <action selector="logoutButton:" destination="lKh-jD-ET7" id="YZF-XT-1X2"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ca3-0K-hBt"/>
                                 </items>
                             </toolbar>
@@ -244,6 +248,42 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="334" id="dN8-or-0kL"/>
                                 </constraints>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="messageCell" id="RmH-rI-z4Y" customClass="messageTableViewCell" customModule="Zboobee" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="968" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RmH-rI-z4Y" id="KHP-uV-5Au">
+                                            <rect key="frame" x="0.0" y="0.0" width="968" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWi-kk-Q38">
+                                                    <rect key="frame" x="434" y="11" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8c-Ev-3OV">
+                                                    <rect key="frame" x="20" y="11" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="pWi-kk-Q38" firstAttribute="centerX" secondItem="KHP-uV-5Au" secondAttribute="centerX" id="4xh-US-lOS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="messageLabel" destination="pWi-kk-Q38" id="fWa-gv-DXJ"/>
+                                            <outlet property="userLabel" destination="p8c-Ev-3OV" id="Pa7-zN-rb3"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="lKh-jD-ET7" id="uwp-EC-bKh"/>
+                                    <outlet property="delegate" destination="lKh-jD-ET7" id="Uy7-5N-m2e"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOR-Ww-yhR">
                                 <rect key="frame" x="951" y="244" width="36" height="30"/>
@@ -280,7 +320,7 @@
                         <outlet property="menuToolbar" destination="ZRJ-s0-xl5" id="Ohb-aj-PUQ"/>
                         <outlet property="messageTF" destination="vUK-0a-ykN" id="wQi-ND-2yN"/>
                         <outlet property="messageToPostLabel" destination="7qE-yC-sj7" id="DH9-ep-ma5"/>
-                        <outlet property="messagesTable" destination="AEo-RH-1W4" id="liP-9c-2Fl"/>
+                        <outlet property="messagesTable" destination="AEo-RH-1W4" id="lBd-zQ-ihH"/>
                         <outlet property="searchDisplayController" destination="K0B-Zs-FI2" id="FWG-se-hgX"/>
                         <outlet property="searchToolbar" destination="yiW-2P-LH1" id="W6l-xI-4Jy"/>
                         <outlet property="tittleLabel" destination="bmV-il-e6x" id="Yui-9L-WQF"/>
