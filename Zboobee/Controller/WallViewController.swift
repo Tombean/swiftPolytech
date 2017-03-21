@@ -80,6 +80,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             DialogBoxHelper.alert(view: self, withTitle: "Sending message Failed", andMessage: "Verify your message")
             return
         }
+        self.messageTF.text = ""
         DialogBoxHelper.alert(view: self, withTitle: "Message Posted", andMessage: "You can now see it in the table view")
     }
     
