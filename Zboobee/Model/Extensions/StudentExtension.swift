@@ -49,11 +49,7 @@ extension Student{
                           GroupsSet.findGroupByName(name: "IG4 - Teacher")!,
                           GroupsSet.findGroupByName(name: "Office")!]
             case 2019:
-                print("student 2019")
-                let g = GroupsSet.findGroupByName(name: "Students")!
-                print("group students")
-                print(g)
-                groups = [g,
+                groups = [GroupsSet.findGroupByName(name: "Students")!,
                           GroupsSet.findGroupByName(name: "IG3")!,
                           GroupsSet.findGroupByName(name: "IG3 - Teacher")!,
                           GroupsSet.findGroupByName(name: "Office")!]

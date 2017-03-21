@@ -43,4 +43,22 @@ class MessagesSet{
         }
     }
     
+    static func findAllMessagesForGroup(groupName : String)->[Message]?{
+        var messages : [Message] = []
+        let context = CoreDataManager.context
+        let requestMessage: NSFetchRequest<Message> = Message.fetchRequest()
+        requestMessage.predicate = NSPredicate(format: "groups == %@", groupName)
+        do{
+            try messages = context.fetch(requestMessage)
+        }catch{
+            return nil
+        }
+        if messages.count > 0{
+            return messages
+        }
+        else{
+            return nil
+        }
+    }
+    
 }

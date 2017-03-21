@@ -21,7 +21,6 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var searchToolbar: UIToolbar!
     @IBOutlet weak var menuToolbar: UIToolbar!
     var indexOfGroup : Int = 0
-    let sectionsTableView : [String] = []
     var messages: [Message] = []
     
     //Variable user get from the login
@@ -81,7 +80,9 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             return
         }
         self.messageTF.text = ""
+        self.messagesTable.reloadData()
         DialogBoxHelper.alert(view: self, withTitle: "Message Posted", andMessage: "You can now see it in the table view")
+        
     }
     
     
@@ -146,6 +147,8 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         print("role :")
         print(selectedGroups)
         self.indexOfGroup = row
+        self.messages = MessagesSet.findAllMessagesForGroup(groupName: pickerData[row])!
+        self.messagesTable.reloadData()
         return self.selectedGroups
     }
     
