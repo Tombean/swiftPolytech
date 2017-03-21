@@ -141,11 +141,6 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     //MARK: Delegates
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        print("row : ")
-        print(row)
-        self.selectedGroups = pickerData[row]
-        print("role :")
-        print(selectedGroups)
         self.indexOfGroup = row
         self.messages = MessagesSet.findAllMessagesForGroup(groupName: pickerData[row])!
         self.messagesTable.reloadData()

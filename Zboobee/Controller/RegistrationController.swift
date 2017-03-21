@@ -107,7 +107,7 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
             return
         }
         for promo in promos!{
-            self.pickerData.append("\(promo.specialty) \(String(promo.graduationYear))")
+            self.pickerData.append("\((promo.specialty)!) \(String(promo.graduationYear))")
         }
         self.pickerData.append("Teacher")
         self.promoPV.dataSource = self

@@ -3,7 +3,7 @@
 //  Zboobee
 //
 //  Created by Laure MARCHAL on 14/02/2017.
-//  Copyright © 2017 Laure MARCHAL. All rights reserved.
+//  Copyright © 2017 Laure MARCHAL. All rights reserved.    
 //
 
 import UIKit
@@ -12,6 +12,7 @@ import CoreData
 class loginController: UIViewController, UITextFieldDelegate {
     
     var users: [User] = []
+    let segueHome = "showHomeSegue"
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var emailF: UITextField!
     
@@ -35,12 +36,16 @@ class loginController: UIViewController, UITextFieldDelegate {
         }
         // initialize the user object that matches the user who logged in
         let user : User = UsersSet.findUser(email: email!)!
-        users.append(user)
+        if self.users.length > 0 {
+            self.users[0] = user
+        }else{
+            self.users.append(user)
+        }
+        
         // passes the user to the wall view
         self.performSegue(withIdentifier: "showHomeSegue", sender: self)
-        
-        
     }
+    
     @IBAction func resetPasswordButton(_ sender: Any) {
         DialogBoxHelper.alert(view: self, withTitle: "Password reset", andMessage: "Not available yet")
     }
@@ -58,14 +63,13 @@ class loginController: UIViewController, UITextFieldDelegate {
     
     
      // MARK: - Navigation
-    
-    let segueHome = "showHomeSegue"
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
         if segue.identifier == self.segueHome{
+            print("in prepare function")
             let showWallViewController = segue.destination as! WallViewController
             showWallViewController.user = self.users[0]
         }
