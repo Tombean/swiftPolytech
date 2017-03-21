@@ -21,7 +21,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var searchToolbar: UIToolbar!
     @IBOutlet weak var menuToolbar: UIToolbar!
     var indexOfGroup : Int = 0
-    
+    let sectionsTableView : [String] = []
     var messages: [Message] = []
     
     //Variable user get from the login
@@ -90,9 +90,15 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     // Temporary :  needs to be changed with channel allowed from DB
-    let pickerData = ["All","Class","Class - Teachers","Class - Office"]
+    
+    var pickerData : [String] = []
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        for group in (self.user?.groups)! {
+            self.pickerData.append((group as AnyObject).name!)
+        }
         self.channelPicker.dataSource = self
         self.channelPicker.delegate = self
         self.messageTF.delegate = self
