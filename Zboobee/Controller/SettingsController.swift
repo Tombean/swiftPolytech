@@ -11,4 +11,8 @@ import UIKit
 
 class SettingsController : UIViewController{
     
+    @IBAction func desactivateButton(_ sender: Any) {
+    }
+    @IBAction func activateButton(_ sender: Any) {
+    }
 }

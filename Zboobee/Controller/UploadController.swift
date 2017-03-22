@@ -11,4 +11,6 @@ import UIKit
 
 class UploadController : UIViewController{
     
+    @IBAction func shareFileButton(_ sender: Any) {
+    }
 }

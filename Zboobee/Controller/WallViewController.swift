@@ -9,8 +9,9 @@
 // A LIRE
 
 import UIKit
+import CoreData
 
-class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UITableViewDataSource,UITableViewDelegate {
+class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UITableViewDataSource,UITableViewDelegate, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var tittleLabel: UILabel!
     @IBOutlet weak var channelPicker: UIPickerView!
@@ -25,6 +26,15 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     //Variable user get from the login
     var user : User? = nil
+    
+    fileprivate lazy var messagesFetched : NSFetchedResultsController<Message> = {
+        let request :  NSFetchRequest<Message> =  Message.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.date),ascending:false)]
+        request.predicate = NSPredicate(format: "ANY groups.name == %@", self.selectedGroup)
+        let fetchResultController =  NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchResultController.delegate = self
+        return fetchResultController
+    }()
     
     @IBAction func sendButton(_ sender: Any) {
         
@@ -93,6 +103,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     //MARK: Data Sources tableview
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.messagesTable.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! messageTableViewCell
+        
         cell.messageLabel.text = self.messages[indexPath.row].content!
         let userM = self.messages[indexPath.row].isPosted!
         cell.userLabel.text = userM.lastname
