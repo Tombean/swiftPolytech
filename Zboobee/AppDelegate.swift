@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let context =  CoreDataManager.context
         //set the promotions in the base at the start of the application
-        guard UsersSet.findAllPromotion() != nil else {
+        var dataToSave : Bool = false
+        if UsersSet.findAllPromotion() == nil {
             let IG3 : Promotion = Promotion(context: context)
             IG3.specialty = "IG"
             IG3.graduationYear = 2019
@@ -28,16 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let IG5 : Promotion = Promotion(context: context)
             IG5.specialty = "IG"
             IG5.graduationYear = 2017
-            do {
-                try context.save()
-                
-            } catch {
-                print("couldn't save context when saving promos")
-            }
-            return true
+            dataToSave = true
         }
         //set the groups in the base at the start of the application
-        guard GroupsSet.findAllGroups() != nil else {
+        if GroupsSet.findAllGroups() == nil {
             let teachers : Group = Group(context: context)
             teachers.name = "Teacher"
             let office : Group = Group(context: context)
@@ -57,16 +52,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             IG4ClassTeacher.name = "IG4 - Teacher"
             let IG5ClassTeacher : Group = Group(context: context)
             IG5ClassTeacher.name = "IG5 - Teacher"
-            
+            dataToSave = true
+        }
+        if dataToSave{
             do {
                 try context.save()
-                
+            
             } catch {
-                print("couldn't save context when saving promos")
+                fatalError("couldn't save context when saving promos")
             }
-            return true
         }
-        
         return true
     }
 

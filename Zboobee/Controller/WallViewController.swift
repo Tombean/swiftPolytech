@@ -96,20 +96,28 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        for group in (self.user?.groups)! {
-            self.pickerData.append((group as AnyObject).name!)
+        guard let user = self.user else{
+            fatalError("No user selected!!!")
         }
+        guard let groups = user.groups else {
+            fatalError("No group for this user !!!")
+        }
+        super.viewDidLoad()
         self.channelPicker.dataSource = self
         self.channelPicker.delegate = self
         self.messageTF.delegate = self
-        // Do any additional setup after loading the view, typically from a nib.
-        guard MessagesSet.findAllMessages() != nil else{
-            messages = []
-            DialogBoxHelper.alert(view: self, withTitle: "No messages", andMessage: "There are no messages sent")
-            return
+        var i = 0
+        var firstGroupName : String = ""
+        for g in groups  {
+            let group = g as! Group
+            if i == 0 {
+                firstGroupName = group.name!
+            }
+            i += 1
+            self.pickerData.append(group.name ?? "no group name")
         }
-        messages = MessagesSet.findAllMessages()!
+        // Do any additional setup after loading the view, typically from a nib.
+        self.messages = MessagesSet.findAllMessagesForGroup(groupName: firstGroupName) ?? []
     }
     
     
@@ -132,7 +140,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
+        return self.pickerData.count
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int{
@@ -141,10 +149,13 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     //MARK: Delegates
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return self.pickerData[row]
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         self.indexOfGroup = row
-        self.messages = MessagesSet.findAllMessagesForGroup(groupName: pickerData[row])!
+        self.messages = MessagesSet.findAllMessagesForGroup(groupName: pickerData[row]) ?? []
         self.messagesTable.reloadData()
-        return self.selectedGroups
     }
     
     override func didReceiveMemoryWarning() {

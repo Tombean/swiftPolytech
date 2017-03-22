@@ -139,7 +139,7 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
         print(row)
         self.selectedRole = pickerData[row]
         print("role :")
-        print(selectedRole)
+        print(selectedRole ?? "no value")
         self.indexOfRole = row
         return self.selectedRole
         

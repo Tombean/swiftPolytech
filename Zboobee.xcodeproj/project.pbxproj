@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2428B0341E682DF5007A4917 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2428B0331E682DF5007A4917 /* RegistrationController.swift */; };
 		24529A851E813B1800A134A6 /* GroupsSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24529A841E813B1800A134A6 /* GroupsSet.swift */; };
-		24529A871E813B3100A134A6 /* WallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24529A861E813B3100A134A6 /* WallViewController.swift */; };
 		24582EDF1E700433006802C2 /* StudentExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24582EDE1E700433006802C2 /* StudentExtension.swift */; };
 		24582EE11E700766006802C2 /* TeacherExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24582EE01E700766006802C2 /* TeacherExtension.swift */; };
 		24582EE31E700805006802C2 /* OfficeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24582EE21E700805006802C2 /* OfficeExtension.swift */; };
@@ -17,8 +15,10 @@
 		245C84FD1E681A8400862038 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245C84FC1E681A8400862038 /* CoreDataManager.swift */; };
 		245C84FF1E681BF400862038 /* DiablogBoxHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245C84FE1E681BF400862038 /* DiablogBoxHelper.swift */; };
 		245C85011E68264800862038 /* UsersSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245C85001E68264800862038 /* UsersSet.swift */; };
-		24AE82C01E645FB6005B94D4 /* Controller in Sources */ = {isa = PBXBuildFile; fileRef = 24AE82BF1E645FB6005B94D4 /* Controller */; };
-		53839C571E52FE2A00312F64 /* loginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53839C561E52FE2A00312F64 /* loginController.swift */; };
+		530FBB971E8275DE00FEFC07 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530FBB931E8275DE00FEFC07 /* CalendarController.swift */; };
+		530FBB981E8275DE00FEFC07 /* loginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530FBB941E8275DE00FEFC07 /* loginController.swift */; };
+		530FBB991E8275DE00FEFC07 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530FBB951E8275DE00FEFC07 /* RegistrationController.swift */; };
+		530FBB9A1E8275DE00FEFC07 /* WallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530FBB961E8275DE00FEFC07 /* WallViewController.swift */; };
 		53D3BE391E51A397000D3B87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3BE381E51A397000D3B87 /* AppDelegate.swift */; };
 		53D3BE3B1E51A397000D3B87 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3BE3A1E51A397000D3B87 /* ViewController.swift */; };
 		53D3BE3E1E51A397000D3B87 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53D3BE3C1E51A397000D3B87 /* Main.storyboard */; };
@@ -50,9 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2428B0331E682DF5007A4917 /* RegistrationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationController.swift; path = Zboobee/Controller/RegistrationController.swift; sourceTree = "<group>"; };
 		24529A841E813B1800A134A6 /* GroupsSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupsSet.swift; path = Model/GroupsSet.swift; sourceTree = "<group>"; };
-		24529A861E813B3100A134A6 /* WallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WallViewController.swift; path = Controller/WallViewController.swift; sourceTree = "<group>"; };
 		24582EDE1E700433006802C2 /* StudentExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentExtension.swift; path = Zboobee/Model/Extensions/StudentExtension.swift; sourceTree = "<group>"; };
 		24582EE01E700766006802C2 /* TeacherExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TeacherExtension.swift; path = Zboobee/Model/Extensions/TeacherExtension.swift; sourceTree = "<group>"; };
 		24582EE21E700805006802C2 /* OfficeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OfficeExtension.swift; path = Zboobee/Model/Extensions/OfficeExtension.swift; sourceTree = "<group>"; };
@@ -60,9 +58,11 @@
 		245C84FC1E681A8400862038 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = Zboobee/CoreDataManager.swift; sourceTree = "<group>"; };
 		245C84FE1E681BF400862038 /* DiablogBoxHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiablogBoxHelper.swift; path = Zboobee/DiablogBoxHelper.swift; sourceTree = "<group>"; };
 		245C85001E68264800862038 /* UsersSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersSet.swift; path = Model/UsersSet.swift; sourceTree = "<group>"; };
-		24AE82BF1E645FB6005B94D4 /* Controller */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = folder; path = Controller; sourceTree = "<group>"; };
 		24E8064D1E5DC352009BE202 /* Zboobee-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Zboobee-Bridging-Header.h"; sourceTree = "<group>"; };
-		53839C561E52FE2A00312F64 /* loginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = loginController.swift; path = Controller/loginController.swift; sourceTree = "<group>"; };
+		530FBB931E8275DE00FEFC07 /* CalendarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarController.swift; path = Controller/CalendarController.swift; sourceTree = "<group>"; };
+		530FBB941E8275DE00FEFC07 /* loginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = loginController.swift; path = Controller/loginController.swift; sourceTree = "<group>"; };
+		530FBB951E8275DE00FEFC07 /* RegistrationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationController.swift; path = Controller/RegistrationController.swift; sourceTree = "<group>"; };
+		530FBB961E8275DE00FEFC07 /* WallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WallViewController.swift; path = Controller/WallViewController.swift; sourceTree = "<group>"; };
 		53D3BE351E51A397000D3B87 /* Zboobee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zboobee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53D3BE381E51A397000D3B87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53D3BE3A1E51A397000D3B87 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = View/ViewController.swift; sourceTree = "<group>"; };
@@ -107,10 +107,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		530FBB901E8275A300FEFC07 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				530FBB931E8275DE00FEFC07 /* CalendarController.swift */,
+				530FBB941E8275DE00FEFC07 /* loginController.swift */,
+				530FBB951E8275DE00FEFC07 /* RegistrationController.swift */,
+				530FBB961E8275DE00FEFC07 /* WallViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		53D3BE2C1E51A395000D3B87 = {
 			isa = PBXGroup;
 			children = (
-				2428B0331E682DF5007A4917 /* RegistrationController.swift */,
 				245C84FA1E6817AB00862038 /* UserExtension.swift */,
 				24582EE21E700805006802C2 /* OfficeExtension.swift */,
 				24582EDE1E700433006802C2 /* StudentExtension.swift */,
@@ -138,9 +148,8 @@
 		53D3BE371E51A397000D3B87 /* Zboobee */ = {
 			isa = PBXGroup;
 			children = (
-				24AE82BF1E645FB6005B94D4 /* Controller */,
+				530FBB901E8275A300FEFC07 /* Controller */,
 				245C85001E68264800862038 /* UsersSet.swift */,
-				24529A861E813B3100A134A6 /* WallViewController.swift */,
 				53D3BE381E51A397000D3B87 /* AppDelegate.swift */,
 				53D3BE3A1E51A397000D3B87 /* ViewController.swift */,
 				24529A841E813B1800A134A6 /* GroupsSet.swift */,
@@ -148,7 +157,6 @@
 				64EE5F431E8032A000A46D3D /* messageTableViewCell.swift */,
 				647D6C0D1E770B3500B2BABD /* MessageExtension.swift */,
 				647D6C0F1E770B4900B2BABD /* MessagesSet.swift */,
-				53839C561E52FE2A00312F64 /* loginController.swift */,
 				53D3BE421E51A398000D3B87 /* Assets.xcassets */,
 				53D3BE441E51A398000D3B87 /* LaunchScreen.storyboard */,
 				53D3BE471E51A398000D3B87 /* Info.plist */,
@@ -312,21 +320,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				647D6C101E770B4900B2BABD /* MessagesSet.swift in Sources */,
-				24AE82C01E645FB6005B94D4 /* Controller in Sources */,
 				24582EE31E700805006802C2 /* OfficeExtension.swift in Sources */,
 				53D3BE3B1E51A397000D3B87 /* ViewController.swift in Sources */,
 				53D3BE391E51A397000D3B87 /* AppDelegate.swift in Sources */,
+				530FBB991E8275DE00FEFC07 /* RegistrationController.swift in Sources */,
 				647D6C0E1E770B3500B2BABD /* MessageExtension.swift in Sources */,
 				24582EE11E700766006802C2 /* TeacherExtension.swift in Sources */,
 				24529A851E813B1800A134A6 /* GroupsSet.swift in Sources */,
+				530FBB971E8275DE00FEFC07 /* CalendarController.swift in Sources */,
 				245C84FF1E681BF400862038 /* DiablogBoxHelper.swift in Sources */,
 				24582EDF1E700433006802C2 /* StudentExtension.swift in Sources */,
 				245C84FB1E6817AB00862038 /* UserExtension.swift in Sources */,
-				2428B0341E682DF5007A4917 /* RegistrationController.swift in Sources */,
-				24529A871E813B3100A134A6 /* WallViewController.swift in Sources */,
-				53839C571E52FE2A00312F64 /* loginController.swift in Sources */,
+				530FBB9A1E8275DE00FEFC07 /* WallViewController.swift in Sources */,
 				245C85011E68264800862038 /* UsersSet.swift in Sources */,
 				64EE5F441E8032A000A46D3D /* messageTableViewCell.swift in Sources */,
+				530FBB981E8275DE00FEFC07 /* loginController.swift in Sources */,
 				245C84FD1E681A8400862038 /* CoreDataManager.swift in Sources */,
 				53D3BE411E51A398000D3B87 /* Zboobee.xcdatamodeld in Sources */,
 			);

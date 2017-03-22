@@ -81,18 +81,21 @@ class UsersSet{
     /// - Parameter officeToAdd: object office
     /// - Returns: true if the office is added
     static func addOffice(officeToAdd : Office?)->Bool{
-        let context = CoreDataManager.context
+        //let context = CoreDataManager.context
         guard officeToAdd != nil else{
             return false
         }
+        /*
         var user : Office =  Office(context: context)
         user  =  officeToAdd!
-        do {
-            try context.save()
-        } catch {
+        */
+        if CoreDataManager.save() == nil{ // no error
+            return true
+        }
+        else{
+            //CoreDataManager.context.rollback()
             return false
         }
-        return true
     }
 
     

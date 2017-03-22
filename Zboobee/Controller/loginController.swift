@@ -11,7 +11,7 @@ import CoreData
 
 class loginController: UIViewController, UITextFieldDelegate {
     
-    var users: [User] = []
+    var userloged: User? = nil
     let segueHome = "showHomeSegue"
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var emailF: UITextField!
@@ -35,12 +35,13 @@ class loginController: UIViewController, UITextFieldDelegate {
             return
         }
         // initialize the user object that matches the user who logged in
-        let user : User = UsersSet.findUser(email: email!)!
-        if self.users.count > 0 {
-            self.users[0] = user
-        }else{
-            self.users.append(user)
+        let user : User? = UsersSet.findUser(email: email!)!
+        guard user != nil else{
+            DialogBoxHelper.alert(view: self, withTitle: "Login Failed", andMessage: "This Email is not registered")
+            return
         }
+        userloged = user
+        //DialogBoxHelper.alert(view: self, withTitle: "Login Succeed", andMessage: "You can now access to your wall")
         
         // passes the user to the wall view
         self.performSegue(withIdentifier: "showHomeSegue", sender: self)
@@ -66,12 +67,10 @@ class loginController: UIViewController, UITextFieldDelegate {
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
         if segue.identifier == self.segueHome{
             print("in prepare function")
-            let showWallViewController = segue.destination as! WallViewController
-            showWallViewController.user = self.users[0]
+            let showWallViewController = segue.destination.childViewControllers[0] as! WallViewController
+            showWallViewController.user = self.userloged
         }
      }
     
