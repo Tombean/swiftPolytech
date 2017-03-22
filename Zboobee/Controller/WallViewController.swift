@@ -14,13 +14,13 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
 
     @IBOutlet weak var tittleLabel: UILabel!
     @IBOutlet weak var channelPicker: UIPickerView!
-    var selectedGroups : String?
     @IBOutlet weak var messageToPostLabel: UILabel!
     @IBOutlet weak var messageTF: UITextField!
     @IBOutlet weak var messagesTable: UITableView!
     @IBOutlet weak var searchToolbar: UIToolbar!
     @IBOutlet weak var menuToolbar: UIToolbar!
     var indexOfGroup : Int = 0
+    var selectedGroup : String = ""
     var messages: [Message] = []
     
     //Variable user get from the login
@@ -34,61 +34,29 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             DialogBoxHelper.alert(view: self, withTitle: "Post incomplete", andMessage: "No Message")
             return
         }
-//        let lengthMsg : Int? = textMessage?.lengthOfBytes(using: UTF8)
-//        guard lengthMsg != nil else{
-//            DialogBoxHelper.alert(view: self, withTitle: "Post wrong", andMessage: "The message is empty")
-//
-//            return
-//        }
-//        guard lengthMsg <= 500 else{
-//            DialogBoxHelper.alert(view: self, withTitle: "Post wrong", andMessage: "The message does more than 500 charaters")
-//            return
-//        }
         
         //Get the groups of the pickerView
-        guard self.selectedGroups != nil else{
-            return
+        if pickerData[indexOfGroup] == ""{
+            DialogBoxHelper.alert(view: self, withTitle: "Pas de groupe", andMessage: "Vous devez selectionner un groupe auquel envoyer")
+        }else{
+            self.selectedGroup = pickerData[indexOfGroup]
         }
-        let baseGroups = GroupsSet.findAllGroups()
-        //very that there are groups in the database
-        guard baseGroups != nil else{
-            self.selectedGroups = nil
-            DialogBoxHelper.alert(view: self, withTitle: "Data incomplete", andMessage: "No groups")
-            return
-        }
-        //create the good groups tab
-        var groups : NSSet
-        switch(self.selectedGroups!){
-        case "All":
-            groups = (user?.groups)!
-        case "Class" :
-            groups = [GroupsSet.findGroupByName(name: "Students")!]
-        case "Class - Teachers" :
-            groups = [GroupsSet.findGroupByName(name: "IG3 - Teachers")!,
-                      GroupsSet.findGroupByName(name: "IG4 - Teachers")!,
-                GroupsSet.findGroupByName(name: "IG5 - Teachers")!]
-        case "Class - Office" :
-            groups = [GroupsSet.findGroupByName(name: "Office")!]
-        default :
-            groups = (user?.groups)!
-        }
+        
+        let groups : NSSet = [GroupsSet.findGroupByName(name: self.selectedGroup)]
         //create the message
         let jour : Date = NSDate.init() as Date
         let message : Message = Message.createMessage(title: "msg1", text: textMessage!, date: jour, lengthMax: 500, originator: user!, groups: groups)
+        //add a message in the base
         guard MessagesSet.addMessage(messageToAdd: message) else{
             DialogBoxHelper.alert(view: self, withTitle: "Sending message Failed", andMessage: "Verify your message")
             return
         }
         self.messageTF.text = ""
-        self.messagesTable.reloadData()
         DialogBoxHelper.alert(view: self, withTitle: "Message Posted", andMessage: "You can now see it in the table view")
+        self.messagesTable.reloadData()
         
     }
     
-    
-    @IBAction func logoutButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
     
     // Temporary :  needs to be changed with channel allowed from DB
     
@@ -127,7 +95,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         let cell = self.messagesTable.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! messageTableViewCell
         cell.messageLabel.text = self.messages[indexPath.row].content!
         let userM = self.messages[indexPath.row].isPosted!
-        cell.userLabel.text = userM.mailUniv
+        cell.userLabel.text = userM.lastname
         return cell
     }
     

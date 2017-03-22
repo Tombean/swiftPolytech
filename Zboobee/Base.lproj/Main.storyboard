@@ -154,45 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9p-uX-WbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="70.8984375" y="1022.65625"/>
-        </scene>
-        <!--Item 2-->
-        <scene sceneID="xX2-4S-dPy">
-            <objects>
-                <viewController id="ZGl-M9-uQA" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="QxP-Qk-pA5"/>
-                        <viewControllerLayoutGuide type="bottom" id="X8i-8a-trg"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Rtg-ib-lMD">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="qNO-eT-Wrz"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SHX-Oo-QLT" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-327" y="-823"/>
-        </scene>
-        <!--Item 1-->
-        <scene sceneID="uHD-9i-c3g">
-            <objects>
-                <viewController id="aIx-W9-ywy" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="oOX-Ke-IWd"/>
-                        <viewControllerLayoutGuide type="bottom" id="dwL-hm-nyk"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="A9y-jm-aCO">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="htY-g9-DD3"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jaD-IQ-9b2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-327" y="-1472"/>
+            <point key="canvasLocation" x="-1854" y="-92"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="MbB-7B-8ka">
@@ -205,15 +167,18 @@
                     </tabBar>
                     <connections>
                         <segue destination="lKh-jD-ET7" kind="relationship" relationship="viewControllers" id="ewm-zo-JId"/>
-                        <segue destination="aIx-W9-ywy" kind="relationship" relationship="viewControllers" id="mYz-qJ-EPa"/>
-                        <segue destination="ZGl-M9-uQA" kind="relationship" relationship="viewControllers" id="Ivf-6K-33S"/>
+                        <segue destination="5jG-Xb-CxH" kind="relationship" relationship="viewControllers" id="M5U-iJ-eLz"/>
+                        <segue destination="5FW-NA-3RD" kind="relationship" relationship="viewControllers" id="ZgH-2F-1Hx"/>
+                        <segue destination="K4F-pA-s6a" kind="relationship" relationship="viewControllers" id="0OV-hi-N3t"/>
+                        <segue destination="mNs-D1-Fgu" kind="relationship" relationship="viewControllers" id="KbM-BS-v8O"/>
+                        <segue destination="ts6-in-JWW" kind="relationship" relationship="viewControllers" id="zOY-LZ-5aD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K07-da-IKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1056" y="-1148"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="0iM-bJ-N2z">
             <objects>
                 <viewController id="lKh-jD-ET7" customClass="WallViewController" customModule="Zboobee" customModuleProvider="target" sceneMemberID="viewController">
@@ -247,7 +212,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zboobee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmV-il-e6x">
                                 <rect key="frame" x="426" y="110" width="172" height="52"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="43"/>
-                                <color key="textColor" red="1" green="0.34561302970000002" blue="0.87558146889999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="1" green="0.34424301981925964" blue="0.87443298101425171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yiW-2P-LH1">
@@ -373,7 +338,7 @@
                             <constraint firstItem="AEo-RH-1W4" firstAttribute="leading" secondItem="CZj-QC-GBe" secondAttribute="leadingMargin" constant="8" id="x2p-4N-rb7"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="HCE-dm-Qo8"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="HomeIcon" id="HCE-dm-Qo8"/>
                     <connections>
                         <outlet property="channelPicker" destination="Se1-Q2-BUd" id="xDI-Pi-HqF"/>
                         <outlet property="menuToolbar" destination="ZRJ-s0-xl5" id="Ohb-aj-PUQ"/>
@@ -404,9 +369,9 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-1022" y="-343"/>
+            <point key="canvasLocation" x="-264" y="-2899"/>
         </scene>
-        <!--Calendar Controller-->
+        <!--Calendar-->
         <scene sceneID="BSO-gd-FST">
             <objects>
                 <viewController id="5jG-Xb-CxH" customClass="CalendarController" customModule="Zboobee" customModuleProvider="target" sceneMemberID="viewController">
@@ -419,10 +384,68 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar" id="QmK-cx-TJ2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kjm-2x-AYe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="775" y="-741"/>
+            <point key="canvasLocation" x="-264" y="-2058"/>
+        </scene>
+        <!--Folder-->
+        <scene sceneID="x16-fr-Rjr">
+            <objects>
+                <viewController id="5FW-NA-3RD" customClass="FolderController" customModule="Zboobee" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oWa-tR-zw7"/>
+                        <viewControllerLayoutGuide type="bottom" id="7E7-hQ-KfM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NM7-pp-Uev">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Folder" image="folder" id="AOB-kC-3eq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="90h-n7-0De" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-264" y="-1352"/>
+        </scene>
+        <!--Upload-->
+        <scene sceneID="AB2-yw-cfW">
+            <objects>
+                <viewController id="K4F-pA-s6a" customClass="UploadController" customModule="Zboobee" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="J2A-bu-lUi"/>
+                        <viewControllerLayoutGuide type="bottom" id="C1N-Rf-J7J"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ldK-uy-xiK">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Upload" image="upload" id="JGL-Qg-LvP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1aJ-zf-pwE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-264" y="-622"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="beC-GP-kLm">
+            <objects>
+                <viewController id="mNs-D1-Fgu" customClass="SettingsController" customModule="Zboobee" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NR6-bb-tLE"/>
+                        <viewControllerLayoutGuide type="bottom" id="Chj-mb-sYO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qwI-Ec-JcA">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" enabled="NO" title="Settings" image="settings" id="WMg-4E-mC3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0CB-Zd-o0n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-264" y="116"/>
         </scene>
         <!--Login-->
         <scene sceneID="QYl-Ch-UNv">
@@ -530,6 +553,7 @@
                             <constraint firstItem="g9M-hP-Lbo" firstAttribute="top" secondItem="AY1-JH-hCS" secondAttribute="bottom" constant="20" id="zXN-nS-UmJ"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Log out" image="logout" id="3OE-aC-MS0"/>
                     <navigationItem key="navigationItem" id="X1P-W0-DeA"/>
                     <connections>
                         <outlet property="emailF" destination="Dg2-0F-D7d" id="Nez-FL-ep1"/>
@@ -540,7 +564,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JU5-Yf-gj1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-173" y="24"/>
+            <point key="canvasLocation" x="-1854" y="-1148"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="HomeIcon" width="32" height="32"/>
+        <image name="calendar" width="32" height="32"/>
+        <image name="folder" width="32" height="32"/>
+        <image name="logout" width="32" height="32"/>
+        <image name="settings" width="32" height="32"/>
+        <image name="upload" width="32" height="32"/>
+    </resources>
 </document>

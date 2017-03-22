@@ -48,12 +48,7 @@ class MessagesSet{
         }catch{
             return nil
         }
-        if messages.count > 0{
-            return messages
-        }
-        else{
-            return nil
-        }
+        return messages
     }
     
 }
