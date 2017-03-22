@@ -36,7 +36,7 @@ class loginController: UIViewController, UITextFieldDelegate {
         }
         // initialize the user object that matches the user who logged in
         let user : User = UsersSet.findUser(email: email!)!
-        if self.users.length > 0 {
+        if self.users.count > 0 {
             self.users[0] = user
         }else{
             self.users.append(user)

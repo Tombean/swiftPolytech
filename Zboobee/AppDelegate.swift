@@ -38,6 +38,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         //set the groups in the base at the start of the application
         guard GroupsSet.findAllGroups() != nil else {
+            let teachers : Group = Group(context: context)
+            teachers.name = "Teacher"
+            let office : Group = Group(context: context)
+            office.name = "Office"
+            let students : Group = Group(context: context)
+            students.name = "Students"
+            
             let IG3Class : Group = Group(context: context)
             IG3Class.name = "IG3"
             let IG4Class : Group = Group(context: context)
@@ -50,12 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             IG4ClassTeacher.name = "IG4 - Teacher"
             let IG5ClassTeacher : Group = Group(context: context)
             IG5ClassTeacher.name = "IG5 - Teacher"
-            let teachers : Group = Group(context: context)
-            teachers.name = "Teacher"
-            let office : Group = Group(context: context)
-            office.name = "Office"
-            let students : Group = Group(context: context)
-            students.name = "Students"
+            
             do {
                 try context.save()
                 
