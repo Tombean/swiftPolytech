@@ -20,8 +20,10 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var messagesTable: UITableView!
     @IBOutlet weak var searchToolbar: UIToolbar!
     @IBOutlet weak var menuToolbar: UIToolbar!
+    //Variables needed to know the group selected
     var indexOfGroup : Int = 0
     var selectedGroup : String = ""
+    //Messages in the table view
     var messages: [Message] = []
     
     //Variable user get from the login
@@ -143,8 +145,6 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected objec
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

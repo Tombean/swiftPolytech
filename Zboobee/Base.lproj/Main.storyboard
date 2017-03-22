@@ -421,9 +421,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kew-ng-6s3">
+                                <rect key="frame" x="352" y="119" width="320" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="oV1-TT-cPR"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="K4F-pA-s6a" id="pPQ-Hp-KRI"/>
+                                    <outlet property="delegate" destination="K4F-pA-s6a" id="vLP-Sb-Nv7"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zboobee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ZE-Ht-REu">
+                                <rect key="frame" x="430" y="40" width="164" height="49"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                <color key="textColor" red="1" green="0.34561302970000002" blue="0.87558146889999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Publish" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bta-H0-ORH">
+                                <rect key="frame" x="212" y="304" width="600" height="50"/>
+                                <color key="backgroundColor" red="0.85451916989999999" green="0.85451916989999999" blue="0.85451916989999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="fSy-dU-WP4"/>
+                                    <constraint firstAttribute="width" constant="600" id="w38-NR-s7e"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please drop and drag the file here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ChU-5H-ORY">
+                                <rect key="frame" x="383" y="384" width="258" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MM9-4M-AG0">
+                                <rect key="frame" x="437" y="589" width="150" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="r81-GL-FJ8"/>
+                                    <constraint firstAttribute="width" constant="150" id="ze3-Li-SA3"/>
+                                </constraints>
+                            </progressView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIy-Rx-8kR">
-                                <rect key="frame" x="458" y="369" width="109" height="30"/>
-                                <state key="normal" title="Share a new file"/>
+                                <rect key="frame" x="487" y="629" width="50" height="30"/>
+                                <state key="normal" title="Upload"/>
                                 <connections>
                                     <action selector="shareFileButton:" destination="K4F-pA-s6a" eventType="touchUpInside" id="WeQ-Sx-bjx"/>
                                 </connections>
@@ -431,15 +471,31 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vIy-Rx-8kR" firstAttribute="centerX" secondItem="ldK-uy-xiK" secondAttribute="centerX" id="gKu-by-Bve"/>
-                            <constraint firstItem="vIy-Rx-8kR" firstAttribute="centerY" secondItem="ldK-uy-xiK" secondAttribute="centerY" id="u3R-fM-6j9"/>
+                            <constraint firstItem="ChU-5H-ORY" firstAttribute="top" secondItem="Bta-H0-ORH" secondAttribute="bottom" constant="30" id="4ZW-5v-Bmn"/>
+                            <constraint firstItem="Kew-ng-6s3" firstAttribute="centerX" secondItem="ldK-uy-xiK" secondAttribute="centerX" id="Exv-NE-a9Y"/>
+                            <constraint firstItem="Bta-H0-ORH" firstAttribute="centerX" secondItem="ldK-uy-xiK" secondAttribute="centerX" id="JGh-y0-Hxf"/>
+                            <constraint firstItem="ChU-5H-ORY" firstAttribute="centerX" secondItem="ldK-uy-xiK" secondAttribute="centerX" id="Nd0-J4-eAw"/>
+                            <constraint firstItem="C1N-Rf-J7J" firstAttribute="top" secondItem="vIy-Rx-8kR" secondAttribute="bottom" constant="60" id="PLe-4D-jHp"/>
+                            <constraint firstItem="vIy-Rx-8kR" firstAttribute="top" secondItem="MM9-4M-AG0" secondAttribute="bottom" constant="30" id="dWg-Eu-uyC"/>
+                            <constraint firstItem="6ZE-Ht-REu" firstAttribute="top" secondItem="J2A-bu-lUi" secondAttribute="bottom" constant="20" id="eoh-Pa-kkA"/>
+                            <constraint firstItem="Kew-ng-6s3" firstAttribute="top" secondItem="6ZE-Ht-REu" secondAttribute="bottom" constant="30" id="gjE-4x-13o"/>
+                            <constraint firstItem="Bta-H0-ORH" firstAttribute="top" secondItem="Kew-ng-6s3" secondAttribute="bottom" constant="35" id="hSR-Kj-8u9"/>
+                            <constraint firstItem="vIy-Rx-8kR" firstAttribute="centerX" secondItem="6ZE-Ht-REu" secondAttribute="centerX" id="hjZ-Zs-86a"/>
+                            <constraint firstItem="6ZE-Ht-REu" firstAttribute="centerX" secondItem="ldK-uy-xiK" secondAttribute="centerX" id="jXc-r2-6ul"/>
+                            <constraint firstItem="MM9-4M-AG0" firstAttribute="centerX" secondItem="ldK-uy-xiK" secondAttribute="centerX" id="vW3-Tl-FRo"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Upload" image="upload" id="JGL-Qg-LvP"/>
+                    <connections>
+                        <outlet property="channelPicker" destination="Kew-ng-6s3" id="LaW-qU-UZ1"/>
+                        <outlet property="filePlaceLabel" destination="ChU-5H-ORY" id="TWM-r3-7Eg"/>
+                        <outlet property="postTF" destination="Bta-H0-ORH" id="0Dv-Qu-0Td"/>
+                        <outlet property="progressBar" destination="MM9-4M-AG0" id="k6i-0B-csn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1aJ-zf-pwE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-264" y="-622"/>
+            <point key="canvasLocation" x="-264.2578125" y="-622.65625"/>
         </scene>
         <!--Settings-->
         <scene sceneID="beC-GP-kLm">
@@ -476,9 +532,13 @@
                                     <action selector="desactivateButton:" destination="mNs-D1-Fgu" eventType="touchUpInside" id="a5x-4h-6ya"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qbl-YG-X38">
-                                <rect key="frame" x="78" y="90" width="884" height="128"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qbl-YG-X38">
+                                <rect key="frame" x="72" y="83" width="880" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="880" id="FUZ-8d-Tb9"/>
+                                    <constraint firstAttribute="height" constant="150" id="ck3-Ce-Uia"/>
+                                </constraints>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
