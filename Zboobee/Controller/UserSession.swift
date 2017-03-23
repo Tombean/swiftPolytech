@@ -8,6 +8,11 @@
 
 import Foundation
 
-class Session {
-    static let sharedInstance = Session()
+class UserSession {
+    static let instance = UserSession()
+    var user : User? = nil
+    
+    private init(){
+        
+    }
 }

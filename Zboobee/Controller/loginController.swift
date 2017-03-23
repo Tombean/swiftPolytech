@@ -68,9 +68,8 @@ class loginController: UIViewController, UITextFieldDelegate {
      // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == self.segueHome{
+            UserSession.instance.user = self.userloged
             let showWallViewController = segue.destination.childViewControllers[0] as! WallViewController
-            //showWallViewController.user = self.userloged
-
         }
      }
     

@@ -45,7 +45,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="toto.titi@etu.umontpellier.fr" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="emj-r7-Vu6">
-                                <rect key="frame" x="360" y="347" width="304" height="30"/>
+                                <rect key="frame" x="362" y="347" width="300" height="30"/>
                                 <color key="backgroundColor" red="0.85451916989999999" green="0.85451916989999999" blue="0.85451916989999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="glA-Fk-GYg"/>
@@ -111,9 +111,10 @@
                                 </subviews>
                             </stackView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vMh-WX-vir">
-                                <rect key="frame" x="360" y="227" width="304" height="120"/>
+                                <rect key="frame" x="362" y="227" width="300" height="120"/>
                                 <accessibility key="accessibilityConfiguration" label="promoPV"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="ZKW-I8-Yft"/>
                                     <constraint firstAttribute="height" constant="120" id="hKP-ew-Jpk"/>
                                 </constraints>
                             </pickerView>
@@ -123,6 +124,7 @@
                             <constraint firstItem="uMB-Q0-flG" firstAttribute="top" secondItem="hrg-f3-WPH" secondAttribute="bottom" constant="40" id="1Mj-Iq-l1n"/>
                             <constraint firstItem="uMB-Q0-flG" firstAttribute="width" secondItem="hrg-f3-WPH" secondAttribute="width" id="1zn-II-AvN"/>
                             <constraint firstItem="vBl-DJ-rBo" firstAttribute="top" secondItem="emj-r7-Vu6" secondAttribute="bottom" constant="30" id="6HE-w8-sie"/>
+                            <constraint firstItem="emj-r7-Vu6" firstAttribute="width" secondItem="vBl-DJ-rBo" secondAttribute="width" id="EaC-xx-rPA"/>
                             <constraint firstItem="vMh-WX-vir" firstAttribute="top" secondItem="MRt-7b-DeD" secondAttribute="bottom" constant="120" id="JoN-a5-yRU"/>
                             <constraint firstItem="vMh-WX-vir" firstAttribute="top" secondItem="2zv-y4-ES1" secondAttribute="bottom" constant="10" id="KiO-Jn-j1u"/>
                             <constraint firstItem="6ZW-Ex-cEy" firstAttribute="centerX" secondItem="FZt-j9-abG" secondAttribute="centerX" id="Mzu-bX-Ua9"/>
@@ -140,7 +142,6 @@
                             <constraint firstItem="uMB-Q0-flG" firstAttribute="centerX" secondItem="FZt-j9-abG" secondAttribute="centerX" id="qS0-Cj-d8a"/>
                             <constraint firstItem="2zv-y4-ES1" firstAttribute="top" secondItem="6ZW-Ex-cEy" secondAttribute="bottom" constant="30" id="sTx-JN-CyW"/>
                             <constraint firstItem="vMh-WX-vir" firstAttribute="centerX" secondItem="FZt-j9-abG" secondAttribute="centerX" id="tZ0-hL-whM"/>
-                            <constraint firstItem="emj-r7-Vu6" firstAttribute="leading" secondItem="FZt-j9-abG" secondAttribute="leading" constant="360" id="yzS-ag-inI"/>
                         </constraints>
                     </view>
                     <connections>

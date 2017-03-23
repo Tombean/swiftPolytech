@@ -19,7 +19,7 @@ class UploadController : UIViewController, UITextFieldDelegate, UIPickerViewDele
     var indexOfGroup : Int = 0
     var selectedGroup : String = ""
     //Variable user get from the login
-    var userloged : User? = Session.sharedInstance
+    var userloged : User? = UserSession.instance.user
     
     //Action of the uplaod
     @IBAction func shareFileButton(_ sender: Any) {

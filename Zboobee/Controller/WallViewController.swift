@@ -27,13 +27,13 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     var messages: [Message] = []
     
     //Variable user get from the login
-    var user : User? = nil
+    var user : User?
     
     fileprivate lazy var messagesFetched : NSFetchedResultsController<Message> = {
         let request :  NSFetchRequest<Message> =  Message.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.date),ascending:false)]
         request.predicate = NSPredicate(format: "ANY groups.name == %@", self.selectedGroup)
-        let fetchResultController =  NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.date),ascending:false)]
+        let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultController.delegate = self
         return fetchResultController
     }()
@@ -52,9 +52,10 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             DialogBoxHelper.alert(view: self, withTitle: "Pas de groupe", andMessage: "Vous devez selectionner un groupe auquel envoyer")
         }else{
             self.selectedGroup = pickerData[indexOfGroup]
+            print(self.selectedGroup)
         }
         
-        let groups : NSSet = [GroupsSet.findGroupByName(name: self.selectedGroup)]
+        let groups : NSSet = [GroupsSet.findGroupByName(name: self.selectedGroup)!]
         //create the message
         let jour : Date = NSDate.init() as Date
         let message : Message = Message.createMessage(title: "msg1", text: textMessage!, date: jour, lengthMax: 500, originator: user!, groups: groups)
@@ -64,7 +65,8 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             return
         }
         self.messageTF.text = ""
-        DialogBoxHelper.alert(view: self, withTitle: "Message Posted", andMessage: "You can now see it in the table view")
+        self.performMessage()
+        DialogBoxHelper.alert(view: self, withTitle: "Message Posted", andMessage: ("Your message will shortly appear in " + self.pickerData[self.indexOfGroup]))
         self.messagesTable.reloadData()
         
     }
@@ -76,8 +78,9 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     
     override func viewDidLoad() {
+        self.user = UserSession.instance.user
         guard let user = self.user else{
-            fatalError("No user selected!!!")
+            fatalError("No user selected !!!")
         }
         guard let groups = user.groups else {
             fatalError("No group for this user !!!")
@@ -96,24 +99,34 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             i += 1
             self.pickerData.append(group.name ?? "no group name")
         }
+        guard firstGroupName != "" else {
+            fatalError("No first group")
+        }
+        self.selectedGroup = self.pickerData[indexOfGroup]
+        
+        self.performMessage()
         // Do any additional setup after loading the view, typically from a nib.
-        self.messages = MessagesSet.findAllMessagesForGroup(groupName: firstGroupName) ?? []
+        //self.messages = MessagesSet.findAllMessagesForGroup(groupName: firstGroupName) ?? []
     }
     
     
     //MARK: - Delegates and data sources
     //MARK: Data Sources tableview
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //self.performMessage()
         let cell = self.messagesTable.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! messageTableViewCell
-        
-        cell.messageLabel.text = self.messages[indexPath.row].content!
-        let userM = self.messages[indexPath.row].isPosted!
+        let message = self.messagesFetched.object(at: indexPath)
+        cell.messageLabel.text = message.content!
+        let userM = message.isPosted!
         cell.userLabel.text = userM.lastname
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return self.messages.count
+        guard let section = self.messagesFetched.sections?[section] else {
+            fatalError("unexpected section number")
+        }
+        return section.numberOfObjects
     }
     
     //MARK: Data Sources Picker View
@@ -135,8 +148,10 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         self.indexOfGroup = row
-        self.messages = MessagesSet.findAllMessagesForGroup(groupName: pickerData[row]) ?? []
-        self.messagesTable.reloadData()
+        print("Dans le picker view, on est sur : "+self.pickerData[row])
+        self.selectedGroup = self.pickerData[row]
+        self.performMessage()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -151,5 +166,44 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         textField.resignFirstResponder()
         return true
     }
+    
+    //MARK NSFecthResultController
+    
+    //MARK: - Controller methods
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.messagesTable.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.messagesTable.endUpdates()
+    }
+    
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?){
+        switch type {
+        case .insert:
+            if let newIndexPath = newIndexPath{
+                self.messagesTable.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        case .delete:
+            if let indexPath = indexPath{
+                self.messagesTable.deleteRows(at: [indexPath], with: .automatic)
+            }
+        default:
+            break
+        }
+    }
+    
+    func performMessage(){
+        
+        do{
+            self.messagesFetched = NSFetchResultUpdater.updatePredicate(predicate: NSPredicate(format: "ANY groups.name == %@", self.selectedGroup))
+            try self.messagesFetched.performFetch()
+            self.messagesTable.reloadData()
+        }catch let error as NSError{
+            DialogBoxHelper.alert(view: self, error: error)
+        }
+    }
+
     
 }
