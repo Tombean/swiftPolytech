@@ -18,8 +18,19 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var messageToPostLabel: UILabel!
     @IBOutlet weak var messageTF: UITextField!
     @IBOutlet weak var messagesTable: UITableView!
-    @IBOutlet weak var searchToolbar: UIToolbar!
-    @IBOutlet weak var menuToolbar: UIToolbar!
+    @IBOutlet weak var searchBarEntry: UISearchBar!
+    @IBAction func searchButton(_ sender: Any) {
+        let search : String? = self.searchBarEntry.text
+        
+        guard search != "" else{
+            DialogBoxHelper.alert(view: self, withTitle: "Incomplete search", andMessage: "Search can not be done without arguments")
+            return
+        }
+        let predicate =  NSPredicate(format: "content CONTAINS[cd] %@", search!)
+        self.updateMessages(predicate: predicate)
+        self.searchBarEntry.text = ""
+        
+    }
     //Variables needed to know the group selected
     var indexOfGroup : Int = 0
     var selectedGroup : String = ""
@@ -65,7 +76,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             return
         }
         self.messageTF.text = ""
-        self.performMessage()
+        self.updateMessages(predicate: nil)
         DialogBoxHelper.alert(view: self, withTitle: "Message Posted", andMessage: ("Your message will shortly appear in " + self.pickerData[self.indexOfGroup]))
         self.messagesTable.reloadData()
         
@@ -104,7 +115,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
         self.selectedGroup = self.pickerData[indexOfGroup]
         
-        self.performMessage()
+        self.updateMessages(predicate: nil)
         // Do any additional setup after loading the view, typically from a nib.
         //self.messages = MessagesSet.findAllMessagesForGroup(groupName: firstGroupName) ?? []
     }
@@ -113,7 +124,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     //MARK: - Delegates and data sources
     //MARK: Data Sources tableview
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //self.performMessage()
+        //self.updateMessages()
         let cell = self.messagesTable.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! messageTableViewCell
         let message = self.messagesFetched.object(at: indexPath)
         cell.messageLabel.text = message.content!
@@ -150,7 +161,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.indexOfGroup = row
         print("Dans le picker view, on est sur : "+self.pickerData[row])
         self.selectedGroup = self.pickerData[row]
-        self.performMessage()
+        self.updateMessages(predicate: nil)
         
     }
     
@@ -194,10 +205,16 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
     }
     
-    func performMessage(){
-        
-        do{
+    func updateMessages(predicate : NSPredicate?){
+        if predicate == nil{
             self.messagesFetched = NSFetchResultUpdater.updatePredicate(predicate: NSPredicate(format: "ANY groups.name == %@", self.selectedGroup))
+        }else{
+            var predicates : [NSPredicate] = []
+            predicates.append(NSPredicate(format: "ANY groups.name == %@", self.selectedGroup))
+            predicates.append(predicate!)
+            self.messagesFetched = NSFetchResultUpdater.updatePredicate(predicates: predicates)
+        }
+        do{
             try self.messagesFetched.performFetch()
             self.messagesTable.reloadData()
         }catch let error as NSError{

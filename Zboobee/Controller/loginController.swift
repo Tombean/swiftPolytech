@@ -69,7 +69,6 @@ class loginController: UIViewController, UITextFieldDelegate {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == self.segueHome{
             UserSession.instance.user = self.userloged
-            let showWallViewController = segue.destination.childViewControllers[0] as! WallViewController
         }
      }
     
