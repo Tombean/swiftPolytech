@@ -40,7 +40,7 @@ class loginController: UIViewController, UITextFieldDelegate {
             DialogBoxHelper.alert(view: self, withTitle: "Login Failed", andMessage: "This Email is not registered")
             return
         }
-        userloged = user
+        self.userloged = user
         //DialogBoxHelper.alert(view: self, withTitle: "Login Succeed", andMessage: "You can now access to your wall")
         
         // passes the user to the wall view
@@ -69,6 +69,7 @@ class loginController: UIViewController, UITextFieldDelegate {
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == self.segueHome{
             UserSession.instance.user = self.userloged
+            let showWallViewController = segue.destination.childViewControllers[0] as! WallViewController
         }
      }
     

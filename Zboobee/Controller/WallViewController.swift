@@ -11,7 +11,7 @@
 import UIKit
 import CoreData
 
-class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UITableViewDataSource,UITableViewDelegate, NSFetchedResultsControllerDelegate {
+class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UITableViewDataSource,UITableViewDelegate, NSFetchedResultsControllerDelegate, UISearchBarDelegate{
 
     @IBOutlet weak var tittleLabel: UILabel!
     @IBOutlet weak var channelPicker: UIPickerView!
@@ -19,18 +19,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var messageTF: UITextField!
     @IBOutlet weak var messagesTable: UITableView!
     @IBOutlet weak var searchBarEntry: UISearchBar!
-    @IBAction func searchButton(_ sender: Any) {
-        let search : String? = self.searchBarEntry.text
-        
-        guard search != "" else{
-            DialogBoxHelper.alert(view: self, withTitle: "Incomplete search", andMessage: "Search can not be done without arguments")
-            return
-        }
-        let predicate =  NSPredicate(format: "content CONTAINS[cd] %@", search!)
-        self.updateMessages(predicate: predicate)
-        self.searchBarEntry.text = ""
-        
-    }
+
     //Variables needed to know the group selected
     var indexOfGroup : Int = 0
     var selectedGroup : String = ""
@@ -76,7 +65,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             return
         }
         self.messageTF.text = ""
-        self.updateMessages(predicate: nil)
+        self.updateMessages(predicate: [])
         DialogBoxHelper.alert(view: self, withTitle: "Message Posted", andMessage: ("Your message will shortly appear in " + self.pickerData[self.indexOfGroup]))
         self.messagesTable.reloadData()
         
@@ -115,7 +104,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
         self.selectedGroup = self.pickerData[indexOfGroup]
         
-        self.updateMessages(predicate: nil)
+        self.updateMessages(predicate: [])
         // Do any additional setup after loading the view, typically from a nib.
         //self.messages = MessagesSet.findAllMessagesForGroup(groupName: firstGroupName) ?? []
     }
@@ -161,7 +150,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.indexOfGroup = row
         print("Dans le picker view, on est sur : "+self.pickerData[row])
         self.selectedGroup = self.pickerData[row]
-        self.updateMessages(predicate: nil)
+        self.updateMessages(predicate: [])
         
     }
     
@@ -205,13 +194,15 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
     }
     
-    func updateMessages(predicate : NSPredicate?){
-        if predicate == nil{
+    func updateMessages(predicate : [NSPredicate]){
+        if predicate == []{
             self.messagesFetched = NSFetchResultUpdater.updatePredicate(predicate: NSPredicate(format: "ANY groups.name == %@", self.selectedGroup))
         }else{
             var predicates : [NSPredicate] = []
+            for p in predicate{
+                predicates.append(p)
+            }
             predicates.append(NSPredicate(format: "ANY groups.name == %@", self.selectedGroup))
-            predicates.append(predicate!)
             self.messagesFetched = NSFetchResultUpdater.updatePredicate(predicates: predicates)
         }
         do{
@@ -220,6 +211,18 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }catch let error as NSError{
             DialogBoxHelper.alert(view: self, error: error)
         }
+    }
+    
+    //MARK Search Bar
+    
+    func searchBar(_: UISearchBar, textDidChange: String){
+        if textDidChange != "" {
+            let predicate =  NSPredicate(format: "content CONTAINS[c] %@", textDidChange)
+            var predicates : [NSPredicate] = []
+            predicates.append(predicate)
+            self.updateMessages(predicate: predicates)
+        }
+        
     }
 
     
