@@ -15,10 +15,15 @@ class FolderController : UIViewController {
     
     //sign out
     @IBAction func logoutButton(_ sender: Any) {
+        let dismissAction = UIAlertAction(title: "Ok", style: .default, handler: self.dismissSelf)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+        DialogBoxHelper.alert(view: self, withTitle: "Confirmation", andMessage: "Are you sure you want to log out ?", actions: [dismissAction,cancelAction])
+    }
+    
+    private func dismissSelf(_ :UIAlertAction) -> Void{
         UserSession.instance.user = nil
         self.dismiss(animated: true, completion: nil)
     }
-    
     override func viewDidLoad() {
         self.userloged = UserSession.instance.user
         guard let user = self.userloged else{

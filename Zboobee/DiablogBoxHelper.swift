@@ -33,4 +33,15 @@ class DialogBoxHelper{
     }
     
     
+    //shows alert with 2 actions possible
+    
+    class func alert(view: UIViewController, withTitle title : String, andMessage message : String = "",actions:[UIAlertAction]){
+        let alert = UIAlertController(title:title, message: message, preferredStyle: .alert)
+        alert.addAction(actions[0])
+        alert.addAction(actions[1])
+        view.present(alert, animated:true)
+
+    }
+    
+    
 }
