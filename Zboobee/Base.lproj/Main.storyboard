@@ -479,7 +479,7 @@
                             <constraint firstItem="ukR-o2-Jko" firstAttribute="trailing" secondItem="eQK-mh-2Cg" secondAttribute="trailingMargin" constant="8" id="dWd-e3-5qe"/>
                             <constraint firstItem="ShV-7i-4ky" firstAttribute="leading" secondItem="eQK-mh-2Cg" secondAttribute="leading" id="jJ1-D7-ABJ"/>
                             <constraint firstItem="ukR-o2-Jko" firstAttribute="top" secondItem="ft0-7D-mgH" secondAttribute="bottom" constant="30" id="n7E-E9-0uY"/>
-                            <constraint firstItem="fnS-eu-Cw7" firstAttribute="top" secondItem="Z42-b5-95y" secondAttribute="bottom" constant="20" id="oSP-H8-FsB"/>
+                            <constraint firstItem="fnS-eu-Cw7" firstAttribute="top" secondItem="Z42-b5-95y" secondAttribute="bottom" constant="20" id="oSP-H8-FsB" userLabel="Events Table.top = Channel Picker.bottom +20"/>
                             <constraint firstItem="HxZ-Wq-aoq" firstAttribute="top" secondItem="fnS-eu-Cw7" secondAttribute="bottom" constant="51" id="rms-c4-pfe"/>
                             <constraint firstItem="8cO-vQ-Nnh" firstAttribute="top" secondItem="ShV-7i-4ky" secondAttribute="bottom" constant="20" id="uql-G6-gaJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fnS-eu-Cw7" secondAttribute="trailing" constant="8" id="ySm-SV-VHt"/>

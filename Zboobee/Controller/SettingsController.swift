@@ -32,10 +32,15 @@ class SettingsController : UIViewController{
     
     override func viewDidLoad() {
         self.userloged = UserSession.instance.user
-        guard let user = self.userloged else{
+        guard self.userloged == nil else{
             fatalError("No user selected!!!")
         }
         super.viewDidLoad()
+        guard ((self.userloged is Teacher) || (self.userloged is Office)) else{
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+            DialogBoxHelper.alert(view: self, withTitle: "Unauthorized feature", andMessage: "User settings are only for techers and office", action: cancelAction )
+            return
+        }
     }
     
     

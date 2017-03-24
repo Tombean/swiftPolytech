@@ -26,7 +26,7 @@ class FolderController : UIViewController {
     }
     override func viewDidLoad() {
         self.userloged = UserSession.instance.user
-        guard let user = self.userloged else{
+        guard self.userloged == nil else{
             fatalError("No user selected!!!")
         }
         super.viewDidLoad()
