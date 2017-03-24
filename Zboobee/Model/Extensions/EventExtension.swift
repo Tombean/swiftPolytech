@@ -21,7 +21,7 @@ extension Event{
     ///   - originator: user who posted it
     ///   - groups: adressed to them
     /// - Returns: a message
-    static func createEvent(title:String,description:String,duration:Int16,location:String,date: Date,originator:User,group: Group)->Event{
+    static func createEvent(title:String,description:String,duration:String,location:String,date: Date,originator:User,group: Group)->Event{
         
         let context = CoreDataManager.context
         let newEvent : Event = Event(context: context)

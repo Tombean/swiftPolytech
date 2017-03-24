@@ -52,8 +52,12 @@ class NewEventController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             DialogBoxHelper.alert(view: self, withTitle: "Post incomplete", andMessage: "No event duration")
             return
         }
-        //convert duration in Int16
-        let dure : Int16 = Int16(duration!)!
+        
+        let dateEvent : Date = datePicker.date
+        guard dateEvent >= Date() else{
+            DialogBoxHelper.alert(view: self, withTitle: "Date incorrect", andMessage: "The date must be in the future")
+            return
+        }
         //Get the groups of the pickerView
         if pickerData[indexOfGroup] == ""{
             DialogBoxHelper.alert(view: self, withTitle: "Pas de groupe", andMessage: "Vous devez selectionner un groupe")
@@ -63,9 +67,8 @@ class NewEventController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
         
         let group = GroupsSet.findGroupByName(name: self.selectedGroup)!
-        //create the message
-        let dateEvent = datePicker.date
-        let event : Event = Event.createEvent(title:title!,description:desc!,duration:dure,location:location!,date: dateEvent,originator:userloged!,group: group)
+        //create the event
+        let event : Event = Event.createEvent(title:title!,description:desc!,duration:duration!,location:location!,date: dateEvent,originator:userloged!,group: group)
         //add a message in the base
         guard EventsSet.addEvent(eventToAdd: event) else{
             DialogBoxHelper.alert(view: self, withTitle: "Posting event Failed", andMessage: "Verify your event")
@@ -149,4 +152,5 @@ class NewEventController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         textField.resignFirstResponder()
         return true
     }
+    
 }

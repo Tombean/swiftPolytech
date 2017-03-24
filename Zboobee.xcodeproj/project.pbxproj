@@ -21,6 +21,7 @@
 		530FBB9D1E828FFF00FEFC07 /* FolderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530FBB9C1E828FFF00FEFC07 /* FolderController.swift */; };
 		530FBB9F1E82908D00FEFC07 /* UploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530FBB9E1E82908D00FEFC07 /* UploadController.swift */; };
 		530FBBA11E82910400FEFC07 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530FBBA01E82910400FEFC07 /* SettingsController.swift */; };
+		5325BF571E858DF20030EDC8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5325BF561E858DF20030EDC8 /* Helper.swift */; };
 		533FEEF81E8439A4008FF0CC /* NSFetchResultUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533FEEF71E8439A4008FF0CC /* NSFetchResultUpdater.swift */; };
 		537A385A1E8440DF00BDC7DB /* WallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A38591E8440DF00BDC7DB /* WallViewController.swift */; };
 		53D3BE391E51A397000D3B87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3BE381E51A397000D3B87 /* AppDelegate.swift */; };
@@ -74,6 +75,7 @@
 		530FBB9C1E828FFF00FEFC07 /* FolderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FolderController.swift; path = Controller/FolderController.swift; sourceTree = "<group>"; };
 		530FBB9E1E82908D00FEFC07 /* UploadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UploadController.swift; path = Controller/UploadController.swift; sourceTree = "<group>"; };
 		530FBBA01E82910400FEFC07 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsController.swift; path = Controller/SettingsController.swift; sourceTree = "<group>"; };
+		5325BF561E858DF20030EDC8 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		533FEEF71E8439A4008FF0CC /* NSFetchResultUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFetchResultUpdater.swift; sourceTree = "<group>"; };
 		537A38591E8440DF00BDC7DB /* WallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WallViewController.swift; path = Controller/WallViewController.swift; sourceTree = "<group>"; };
 		53D3BE351E51A397000D3B87 /* Zboobee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zboobee.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -194,6 +196,7 @@
 		53D3BE371E51A397000D3B87 /* Zboobee */ = {
 			isa = PBXGroup;
 			children = (
+				5325BF561E858DF20030EDC8 /* Helper.swift */,
 				530FBBA21E8292E400FEFC07 /* View */,
 				530FBB9B1E8288F000FEFC07 /* Model */,
 				530FBB901E8275A300FEFC07 /* Controller */,
@@ -377,6 +380,7 @@
 				24582EE11E700766006802C2 /* TeacherExtension.swift in Sources */,
 				24529A851E813B1800A134A6 /* GroupsSet.swift in Sources */,
 				530FBB971E8275DE00FEFC07 /* NewEventController.swift in Sources */,
+				5325BF571E858DF20030EDC8 /* Helper.swift in Sources */,
 				537A385A1E8440DF00BDC7DB /* WallViewController.swift in Sources */,
 				245C84FF1E681BF400862038 /* DiablogBoxHelper.swift in Sources */,
 				24582EDF1E700433006802C2 /* StudentExtension.swift in Sources */,

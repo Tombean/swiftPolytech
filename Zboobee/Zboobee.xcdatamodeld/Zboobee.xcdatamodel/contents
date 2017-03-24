@@ -7,7 +7,7 @@
     <entity name="Event" representedClassName="Event" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="duration" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="events" inverseEntity="Group" syncable="YES"/>
@@ -57,7 +57,7 @@
     </entity>
     <elements>
         <element name="Document" positionX="-173" positionY="216" width="128" height="73"/>
-        <element name="Event" positionX="-1019" positionY="-72" width="128" height="148"/>
+        <element name="Event" positionX="-1019" positionY="-72" width="128" height="150"/>
         <element name="Group" positionX="-641" positionY="-441" width="128" height="103"/>
         <element name="Message" positionX="-207" positionY="-54" width="128" height="133"/>
         <element name="Office" positionX="-459" positionY="171" width="128" height="58"/>

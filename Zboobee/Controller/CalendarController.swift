@@ -30,7 +30,7 @@ class CalendarController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         let request :  NSFetchRequest<Event> =  Event.fetchRequest()
         //request.predicate = NSPredicate(format: "ANY group.name == %@", self.selectedGroup)
         let predicateGroup = NSPredicate(format: "ANY group.name == %@", self.selectedGroup)
-        let predicateTime =  NSPredicate(format: "date > %@", self.getCurrentDate())
+        let predicateTime =  NSPredicate(format: "date > %@", Helper.getCurrentDate())
         var predicates : [NSPredicate] = []
         predicates.append(predicateGroup)
         predicates.append(predicateTime)
@@ -101,8 +101,8 @@ class CalendarController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         let cell = self.eventsTable.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! eventTableViewCell
         let event = self.eventsFetched.object(at: indexPath)
         cell.title.text = event.title!
-        cell.duration.text = String(event.duration)
-        cell.date.text = String(describing: event.date)
+        cell.duration.text = event.duration
+        cell.date.text = Helper.getFormattedDate(date:event.date as! Date)
         cell.location.text = event.place!
         let userE = event.isCreated!
         cell.user.text = userE.lastname
@@ -192,21 +192,13 @@ class CalendarController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     func searchBar(_: UISearchBar, textDidChange: String){
         if textDidChange != "" {
             let predicate =  NSPredicate(format: "title CONTAINS[c] %@", textDidChange)
-            let predicateTime =  NSPredicate(format: "date > %@", self.getCurrentDate())
+            let predicateTime =  NSPredicate(format: "date > %@", Helper.getCurrentDate())
             var predicates : [NSPredicate] = []
             predicates.append(predicate)
             predicates.append(predicateTime)
             self.updateEvents(predicate: predicates)
         }
         
-    }
-    
-    func getCurrentDate()->String{
-        let date = Date()
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy"
-        let dateToSting = formatter.string(from: date)
-        return dateToSting
     }
 
 
