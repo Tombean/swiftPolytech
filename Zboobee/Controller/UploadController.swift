@@ -11,10 +11,9 @@ import UIKit
 
 class UploadController : UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
     
+    @IBOutlet weak var urlTF: UITextField!
+    @IBOutlet weak var titleTF: UITextField!
     @IBOutlet weak var channelPicker: UIPickerView!
-    @IBOutlet weak var postTF: UITextField!
-    @IBOutlet weak var filePlaceLabel: UILabel!
-    @IBOutlet weak var progressBar: UIProgressView!
     //Variable needed to know the group selected in the pickerView
     var indexOfGroup : Int = 0
     var selectedGroup : String = ""
@@ -23,13 +22,16 @@ class UploadController : UIViewController, UITextFieldDelegate, UIPickerViewDele
     
     //Action of the uplaod
     @IBAction func shareFileButton(_ sender: Any) {
-        let textPost : String? = self.postTF.text
-        
-        guard textPost != "" else{
+        let title : String? = self.titleTF.text
+        let url : String? = self.urlTF.text
+        guard title != "" else{
             DialogBoxHelper.alert(view: self, withTitle: "Post incomplete", andMessage: "No Message")
             return
         }
-        
+        guard url != "" else{
+            DialogBoxHelper.alert(view: self, withTitle: "No URL", andMessage: "You must write the url of the file")
+            return
+        }
         //Get the groups of the pickerView
         if pickerData[indexOfGroup] == ""{
             DialogBoxHelper.alert(view: self, withTitle: "Pas de groupe", andMessage: "Vous devez selectionner un groupe auquel partager")
@@ -41,8 +43,14 @@ class UploadController : UIViewController, UITextFieldDelegate, UIPickerViewDele
         //create the file in the database
 
         //add the file in the base
-
-        self.postTF.text = ""
+        let document : Document = Document.createDocument(title: title!, url: url!, originator: userloged!, groups: groups)
+        //add a doc in the base
+        guard DocumentsSet.addDocument(documentToAdd: document) else{
+            DialogBoxHelper.alert(view: self, withTitle: "Uploading File Failed", andMessage: "Verify your url")
+            return
+        }
+        self.titleTF.text = ""
+        self.urlTF.text = ""
         DialogBoxHelper.alert(view: self, withTitle: "File Shared", andMessage: "You can now see it in the folder")
     }
     
@@ -72,7 +80,8 @@ class UploadController : UIViewController, UITextFieldDelegate, UIPickerViewDele
         super.viewDidLoad()
         self.channelPicker.dataSource = self
         self.channelPicker.delegate = self
-        self.postTF.delegate = self
+        self.titleTF.delegate = self
+        self.urlTF.delegate = self
         var i = 0
         var firstGroupName : String = ""
         for g in groups  {

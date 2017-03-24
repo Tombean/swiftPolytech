@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Document" representedClassName="Document" parentEntity="Message" syncable="YES" codeGenerationType="class">
-        <attribute name="format" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Event" representedClassName="Event" syncable="YES" codeGenerationType="class">
@@ -56,7 +55,7 @@
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="isPosted" inverseEntity="Message" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Document" positionX="-173" positionY="216" width="128" height="73"/>
+        <element name="Document" positionX="-173" positionY="216" width="128" height="58"/>
         <element name="Event" positionX="-1019" positionY="-72" width="128" height="150"/>
         <element name="Group" positionX="-641" positionY="-441" width="128" height="103"/>
         <element name="Message" positionX="-207" positionY="-54" width="128" height="133"/>

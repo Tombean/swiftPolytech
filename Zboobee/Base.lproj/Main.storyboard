@@ -763,46 +763,40 @@
                                     <outlet property="delegate" destination="K4F-pA-s6a" id="vLP-Sb-Nv7"/>
                                 </connections>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zboobee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ZE-Ht-REu">
-                                <rect key="frame" x="430" y="40" width="164" height="49"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share files" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ZE-Ht-REu">
+                                <rect key="frame" x="418.5" y="40" width="187.5" height="49"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="41"/>
                                 <color key="textColor" red="1" green="0.34561302970000002" blue="0.87558146889999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Publish" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bta-H0-ORH">
-                                <rect key="frame" x="212" y="304" width="600" height="50"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bta-H0-ORH" userLabel="title">
+                                <rect key="frame" x="362.5" y="304" width="300" height="30"/>
                                 <color key="backgroundColor" red="0.85451916989999999" green="0.85451916989999999" blue="0.85451916989999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="fSy-dU-WP4"/>
-                                    <constraint firstAttribute="width" constant="600" id="w38-NR-s7e"/>
+                                    <constraint firstAttribute="width" constant="300" id="ggv-dH-hWi"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please drop and drag the file here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ChU-5H-ORY">
-                                <rect key="frame" x="383" y="384" width="258" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MM9-4M-AG0">
-                                <rect key="frame" x="437" y="589" width="150" height="10"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="10" id="r81-GL-FJ8"/>
-                                    <constraint firstAttribute="width" constant="150" id="ze3-Li-SA3"/>
-                                </constraints>
-                            </progressView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIy-Rx-8kR">
-                                <rect key="frame" x="487" y="629" width="50" height="30"/>
-                                <state key="normal" title="Upload"/>
+                                <rect key="frame" x="474.5" y="619" width="75" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.34561302970000002" blue="0.87558146889999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="bLY-AM-JwW"/>
+                                    <constraint firstAttribute="width" constant="75" id="xKc-IN-vEp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Upload">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="shareFileButton:" destination="K4F-pA-s6a" eventType="touchUpInside" id="WeQ-Sx-bjx"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4d-DL-K4O">
                                 <rect key="frame" x="912" y="28" width="100" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.34561302970000002" blue="0.87558146889999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="1" green="0.34424301981925964" blue="0.87443298101425171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="GA6-HB-SJo"/>
                                     <constraint firstAttribute="height" constant="50" id="PcX-gB-v2h"/>
@@ -815,31 +809,38 @@
                                     <action selector="logoutButton:" destination="K4F-pA-s6a" eventType="touchUpInside" id="BxL-m7-Uh3"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="URL" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iam-ml-IOB">
+                                <rect key="frame" x="362" y="354" width="300" height="30"/>
+                                <color key="backgroundColor" red="0.85451916989999999" green="0.85451916989999999" blue="0.85451916989999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="eRc-H5-n0a"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ChU-5H-ORY" firstAttribute="top" secondItem="Bta-H0-ORH" secondAttribute="bottom" constant="30" id="4ZW-5v-Bmn"/>
                             <constraint firstItem="Kew-ng-6s3" firstAttribute="centerX" secondItem="ldK-uy-xiK" secondAttribute="centerX" id="Exv-NE-a9Y"/>
                             <constraint firstItem="Bta-H0-ORH" firstAttribute="centerX" secondItem="ldK-uy-xiK" secondAttribute="centerX" id="JGh-y0-Hxf"/>
-                            <constraint firstItem="ChU-5H-ORY" firstAttribute="centerX" secondItem="ldK-uy-xiK" secondAttribute="centerX" id="Nd0-J4-eAw"/>
                             <constraint firstItem="C1N-Rf-J7J" firstAttribute="top" secondItem="vIy-Rx-8kR" secondAttribute="bottom" constant="60" id="PLe-4D-jHp"/>
+                            <constraint firstItem="iam-ml-IOB" firstAttribute="centerX" secondItem="ldK-uy-xiK" secondAttribute="centerX" id="UFk-73-4gH"/>
                             <constraint firstItem="O4d-DL-K4O" firstAttribute="trailing" secondItem="ldK-uy-xiK" secondAttribute="trailingMargin" constant="8" id="WnV-Wi-FJD"/>
-                            <constraint firstItem="vIy-Rx-8kR" firstAttribute="top" secondItem="MM9-4M-AG0" secondAttribute="bottom" constant="30" id="dWg-Eu-uyC"/>
                             <constraint firstItem="6ZE-Ht-REu" firstAttribute="top" secondItem="J2A-bu-lUi" secondAttribute="bottom" constant="20" id="eoh-Pa-kkA"/>
                             <constraint firstItem="O4d-DL-K4O" firstAttribute="top" secondItem="J2A-bu-lUi" secondAttribute="bottom" constant="8" id="fmc-R1-c70"/>
                             <constraint firstItem="Kew-ng-6s3" firstAttribute="top" secondItem="6ZE-Ht-REu" secondAttribute="bottom" constant="30" id="gjE-4x-13o"/>
                             <constraint firstItem="Bta-H0-ORH" firstAttribute="top" secondItem="Kew-ng-6s3" secondAttribute="bottom" constant="35" id="hSR-Kj-8u9"/>
                             <constraint firstItem="vIy-Rx-8kR" firstAttribute="centerX" secondItem="6ZE-Ht-REu" secondAttribute="centerX" id="hjZ-Zs-86a"/>
                             <constraint firstItem="6ZE-Ht-REu" firstAttribute="centerX" secondItem="ldK-uy-xiK" secondAttribute="centerX" id="jXc-r2-6ul"/>
-                            <constraint firstItem="MM9-4M-AG0" firstAttribute="centerX" secondItem="ldK-uy-xiK" secondAttribute="centerX" id="vW3-Tl-FRo"/>
+                            <constraint firstItem="iam-ml-IOB" firstAttribute="top" secondItem="Bta-H0-ORH" secondAttribute="bottom" constant="20" id="wfC-cu-7Os"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Upload" image="upload" id="JGL-Qg-LvP"/>
                     <connections>
                         <outlet property="channelPicker" destination="Kew-ng-6s3" id="LaW-qU-UZ1"/>
-                        <outlet property="filePlaceLabel" destination="ChU-5H-ORY" id="TWM-r3-7Eg"/>
-                        <outlet property="postTF" destination="Bta-H0-ORH" id="0Dv-Qu-0Td"/>
-                        <outlet property="progressBar" destination="MM9-4M-AG0" id="k6i-0B-csn"/>
+                        <outlet property="titleTF" destination="Bta-H0-ORH" id="Cl2-wh-ghz"/>
+                        <outlet property="urlTF" destination="iam-ml-IOB" id="UGf-bD-zHU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1aJ-zf-pwE" userLabel="First Responder" sceneMemberID="firstResponder"/>
