@@ -207,14 +207,14 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     func updateMessages(predicate : [NSPredicate]){
         if predicate == []{
-            self.messagesFetched = NSFetchResultUpdater.updatePredicate(predicate: NSPredicate(format: "ANY groups.name == %@", self.selectedGroup))
+            self.messagesFetched = NSFetchResultUpdater.updateMessagePredicate(predicate: NSPredicate(format: "ANY groups.name == %@", self.selectedGroup))
         }else{
             var predicates : [NSPredicate] = []
             for p in predicate{
                 predicates.append(p)
             }
             predicates.append(NSPredicate(format: "ANY groups.name == %@", self.selectedGroup))
-            self.messagesFetched = NSFetchResultUpdater.updatePredicate(predicates: predicates)
+            self.messagesFetched = NSFetchResultUpdater.updateMessagePredicate(predicates: predicates)
         }
         do{
             try self.messagesFetched.performFetch()

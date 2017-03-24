@@ -28,7 +28,13 @@ class CalendarController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     fileprivate lazy var eventsFetched : NSFetchedResultsController<Event> = {
         let request :  NSFetchRequest<Event> =  Event.fetchRequest()
-        request.predicate = NSPredicate(format: "ANY group.name == %@", self.selectedGroup)
+        //request.predicate = NSPredicate(format: "ANY group.name == %@", self.selectedGroup)
+        let predicateGroup = NSPredicate(format: "ANY group.name == %@", self.selectedGroup)
+        let predicateTime =  NSPredicate(format: "date > %@", self.getCurrentDate())
+        var predicates : [NSPredicate] = []
+        predicates.append(predicateGroup)
+        predicates.append(predicateTime)
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Event.date),ascending:false)]
         let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultController.delegate = self
@@ -95,9 +101,9 @@ class CalendarController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         let cell = self.eventsTable.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! eventTableViewCell
         let event = self.eventsFetched.object(at: indexPath)
         cell.title.text = event.title!
-//        cell.duration.text = event.duration
-//        cell.date.text = event.date
-//        cell.location.text = event.location
+        cell.duration.text = String(event.duration)
+        cell.date.text = String(describing: event.date)
+        cell.location.text = event.place!
         let userE = event.isCreated!
         cell.user.text = userE.lastname
         return cell
@@ -163,34 +169,44 @@ class CalendarController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     func updateEvents(predicate : [NSPredicate]){
-//        if predicate == []{
-//            self.eventsFetched = NSFetchResultUpdater.updateEPredicate(predicate: NSPredicate(format: "ANY group.name == %@", self.selectedGroup))
-//        }else{
-//            var predicates : [NSPredicate] = []
-//            for p in predicate{
-//                predicates.append(p)
-//            }
-//            predicates.append(NSPredicate(format: "ANY group.name == %@", self.selectedGroup))
-//            self.eventsFetched = NSFetchResultUpdater.updateEPredicate(predicates: predicates)
-//        }
-//        do{
-//            try self.eventsFetched.performFetch()
-//            self.eventsTable.reloadData()
-//        }catch let error as NSError{
-//            DialogBoxHelper.alert(view: self, error: error)
-//        }
+        if predicate == []{
+            self.eventsFetched = NSFetchResultUpdater.updateEventPredicate(predicate: NSPredicate(format: "ANY group.name == %@", self.selectedGroup))
+        }else{
+            var predicates : [NSPredicate] = []
+            for p in predicate{
+                predicates.append(p)
+            }
+            predicates.append(NSPredicate(format: "ANY group.name == %@", self.selectedGroup))
+            self.eventsFetched = NSFetchResultUpdater.updateEventPredicate(predicates: predicates)
+        }
+        do{
+            try self.eventsFetched.performFetch()
+            self.eventsTable.reloadData()
+        }catch let error as NSError{
+            DialogBoxHelper.alert(view: self, error: error)
+        }
     }
     
     //MARK Search Bar
     
     func searchBar(_: UISearchBar, textDidChange: String){
         if textDidChange != "" {
-            let predicate =  NSPredicate(format: "content CONTAINS[c] %@", textDidChange)
+            let predicate =  NSPredicate(format: "title CONTAINS[c] %@", textDidChange)
+            let predicateTime =  NSPredicate(format: "date > %@", self.getCurrentDate())
             var predicates : [NSPredicate] = []
             predicates.append(predicate)
+            predicates.append(predicateTime)
             self.updateEvents(predicate: predicates)
         }
         
+    }
+    
+    func getCurrentDate()->String{
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
+        let dateToSting = formatter.string(from: date)
+        return dateToSting
     }
 
 

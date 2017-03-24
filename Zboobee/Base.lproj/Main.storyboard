@@ -400,11 +400,11 @@
                                 <rect key="frame" x="28" y="226" width="968" height="404"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="C5u-Pd-Vw8" userLabel="EventCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="C5u-Pd-Vw8" userLabel="EventCell" customClass="eventTableViewCell" customModule="Zboobee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="968" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="C5u-Pd-Vw8" id="cPp-Fy-vJJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="968" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="968" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPY-IE-hSE" userLabel="title">
@@ -463,8 +463,19 @@
                                                 <constraint firstItem="fPY-IE-hSE" firstAttribute="baseline" secondItem="elt-OK-Ejm" secondAttribute="baseline" id="u9K-Dn-OoO"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="date" destination="vkA-Ew-RzB" id="Q4t-QS-Ufe"/>
+                                            <outlet property="duration" destination="elt-OK-Ejm" id="aRd-fe-qWk"/>
+                                            <outlet property="location" destination="mtv-Pi-o0H" id="BA8-qH-Ywg"/>
+                                            <outlet property="title" destination="fPY-IE-hSE" id="pD6-AB-d6T"/>
+                                            <outlet property="user" destination="SVK-6q-WFg" id="Aaf-Px-t6D"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="mfd-Dy-sp5" id="Clo-kM-IfJ"/>
+                                    <outlet property="delegate" destination="mfd-Dy-sp5" id="ilA-ki-R0S"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
