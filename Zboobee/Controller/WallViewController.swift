@@ -71,6 +71,13 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
     }
     
+    //sign out 
+    
+    @IBAction func logoutButton(_ sender: Any) {
+        UserSession.instance.user = nil
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     // Temporary :  needs to be changed with channel allowed from DB
     

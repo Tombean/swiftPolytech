@@ -19,7 +19,7 @@ class UploadController : UIViewController, UITextFieldDelegate, UIPickerViewDele
     var indexOfGroup : Int = 0
     var selectedGroup : String = ""
     //Variable user get from the login
-    var userloged : User? = UserSession.instance.user
+    var userloged : User?
     
     //Action of the uplaod
     @IBAction func shareFileButton(_ sender: Any) {
@@ -46,9 +46,18 @@ class UploadController : UIViewController, UITextFieldDelegate, UIPickerViewDele
         DialogBoxHelper.alert(view: self, withTitle: "File Shared", andMessage: "You can now see it in the folder")
     }
     
+    
+    //sign out
+    
+    @IBAction func logoutButton(_ sender: Any) {
+        UserSession.instance.user = nil
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     //Data in the pickerView, here it will be the groups of the user
     var pickerData : [String] = []
     override func viewDidLoad() {
+        self.userloged = UserSession.instance.user
         guard let user = self.userloged else{
             fatalError("No user selected!!!")
         }
