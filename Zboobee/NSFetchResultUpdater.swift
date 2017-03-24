@@ -35,4 +35,22 @@ class NSFetchResultUpdater {
         let fetchResultController : NSFetchedResultsController<Message> = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         return fetchResultController
     }
+    
+//    class func updateEPredicate(predicates: [NSPredicate]) -> NSFetchedResultsController<Event>{
+//        
+//        let request: NSFetchRequest<Event> = Event.fetchRequest()
+//        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+//        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Event.date), ascending: false)]
+//        let fetchResultController : NSFetchedResultsController<Event> = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+//        return fetchResultController
+//    }
+//    
+//    class func updateEPredicate(predicate: NSPredicate) -> NSFetchedResultsController<Event>{
+//        
+//        let request: NSFetchRequest<Event> = Event.fetchRequest()
+//        request.predicate = predicate
+//        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Event.date), ascending: false)]
+//        let fetchResultController : NSFetchedResultsController<Message> = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+//        return fetchResultController
+//    }
 }

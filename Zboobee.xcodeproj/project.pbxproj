@@ -38,6 +38,7 @@
 		6FB88BCC1E853BBA00030B54 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB88BCB1E853BBA00030B54 /* CalendarController.swift */; };
 		6FB88BCE1E85406200030B54 /* EventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB88BCD1E85406200030B54 /* EventExtension.swift */; };
 		6FB88BD01E85418200030B54 /* EventsSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB88BCF1E85418200030B54 /* EventsSet.swift */; };
+		6FB88BD21E854C8600030B54 /* eventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB88BD11E854C8600030B54 /* eventTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		6FB88BCB1E853BBA00030B54 /* CalendarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarController.swift; path = Controller/CalendarController.swift; sourceTree = "<group>"; };
 		6FB88BCD1E85406200030B54 /* EventExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventExtension.swift; path = Model/Extensions/EventExtension.swift; sourceTree = "<group>"; };
 		6FB88BCF1E85418200030B54 /* EventsSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsSet.swift; path = Model/EventsSet.swift; sourceTree = "<group>"; };
+		6FB88BD11E854C8600030B54 /* eventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = eventTableViewCell.swift; path = View/eventTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				64EE5F431E8032A000A46D3D /* messageTableViewCell.swift */,
+				6FB88BD11E854C8600030B54 /* eventTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				64EE5F441E8032A000A46D3D /* messageTableViewCell.swift in Sources */,
 				6FB88BCE1E85406200030B54 /* EventExtension.swift in Sources */,
 				6443B9A11E82F9D300240103 /* UserSession.swift in Sources */,
+				6FB88BD21E854C8600030B54 /* eventTableViewCell.swift in Sources */,
 				530FBB981E8275DE00FEFC07 /* loginController.swift in Sources */,
 				245C84FD1E681A8400862038 /* CoreDataManager.swift in Sources */,
 				53D3BE411E51A398000D3B87 /* Zboobee.xcdatamodeld in Sources */,
