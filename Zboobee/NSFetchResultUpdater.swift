@@ -93,4 +93,24 @@ class NSFetchResultUpdater {
         let fetchResultController : NSFetchedResultsController<Teacher> = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         return fetchResultController
     }
+    
+    //MARK updater for Files
+    class func updateFilePredicate(predicates: [NSPredicate]) -> NSFetchedResultsController<Document>{
+        
+        let request: NSFetchRequest<Document> = Document.fetchRequest()
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Document.title), ascending: true)]
+        let fetchResultController : NSFetchedResultsController<Document> = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchResultController
+    }
+    
+    class func updateFilePredicate(predicate: NSPredicate) -> NSFetchedResultsController<Document>{
+        
+        let request: NSFetchRequest<Document> = Document.fetchRequest()
+        request.predicate = predicate
+        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Document.title), ascending: true)]
+        let fetchResultController : NSFetchedResultsController<Document> = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchResultController
+    }
+    
 }

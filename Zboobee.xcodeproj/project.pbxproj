@@ -28,6 +28,7 @@
 		537A385A1E8440DF00BDC7DB /* WallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A38591E8440DF00BDC7DB /* WallViewController.swift */; };
 		53C3C2AF1E8661E50007BC53 /* studentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C3C2AE1E8661E50007BC53 /* studentTableViewCell.swift */; };
 		53C3C2B11E8673480007BC53 /* teacherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C3C2B01E8673480007BC53 /* teacherTableViewCell.swift */; };
+		53C3C2B31E867DC70007BC53 /* fileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C3C2B21E867DC70007BC53 /* fileTableViewCell.swift */; };
 		53D3BE391E51A397000D3B87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3BE381E51A397000D3B87 /* AppDelegate.swift */; };
 		53D3BE3B1E51A397000D3B87 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3BE3A1E51A397000D3B87 /* ViewController.swift */; };
 		53D3BE411E51A398000D3B87 /* Zboobee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 53D3BE3F1E51A398000D3B87 /* Zboobee.xcdatamodeld */; };
@@ -86,6 +87,7 @@
 		537A38591E8440DF00BDC7DB /* WallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WallViewController.swift; path = Controller/WallViewController.swift; sourceTree = "<group>"; };
 		53C3C2AE1E8661E50007BC53 /* studentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = studentTableViewCell.swift; path = View/studentTableViewCell.swift; sourceTree = "<group>"; };
 		53C3C2B01E8673480007BC53 /* teacherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = teacherTableViewCell.swift; path = View/teacherTableViewCell.swift; sourceTree = "<group>"; };
+		53C3C2B21E867DC70007BC53 /* fileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = fileTableViewCell.swift; path = View/fileTableViewCell.swift; sourceTree = "<group>"; };
 		53D3BE351E51A397000D3B87 /* Zboobee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zboobee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53D3BE381E51A397000D3B87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53D3BE3A1E51A397000D3B87 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = View/ViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		530FBBA21E8292E400FEFC07 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				53C3C2B21E867DC70007BC53 /* fileTableViewCell.swift */,
 				53C3C2B01E8673480007BC53 /* teacherTableViewCell.swift */,
 				53C3C2AE1E8661E50007BC53 /* studentTableViewCell.swift */,
 				64EE5F431E8032A000A46D3D /* messageTableViewCell.swift */,
@@ -380,6 +383,7 @@
 				647D6C101E770B4900B2BABD /* MessagesSet.swift in Sources */,
 				6FB88BCC1E853BBA00030B54 /* CalendarController.swift in Sources */,
 				530FBB9D1E828FFF00FEFC07 /* FolderController.swift in Sources */,
+				53C3C2B31E867DC70007BC53 /* fileTableViewCell.swift in Sources */,
 				53C3C2AF1E8661E50007BC53 /* studentTableViewCell.swift in Sources */,
 				24582EE31E700805006802C2 /* OfficeExtension.swift in Sources */,
 				530FBBA11E82910400FEFC07 /* SettingsController.swift in Sources */,
