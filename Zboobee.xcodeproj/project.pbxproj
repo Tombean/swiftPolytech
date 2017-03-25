@@ -27,6 +27,7 @@
 		533FEEF81E8439A4008FF0CC /* NSFetchResultUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533FEEF71E8439A4008FF0CC /* NSFetchResultUpdater.swift */; };
 		537A385A1E8440DF00BDC7DB /* WallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A38591E8440DF00BDC7DB /* WallViewController.swift */; };
 		53C3C2AF1E8661E50007BC53 /* studentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C3C2AE1E8661E50007BC53 /* studentTableViewCell.swift */; };
+		53C3C2B11E8673480007BC53 /* teacherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C3C2B01E8673480007BC53 /* teacherTableViewCell.swift */; };
 		53D3BE391E51A397000D3B87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3BE381E51A397000D3B87 /* AppDelegate.swift */; };
 		53D3BE3B1E51A397000D3B87 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3BE3A1E51A397000D3B87 /* ViewController.swift */; };
 		53D3BE411E51A398000D3B87 /* Zboobee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 53D3BE3F1E51A398000D3B87 /* Zboobee.xcdatamodeld */; };
@@ -84,6 +85,7 @@
 		533FEEF71E8439A4008FF0CC /* NSFetchResultUpdater.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFetchResultUpdater.swift; sourceTree = "<group>"; };
 		537A38591E8440DF00BDC7DB /* WallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WallViewController.swift; path = Controller/WallViewController.swift; sourceTree = "<group>"; };
 		53C3C2AE1E8661E50007BC53 /* studentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = studentTableViewCell.swift; path = View/studentTableViewCell.swift; sourceTree = "<group>"; };
+		53C3C2B01E8673480007BC53 /* teacherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = teacherTableViewCell.swift; path = View/teacherTableViewCell.swift; sourceTree = "<group>"; };
 		53D3BE351E51A397000D3B87 /* Zboobee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zboobee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53D3BE381E51A397000D3B87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53D3BE3A1E51A397000D3B87 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = View/ViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		530FBBA21E8292E400FEFC07 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				53C3C2B01E8673480007BC53 /* teacherTableViewCell.swift */,
 				53C3C2AE1E8661E50007BC53 /* studentTableViewCell.swift */,
 				64EE5F431E8032A000A46D3D /* messageTableViewCell.swift */,
 				6FB88BD11E854C8600030B54 /* eventTableViewCell.swift */,
@@ -394,6 +397,7 @@
 				5325BF5B1E8595970030EDC8 /* DocumentExtension.swift in Sources */,
 				5325BF591E85954A0030EDC8 /* DocumentsSet.swift in Sources */,
 				537A385A1E8440DF00BDC7DB /* WallViewController.swift in Sources */,
+				53C3C2B11E8673480007BC53 /* teacherTableViewCell.swift in Sources */,
 				245C84FF1E681BF400862038 /* DiablogBoxHelper.swift in Sources */,
 				24582EDF1E700433006802C2 /* StudentExtension.swift in Sources */,
 				245C84FB1E6817AB00862038 /* UserExtension.swift in Sources */,
