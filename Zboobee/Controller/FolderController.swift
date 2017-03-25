@@ -18,11 +18,24 @@ class FolderController : UIViewController, UITableViewDataSource,UITableViewDele
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var filesTable: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBAction func permanentToggle(_ sender: Any) {
+        switch segmentedControl.selectedSegmentIndex{
+        case 0:
+            self.displayNonPermanentDoc = true
+        case 1:
+            self.displayNonPermanentDoc = false
+        default:
+            break
+        }
+        
+    }
     //Variables needed to know the group selected
     var indexOfGroup : Int = 0
     var selectedGroup : String = ""
     //Doc in the table view
     var files: [Document] = []
+    var displayNonPermanentDoc : Bool = true
     
     
     fileprivate lazy var filesFetched : NSFetchedResultsController<Document> = {
@@ -106,9 +119,15 @@ class FolderController : UIViewController, UITableViewDataSource,UITableViewDele
         //self.updateMessages()
         let cell = self.filesTable.dequeueReusableCell(withIdentifier: "fileCell", for: indexPath) as! fileTableViewCell
         let file = self.filesFetched.object(at: indexPath)
+        let user = file.isPosted
         cell.title.text = file.title!
         cell.urlToDoc.text = file.url!
-
+        // Displays the cell according to the toggle
+        if self.displayNonPermanentDoc == false && user is Student{
+            cell.isHidden = true
+        }else{
+            cell.isHidden = false
+        }
         return cell
     }
     

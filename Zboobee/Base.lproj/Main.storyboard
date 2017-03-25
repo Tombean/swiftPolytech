@@ -758,7 +758,7 @@
                                         <rect key="frame" x="0.0" y="28" width="880" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nTh-Mw-CPQ" id="KfY-HA-qd4">
-                                            <rect key="frame" x="0.0" y="0.0" width="880" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="880" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNg-vo-LyJ" userLabel="title">
@@ -792,16 +792,30 @@
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9v-r1-vOJ">
                                 <rect key="frame" x="0.0" y="94" width="1024" height="216"/>
                             </pickerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EYl-MA-8hJ">
+                                <rect key="frame" x="432" y="628" width="161" height="29"/>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Permanent"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="0.34360241889999998" blue="0.87295264009999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="permanentToggle:" destination="5FW-NA-3RD" eventType="valueChanged" id="mvT-XI-SwE"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6lH-2Z-W6f" firstAttribute="top" secondItem="oWa-tR-zw7" secondAttribute="bottom" constant="30" id="3dE-ar-DU0"/>
                             <constraint firstItem="jou-5N-dzA" firstAttribute="top" secondItem="oWa-tR-zw7" secondAttribute="bottom" constant="30" id="Avm-Ta-JTI"/>
+                            <constraint firstItem="EYl-MA-8hJ" firstAttribute="leading" secondItem="fM4-7l-3AY" secondAttribute="leading" id="CGi-p4-7OW"/>
                             <constraint firstItem="jou-5N-dzA" firstAttribute="centerX" secondItem="NM7-pp-Uev" secondAttribute="centerX" id="CNi-ZD-goP"/>
                             <constraint firstItem="n9v-r1-vOJ" firstAttribute="leading" secondItem="NM7-pp-Uev" secondAttribute="leading" id="F9n-ha-iGs"/>
                             <constraint firstItem="6fE-cs-Z8f" firstAttribute="top" secondItem="NM7-pp-Uev" secondAttribute="top" id="JI7-AH-RLu"/>
                             <constraint firstAttribute="trailing" secondItem="6fE-cs-Z8f" secondAttribute="trailing" id="P7h-gI-YCX"/>
+                            <constraint firstItem="EYl-MA-8hJ" firstAttribute="centerX" secondItem="NM7-pp-Uev" secondAttribute="centerX" id="ScV-cz-Yfb"/>
                             <constraint firstItem="fM4-7l-3AY" firstAttribute="centerX" secondItem="NM7-pp-Uev" secondAttribute="centerX" id="W9E-Il-X0n"/>
+                            <constraint firstItem="EYl-MA-8hJ" firstAttribute="top" secondItem="fM4-7l-3AY" secondAttribute="bottom" constant="50" id="dpn-bW-gD0"/>
                             <constraint firstItem="6lH-2Z-W6f" firstAttribute="trailing" secondItem="NM7-pp-Uev" secondAttribute="trailingMargin" constant="8" id="hOs-tc-hJw"/>
                             <constraint firstItem="6fE-cs-Z8f" firstAttribute="leading" secondItem="NM7-pp-Uev" secondAttribute="leading" id="oTB-Qr-hYW"/>
                             <constraint firstItem="fM4-7l-3AY" firstAttribute="top" secondItem="jou-5N-dzA" secondAttribute="bottom" constant="200" id="r5f-kx-IqI"/>
@@ -814,6 +828,7 @@
                         <outlet property="channelPicker" destination="n9v-r1-vOJ" id="Gtx-qK-0Mz"/>
                         <outlet property="filesTable" destination="fM4-7l-3AY" id="CpF-ke-Wpc"/>
                         <outlet property="searchBar" destination="6fE-cs-Z8f" id="mkf-yv-8DA"/>
+                        <outlet property="segmentedControl" destination="EYl-MA-8hJ" id="AEB-aE-FaO"/>
                         <outlet property="titleLabel" destination="jou-5N-dzA" id="qjD-QS-fxc"/>
                     </connections>
                 </viewController>

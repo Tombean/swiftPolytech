@@ -139,6 +139,12 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         return section.numberOfObjects
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let message = self.messagesFetched.object(at: indexPath)
+        if (message.isPosted is Teacher || message.isPosted is Office){
+            cell.contentView.backgroundColor = UIColor.magenta
+        }
+    }
     //MARK: Data Sources Picker View
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
