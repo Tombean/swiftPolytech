@@ -51,7 +51,7 @@ class SettingsController : UIViewController{
             self.newPasswordTF.isHidden = true
             self.newPassword2TF.isHidden = true
         }else{
-            if (self.userloged is Teacher){
+            if (self.userloged is Teacher ){
                 if ((Teacher.isManager(email:(self.userloged?.mailUniv)!))){
                     self.teacherAccountButton.isHidden = false
                     self.studentAccountButton.isHidden = false

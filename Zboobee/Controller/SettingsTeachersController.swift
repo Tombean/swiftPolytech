@@ -91,6 +91,30 @@ class SettingsTeachersController : UIViewController, UITableViewDataSource,UITab
             self.teachTable.endUpdates()
             self.teachTable.reloadData()
         }
+        let setManager  = UITableViewRowAction(style: .normal, title: "Make Manager") { (rowAction, indexPath) in
+            self.teachTable.beginUpdates()
+            //TODO update account validate in usersSet
+            let okD = Teacher.updateTeacher(teacher:teacher,specialtyManager:true)
+            guard (okD == nil) else {
+                DialogBoxHelper.alert(view: self, withTitle: "Manager change Failed", andMessage: "The teacher account hasn't been set to manager")
+                return
+            }
+            DialogBoxHelper.alert(view: self, withTitle: "Change succesful", andMessage: "\(teacher.lastname) is now a specialty manager")
+            self.teachTable.endUpdates()
+            self.teachTable.reloadData()
+        }
+        let unsetManager  = UITableViewRowAction(style: .normal, title: "Not a Manager") { (rowAction, indexPath) in
+            self.teachTable.beginUpdates()
+            //TODO update account validate in usersSet
+            let okD = Teacher.updateTeacher(teacher:teacher,specialtyManager:true)
+            guard (okD == nil) else {
+                DialogBoxHelper.alert(view: self, withTitle: "Manager change Failed", andMessage: "The teacher account is still set to manager")
+                return
+            }
+            DialogBoxHelper.alert(view: self, withTitle: "Change succesful", andMessage: "\(teacher.lastname) is not a specialty manager anymore")
+            self.teachTable.endUpdates()
+            self.teachTable.reloadData()
+        }
         let deleteAction  = UITableViewRowAction(style: .default, title: "Delete") { (rowAction, indexPath) in
             
             self.teachTable.beginUpdates()
@@ -107,8 +131,15 @@ class SettingsTeachersController : UIViewController, UITableViewDataSource,UITab
         desactive.backgroundColor = UIColor.orange
         validate.backgroundColor = UIColor.red
         deleteAction.backgroundColor = UIColor.green
+        setManager.backgroundColor = UIColor.cyan
+        unsetManager.backgroundColor = UIColor.purple
         if teacher.accountValidate{
-            return [deleteAction,desactive]
+            if teacher.specialtyManager{
+                return [deleteAction,desactive,unsetManager]
+            }else{
+                return [deleteAction,desactive,setManager]
+            }
+            
         }else{
             return [deleteAction,validate]
         }

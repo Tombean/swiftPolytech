@@ -89,6 +89,25 @@ extension Teacher{
         }
     }
     
+    /// updates the validation of the teacher's account
+    ///
+    /// - Parameters:
+    ///   - teacher: teacher object
+    ///   - specialtyManager: bool to set specialtyManager attribute of a teacher's account
+    /// - Returns: an error or nil if it works
+    static func updateTeacher(teacher: Teacher,specialtyManager: Bool)->NSError?{
+        let context = CoreDataManager.context
+        teacher.specialtyManager = specialtyManager
+        if let error = CoreDataManager.save() {
+            context.rollback()
+            return error
+        }
+        else {
+            print("User updated successfully")
+            return nil
+        }
+    }
+    
     /// deletes the teacher's account
     ///
     /// - Parameter teacher: teacher object
