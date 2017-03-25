@@ -54,6 +54,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             IG5ClassTeacher.name = "IG5 - Teacher"
             dataToSave = true
         }
+        //set an office in the base
+        if UsersSet.findOffice(email:"office@umontpellier.fr") == nil{
+            let office : Office = Office(context: context)
+            office.lastname = "tortosa"
+            office.firstname = "helene"
+            office.mailUniv = "office@umontpellier.fr"
+            office.password = "password"
+            let promos = UsersSet.findAllPromotion()
+            let pr : NSSet? = promos as? NSSet
+            office.promotions = pr
+            let groups : NSSet = [GroupsSet.findGroupByName(name: "Teacher")!,GroupsSet.findGroupByName(name: "Office")!,GroupsSet.findGroupByName(name: "IG5 - Teacher")!,GroupsSet.findGroupByName(name: "IG4 - Teacher")!,GroupsSet.findGroupByName(name: "IG3 - Teacher")!,GroupsSet.findGroupByName(name: "IG5")!,GroupsSet.findGroupByName(name: "IG4")!,GroupsSet.findGroupByName(name: "IG3")!]
+            office.groups = groups
+            dataToSave = true
+        }
         if dataToSave{
             do {
                 try context.save()

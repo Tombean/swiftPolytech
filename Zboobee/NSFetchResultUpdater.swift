@@ -55,4 +55,23 @@ class NSFetchResultUpdater {
         let fetchResultController : NSFetchedResultsController<Event> = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         return fetchResultController
     }
+    
+    //MARK updater for Students
+    class func updateStudentPredicate(predicates: [NSPredicate]) -> NSFetchedResultsController<Student>{
+        
+        let request: NSFetchRequest<Student> = Student.fetchRequest()
+        request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Student.lastname), ascending: true)]
+        let fetchResultController : NSFetchedResultsController<Student> = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchResultController
+    }
+    
+    class func updateStudentPredicate(predicate: NSPredicate) -> NSFetchedResultsController<Student>{
+        
+        let request: NSFetchRequest<Student> = Student.fetchRequest()
+        request.predicate = predicate
+        request.sortDescriptors = [NSSortDescriptor(key: #keyPath(Student.lastname), ascending: true)]
+        let fetchResultController : NSFetchedResultsController<Student> = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
+        return fetchResultController
+    }
 }

@@ -100,13 +100,20 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.channelPicker.dataSource = self
         self.channelPicker.delegate = self
         self.messageTF.delegate = self
+        var i = 0
+        var firstGroupName : String = ""
         for g in groups  {
             let group = g as! Group
+            if i == 0 {
+                firstGroupName = group.name!
+            }
+            i += 1
             self.pickerData.append(group.name ?? "no group name")
         }
+        guard firstGroupName != "" else {
+            fatalError("No first group")
+        }
         self.selectedGroup = self.pickerData[indexOfGroup]
-        
-        
         self.updateMessages(predicate: [])
         // Do any additional setup after loading the view, typically from a nib.
         //self.messages = MessagesSet.findAllMessagesForGroup(groupName: firstGroupName) ?? []

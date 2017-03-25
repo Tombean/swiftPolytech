@@ -115,6 +115,7 @@ class UsersSet{
         else{
             return nil
         }
+        
     }
     
     static func findOnePromotion(specialty : String, year : Int)->Promotion?{
@@ -129,6 +130,26 @@ class UsersSet{
         }
         if promo.count > 0{
             return promo[0]
+        }
+        else{
+            return nil
+        }
+    }
+    
+    //MARK : Office management
+    
+    static func findOffice(email:String)->Office?{
+        var office : [Office] = []
+        let requestOffice: NSFetchRequest<Office> = Office.fetchRequest()
+        requestOffice.predicate = NSPredicate(format: "mailUniv == %@", email)
+        let context = CoreDataManager.context
+        do{
+            try office = context.fetch(requestOffice)
+        }catch{
+            return nil
+        }
+        if office.count > 0{
+            return office[0]
         }
         else{
             return nil

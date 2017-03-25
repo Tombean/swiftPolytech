@@ -9,9 +9,14 @@
 import Foundation
 import UIKit
 
-class SettingsController : UIViewController{
+class SettingsController : UIViewController, UITableViewDataSource,UITableViewDelegate{
     
     var userloged : User?
+    
+    @IBOutlet weak var titleStudents: UILabel!
+    @IBOutlet weak var titleTeachers: UILabel!
+    @IBOutlet weak var studTable: UITableView!
+    @IBOutlet weak var teachTable: UITableView!
     
     @IBAction func desactivateButton(_ sender: Any) {
     }
@@ -41,6 +46,26 @@ class SettingsController : UIViewController{
             DialogBoxHelper.alert(view: self, withTitle: "Unauthorized feature", andMessage: "User settings are only for techers and office", action: cancelAction )
             return
         }
+    }
+    
+    //MARK: - Delegates and data sources
+    //MARK: Data Sources tableview
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //self.updateMessages()
+        let cell = self.studTable.dequeueReusableCell(withIdentifier: "studentCell", for: indexPath) as! studentTableViewCell
+//        let message = self.messagesFetched.object(at: indexPath)
+//        cell.messageLabel.text = message.content!
+//        let userM = message.isPosted!
+//        cell.userLabel.text = userM.lastname
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+//        guard let section = self.messagesFetched.sections?[section] else {
+//            fatalError("unexpected section number")
+//        }
+//        return section.numberOfObjects
+        return 0
     }
     
     
