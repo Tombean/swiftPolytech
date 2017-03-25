@@ -44,10 +44,66 @@ class UsersSet{
     static func canLogin(email: String, password: String)->Bool{
         let user : User? = self.findUser(email: email)
         let canlogin: Bool = (user?.password == password) as Bool
-        print(canlogin)
         return canlogin
     }
- 
+    static func findStudent(email: String)->Student?{
+        var students : [Student] = []
+        let context = CoreDataManager.context
+        let requestUser: NSFetchRequest<Student> = Student.fetchRequest()
+        requestUser.predicate = NSPredicate(format: "mailUniv == %@", email)
+        do{
+            try students = context.fetch(requestUser)
+        }catch{
+            return nil
+        }
+        if students.count > 0{
+            return students[0]
+        }
+        else{
+            return nil
+        }
+    }
+    
+    
+    /// check if a user can login based on email and password
+    ///
+    /// - Parameter email: email address of the user
+    /// - Parameter password: password of the user
+    /// - Returns: Returns the user who has the email given as a parameter, nothing if no user was found
+    static func isValideStud(email: String)->Bool{
+        let stud : Student? = self.findStudent(email: email)
+        return (stud?.accountValidate)!
+    }
+    
+    
+    static func findTeacher(email: String)->Teacher?{
+        var teachers : [Teacher] = []
+        let context = CoreDataManager.context
+        let requestUser: NSFetchRequest<Teacher> = Teacher.fetchRequest()
+        requestUser.predicate = NSPredicate(format: "mailUniv == %@", email)
+        do{
+            try teachers = context.fetch(requestUser)
+        }catch{
+            return nil
+        }
+        if teachers.count > 0{
+            return teachers[0]
+        }
+        else{
+            return nil
+        }
+    }
+    
+    
+    /// check if a user can login based on email and password
+    ///
+    /// - Parameter email: email address of the user
+    /// - Parameter password: password of the user
+    /// - Returns: Returns the user who has the email given as a parameter, nothing if no user was found
+    static func isValideTeach(email: String)->Bool{
+        let teach : Teacher? = self.findTeacher(email: email)
+        return (teach?.accountValidate)!
+    }
     
     /// add a student to the collection
     ///
@@ -156,4 +212,17 @@ class UsersSet{
             return nil
         }
     }
+    
+    static func getAllTeachers()->[Teacher]{
+        var teachers : [Teacher] = []
+        let requestTeacher: NSFetchRequest<Teacher> = Teacher.fetchRequest()
+        let context = CoreDataManager.context
+        do{
+            try teachers = context.fetch(requestTeacher)
+        }catch{
+            return []
+        }
+        return teachers
+    }
+    
 }

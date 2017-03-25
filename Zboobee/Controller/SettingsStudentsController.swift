@@ -17,25 +17,22 @@ class SettingsStudentsController : UIViewController, UITableViewDataSource,UITab
     @IBOutlet weak var studTable: UITableView!
 
     
+    @IBAction func cancelButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     //Students
     fileprivate lazy var studentsFetched : NSFetchedResultsController<Student> = {
         let request :  NSFetchRequest<Student> =  Student.fetchRequest()
-        request.predicate = NSPredicate(format: "accountValidate == false")
+        //request.predicate = NSPredicate(format: "accountValidate == false")
         request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Student.lastname),ascending:true)]
         let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultController.delegate = self
         return fetchResultController
     }()
     
-    
-    @IBAction func desactivateButton(_ sender: Any) {
-    }
-    @IBAction func activateButton(_ sender: Any) {
-    }
     var students: [Student] = []
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateStudents(predicate: [])
@@ -44,23 +41,74 @@ class SettingsStudentsController : UIViewController, UITableViewDataSource,UITab
     //MARK: - Delegates and data sources
     //MARK: Data Sources tableview
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //self.updateMessages()
+        //self.updateStudents()
         let cell = self.studTable.dequeueReusableCell(withIdentifier: "studentCell", for: indexPath) as! studentTableViewCell
         let student = self.studentsFetched.object(at: indexPath)
         cell.lastname.text = student.lastname
         cell.firstname.text = student.firstname
-        cell.promotion.text = String(describing: student.promotion?.graduationYear)
+        let promo : String = "\((student.promotion?.specialty)!) \(String(describing: student.promotion?.graduationYear))"
+        cell.promotion.text = promo
         return cell
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let student = self.studentsFetched.object(at: indexPath)
         if student.accountValidate == false{
-            cell.contentView.backgroundColor = UIColor.red
+            cell.contentView.backgroundColor = UIColor.orange
         }else{
-            cell.contentView.backgroundColor = UIColor.green
+            cell.contentView.backgroundColor = UIColor.magenta
         }
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let student = self.studentsFetched.object(at: indexPath)
+        let validate  = UITableViewRowAction(style: .normal, title: "Validate") { (rowAction, indexPath) in
+            self.studTable.beginUpdates()
+            //TODO update account validate in usersSet
+            Student.updateStudent(student:student,accountValidate:true)
+            self.studTable.endUpdates()
+            self.studTable.reloadData()
+        }
+        let desactive  = UITableViewRowAction(style: .normal, title: "Desactive") { (rowAction, indexPath) in
+            self.studTable.beginUpdates()
+            //TODO update account validate in usersSet
+            Student.updateStudent(student:student,accountValidate:false)
+            self.studTable.endUpdates()
+            self.studTable.reloadData()
+        }
+        let deleteAction  = UITableViewRowAction(style: .default, title: "Delete") { (rowAction, indexPath) in
+            self.studTable.beginUpdates()
+            //TODO delete account in usersSet
+            Student.deleteStudent(student:student)
+            self.studTable.endUpdates()
+            self.studTable.reloadData()
+        }
+        desactive.backgroundColor = UIColor.orange
+        validate.backgroundColor = UIColor.green
+        deleteAction.backgroundColor = UIColor.red
+        if student.accountValidate{
+            return [deleteAction,desactive]
+        }else{
+            return [deleteAction,validate]
+        }
+    }
+    
+//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        if(editingStyle == UITableViewCellEditingStyle.delete){
+//            self.studTable.beginUpdates()
+//            //TODO : UsersSet delete
+//            self.studTable.endUpdates()
+//        }
+//        if(editingStyle == UITableViewCellEditingStyle.validate){
+//            self.studTable.beginUpdates()
+//            //TODO : UsersSet delete
+//            self.studTable.endUpdates()
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         guard let section = self.studentsFetched.sections?[section] else {
@@ -101,13 +149,13 @@ class SettingsStudentsController : UIViewController, UITableViewDataSource,UITab
     //Students
     func updateStudents(predicate : [NSPredicate]){
         if predicate == []{
-            self.studentsFetched = NSFetchResultUpdater.updateStudentPredicate(predicate: NSPredicate(format: "accountValidate == false"))
+            //self.studentsFetched = NSFetchResultUpdater.updateStudentPredicate(predicate: NSPredicate(format: "accountValidate == false"))
         }else{
             var predicates : [NSPredicate] = []
             for p in predicate{
                 predicates.append(p)
             }
-            predicates.append(NSPredicate(format: "accountValidate == false"))
+            //predicates.append(NSPredicate(format: "accountValidate == false"))
             self.studentsFetched = NSFetchResultUpdater.updateStudentPredicate(predicates: predicates)
         }
         do{

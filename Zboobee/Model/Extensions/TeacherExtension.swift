@@ -31,6 +31,7 @@ extension Teacher{
         // ATTENTION CRYPTER LE PASSWORD PLUS TARD
         newTeacher.password = password
         newTeacher.accountValidate = accountValidate
+        newTeacher.specialtyManager = false
         newTeacher.promotions = promotions
         var  groups : NSSet? = nil
         if promotions == nil{
@@ -58,4 +59,30 @@ extension Teacher{
         newTeacher.groups = groups
         return newTeacher
         }
+    
+    static func updateTeacher(teacher: Teacher,accountValidate: Bool)->NSError?{
+        let context = CoreDataManager.context
+        teacher.accountValidate = accountValidate
+        if let error = CoreDataManager.save() {
+            context.rollback()
+            return error
+        }
+        else {
+            print("User updated successfully")
+            return nil
+        }
+    }
+    
+    static func deleteTeacher(teacher:Teacher)->NSError?{
+        let context = CoreDataManager.context
+        //TODO
+        if let error = CoreDataManager.save() {
+            context.rollback()
+            return error
+        }
+        else {
+            print("User deleted successfully")
+            return nil
+        }
+    }
 }

@@ -37,7 +37,7 @@ extension Office{
         else{
             groups = [GroupsSet.findGroupByName(name: "Teacher")!,GroupsSet.findGroupByName(name: "Office")!,GroupsSet.findGroupByName(name: "IG5 - Teacher")!,GroupsSet.findGroupByName(name: "IG4 - Teacher")!,GroupsSet.findGroupByName(name: "IG3 - Teacher")!,GroupsSet.findGroupByName(name: "IG5")!,GroupsSet.findGroupByName(name: "IG4")!,GroupsSet.findGroupByName(name: "IG3")!]
         }
-        let officeGroups : NSSet? = groups as! NSSet
+        let officeGroups : NSSet? = groups as? NSSet
         newOffice.groups = officeGroups
         return newOffice
     }

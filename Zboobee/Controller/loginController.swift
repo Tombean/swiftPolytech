@@ -40,8 +40,20 @@ class loginController: UIViewController, UITextFieldDelegate {
             DialogBoxHelper.alert(view: self, withTitle: "Login Failed", andMessage: "This Email is not registered")
             return
         }
+        if (user is Student){
+            guard UsersSet.isValideStud(email: email!) else{
+                DialogBoxHelper.alert(view: self, withTitle: "Login Failed", andMessage: "Your account is not valid")
+                return
+            }
+        }else{
+            if (user is Teacher){
+                guard UsersSet.isValideTeach(email: email!) else{
+                    DialogBoxHelper.alert(view: self, withTitle: "Login Failed", andMessage: "Your account is not valid")
+                    return
+                }
+            }
+        }
         self.userloged = user
-        //DialogBoxHelper.alert(view: self, withTitle: "Login Succeed", andMessage: "You can now access to your wall")
         
         // passes the user to the wall view
         self.performSegue(withIdentifier: "showHomeSegue", sender: self)

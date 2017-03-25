@@ -15,9 +15,14 @@ class SettingsController : UIViewController{
     //Variable user get from the login
     var userloged : User?
     
+    @IBOutlet weak var newPassword2TF: UITextField!
+    @IBOutlet weak var newPasswordTF: UITextField!
+    @IBOutlet weak var oldPasswordTF: UITextField!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var studentAccountButton: UIButton!
     
+    @IBAction func saveButton(_ sender: Any) {
+    }
     @IBOutlet weak var teacherAccountButton: UIButton!
     //sign out
     @IBAction func logoutButton(_ sender: Any) {
@@ -36,12 +41,20 @@ class SettingsController : UIViewController{
         guard self.userloged != nil else{
             fatalError("No user selected!!!")
         }
-        super.viewDidLoad()
-        guard ((self.userloged is Teacher) || (self.userloged is Office)) else{
-            let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-            DialogBoxHelper.alert(view: self, withTitle: "Unauthorized feature", andMessage: "User settings are only for techers and office", action: cancelAction )
-            return
+        if(self.userloged is Office){
+            self.teacherAccountButton.isHidden = false
+            self.studentAccountButton.isHidden = false
+            self.oldPasswordTF.isHidden = true
+            self.newPasswordTF.isHidden = true
+            self.newPassword2TF.isHidden = true
+        }else{
+            self.teacherAccountButton.isHidden = true
+            self.studentAccountButton.isHidden = true
+            self.oldPasswordTF.isHidden = false
+            self.newPasswordTF.isHidden = false
+            self.newPassword2TF.isHidden = false
         }
+        super.viewDidLoad()
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,5 +62,6 @@ class SettingsController : UIViewController{
         // Dispose of any resources that can be recreated.
         
     }
+
     
 }

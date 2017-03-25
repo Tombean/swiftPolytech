@@ -62,7 +62,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             office.mailUniv = "office@umontpellier.fr"
             office.password = "password"
             let promos = UsersSet.findAllPromotion()
-            let pr : NSSet? = promos as? NSSet
+            let pr : NSSet?
+            if promos == nil{
+                pr = nil
+            }else{
+                pr = promos as? NSSet
+            }
             office.promotions = pr
             let groups : NSSet = [GroupsSet.findGroupByName(name: "Teacher")!,GroupsSet.findGroupByName(name: "Office")!,GroupsSet.findGroupByName(name: "IG5 - Teacher")!,GroupsSet.findGroupByName(name: "IG4 - Teacher")!,GroupsSet.findGroupByName(name: "IG3 - Teacher")!,GroupsSet.findGroupByName(name: "IG5")!,GroupsSet.findGroupByName(name: "IG4")!,GroupsSet.findGroupByName(name: "IG3")!]
             office.groups = groups
@@ -76,7 +81,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("couldn't save context when saving promos")
             }
         }
-        
+        //first message
+        if MessagesSet.findAllMessages() == []{
+            //Welcome message
+            let group : NSSet = [GroupsSet.findGroupByName(name: "Office")]
+            let office : User = UsersSet.findUser(email: "office@umontpellier.fr")!
+            let message : Message = Message.createMessage(title: "Welcome", text: "Welcome to Zboobee", date: Date(), lengthMax: 500, originator: office, groups: group)
+            //add a message in the base
+            if MessagesSet.addMessage(messageToAdd: message) == false{
+                print("message bienvenue non envoyé")
+            }
+            else{
+                print("message bienvenue envoyé")
+            }
+        }
         //library keyboard added
         IQKeyboardManager.sharedManager().enable = true
         

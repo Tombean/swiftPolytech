@@ -61,4 +61,30 @@ extension Student{
         newStudent.groups = groups
         return newStudent
     }
+    
+    static func updateStudent(student: Student,accountValidate: Bool)->NSError?{
+        let context = CoreDataManager.context
+        student.accountValidate = accountValidate
+        if let error = CoreDataManager.save() {
+            context.rollback()
+            return error
+        }
+        else {
+            print("User updated successfully")
+            return nil
+        }
+    }
+    
+    static func deleteStudent(student:Student)->NSError?{
+        let context = CoreDataManager.context
+        //TODO
+        if let error = CoreDataManager.save() {
+            context.rollback()
+            return error
+        }
+        else {
+            print("User deleted successfully")
+            return nil
+        }
+    }
 }

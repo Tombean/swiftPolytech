@@ -76,6 +76,7 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
         }
         
         if rowOfPromo == promos?.count{
+            print("creating new techer")
             let teacher :  Teacher =  Teacher.createTeacher(firstname: firstName!, lastname: lastName!, email: email!, password: password!, accountValidate: false, promotions: nil)
             guard UsersSet.addTeacher(teacherToAdd : teacher ) else{
                 DialogBoxHelper.alert(view: self, withTitle: "Register Failed", andMessage: "Verify your information")
