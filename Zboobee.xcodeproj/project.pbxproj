@@ -20,7 +20,7 @@
 		530FBB991E8275DE00FEFC07 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530FBB951E8275DE00FEFC07 /* RegistrationController.swift */; };
 		530FBB9D1E828FFF00FEFC07 /* FolderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530FBB9C1E828FFF00FEFC07 /* FolderController.swift */; };
 		530FBB9F1E82908D00FEFC07 /* UploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530FBB9E1E82908D00FEFC07 /* UploadController.swift */; };
-		530FBBA11E82910400FEFC07 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530FBBA01E82910400FEFC07 /* SettingsController.swift */; };
+		530FBBA11E82910400FEFC07 /* SettingsStudentsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530FBBA01E82910400FEFC07 /* SettingsStudentsController.swift */; };
 		5325BF571E858DF20030EDC8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5325BF561E858DF20030EDC8 /* Helper.swift */; };
 		5325BF591E85954A0030EDC8 /* DocumentsSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5325BF581E85954A0030EDC8 /* DocumentsSet.swift */; };
 		5325BF5B1E8595970030EDC8 /* DocumentExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5325BF5A1E8595970030EDC8 /* DocumentExtension.swift */; };
@@ -46,6 +46,8 @@
 		53C3C2DA1E868B6E0007BC53 /* IQToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C3C2C81E868B6E0007BC53 /* IQToolbar.swift */; };
 		53C3C2DB1E868B6E0007BC53 /* IQUIView+IQKeyboardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C3C2C91E868B6E0007BC53 /* IQUIView+IQKeyboardToolbar.swift */; };
 		53C3C2DC1E868B6E0007BC53 /* IQKeyboardManager.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 53C3C2CB1E868B6E0007BC53 /* IQKeyboardManager.bundle */; };
+		53C3C2DE1E868D1C0007BC53 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C3C2DD1E868D1C0007BC53 /* SettingsController.swift */; };
+		53C3C2E01E868F390007BC53 /* SettingsTeachersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C3C2DF1E868F390007BC53 /* SettingsTeachersController.swift */; };
 		53D3BE391E51A397000D3B87 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3BE381E51A397000D3B87 /* AppDelegate.swift */; };
 		53D3BE3B1E51A397000D3B87 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D3BE3A1E51A397000D3B87 /* ViewController.swift */; };
 		53D3BE411E51A398000D3B87 /* Zboobee.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 53D3BE3F1E51A398000D3B87 /* Zboobee.xcdatamodeld */; };
@@ -96,7 +98,7 @@
 		530FBB951E8275DE00FEFC07 /* RegistrationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegistrationController.swift; path = Controller/RegistrationController.swift; sourceTree = "<group>"; };
 		530FBB9C1E828FFF00FEFC07 /* FolderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FolderController.swift; path = Controller/FolderController.swift; sourceTree = "<group>"; };
 		530FBB9E1E82908D00FEFC07 /* UploadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UploadController.swift; path = Controller/UploadController.swift; sourceTree = "<group>"; };
-		530FBBA01E82910400FEFC07 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsController.swift; path = Controller/SettingsController.swift; sourceTree = "<group>"; };
+		530FBBA01E82910400FEFC07 /* SettingsStudentsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsStudentsController.swift; path = Controller/SettingsStudentsController.swift; sourceTree = "<group>"; };
 		5325BF561E858DF20030EDC8 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		5325BF581E85954A0030EDC8 /* DocumentsSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentsSet.swift; path = Model/DocumentsSet.swift; sourceTree = "<group>"; };
 		5325BF5A1E8595970030EDC8 /* DocumentExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentExtension.swift; path = Model/Extensions/DocumentExtension.swift; sourceTree = "<group>"; };
@@ -123,6 +125,8 @@
 		53C3C2C81E868B6E0007BC53 /* IQToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IQToolbar.swift; sourceTree = "<group>"; };
 		53C3C2C91E868B6E0007BC53 /* IQUIView+IQKeyboardToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IQUIView+IQKeyboardToolbar.swift"; sourceTree = "<group>"; };
 		53C3C2CB1E868B6E0007BC53 /* IQKeyboardManager.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IQKeyboardManager.bundle; sourceTree = "<group>"; };
+		53C3C2DD1E868D1C0007BC53 /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsController.swift; path = Controller/SettingsController.swift; sourceTree = "<group>"; };
+		53C3C2DF1E868F390007BC53 /* SettingsTeachersController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTeachersController.swift; path = Controller/SettingsTeachersController.swift; sourceTree = "<group>"; };
 		53D3BE351E51A397000D3B87 /* Zboobee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zboobee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53D3BE381E51A397000D3B87 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53D3BE3A1E51A397000D3B87 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = View/ViewController.swift; sourceTree = "<group>"; };
@@ -175,8 +179,10 @@
 		530FBB901E8275A300FEFC07 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				53C3C2DF1E868F390007BC53 /* SettingsTeachersController.swift */,
+				53C3C2DD1E868D1C0007BC53 /* SettingsController.swift */,
 				537A38591E8440DF00BDC7DB /* WallViewController.swift */,
-				530FBBA01E82910400FEFC07 /* SettingsController.swift */,
+				530FBBA01E82910400FEFC07 /* SettingsStudentsController.swift */,
 				530FBB9E1E82908D00FEFC07 /* UploadController.swift */,
 				6443B9A01E82F9D300240103 /* UserSession.swift */,
 				530FBB9C1E828FFF00FEFC07 /* FolderController.swift */,
@@ -488,9 +494,10 @@
 				53C3C2B31E867DC70007BC53 /* fileTableViewCell.swift in Sources */,
 				53C3C2CC1E868B6E0007BC53 /* IQNSArray+Sort.swift in Sources */,
 				53C3C2AF1E8661E50007BC53 /* studentTableViewCell.swift in Sources */,
+				53C3C2DE1E868D1C0007BC53 /* SettingsController.swift in Sources */,
 				53C3C2D41E868B6E0007BC53 /* IQKeyboardManager.swift in Sources */,
 				24582EE31E700805006802C2 /* OfficeExtension.swift in Sources */,
-				530FBBA11E82910400FEFC07 /* SettingsController.swift in Sources */,
+				530FBBA11E82910400FEFC07 /* SettingsStudentsController.swift in Sources */,
 				53D3BE3B1E51A397000D3B87 /* ViewController.swift in Sources */,
 				53D3BE391E51A397000D3B87 /* AppDelegate.swift in Sources */,
 				533FEEF81E8439A4008FF0CC /* NSFetchResultUpdater.swift in Sources */,
@@ -499,6 +506,7 @@
 				53C3C2D01E868B6E0007BC53 /* IQUIViewController+Additions.swift in Sources */,
 				530FBB991E8275DE00FEFC07 /* RegistrationController.swift in Sources */,
 				6FB88BD01E85418200030B54 /* EventsSet.swift in Sources */,
+				53C3C2E01E868F390007BC53 /* SettingsTeachersController.swift in Sources */,
 				530FBB9F1E82908D00FEFC07 /* UploadController.swift in Sources */,
 				53C3C2CE1E868B6E0007BC53 /* IQUITextFieldView+Additions.swift in Sources */,
 				53C3C2D81E868B6E0007BC53 /* IQPreviousNextView.swift in Sources */,

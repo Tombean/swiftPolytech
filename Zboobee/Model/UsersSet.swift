@@ -12,21 +12,7 @@ import CoreData
 class UsersSet{
     
     // MARK: - User management -
-    
-    //Don't work
-    static func areValide()->[User]?{
-        var users : [User]? = []
-        let context = CoreDataManager.context
-        let requestUser: NSFetchRequest<User> = User.fetchRequest()
-        requestUser.predicate = NSPredicate(format: "accountValidate == %@", false as CVarArg)
-        do{
-            try users = context.fetch(requestUser)
-        }catch{
-            users = nil
-        }
-        return users
-    }
-    
+   
     
     /// Retrieve the user that has the email address used as parameter.
     ///
