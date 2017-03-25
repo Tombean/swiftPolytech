@@ -1015,8 +1015,8 @@
                                     <action selector="saveButton:" destination="VAd-uj-f1L" eventType="touchUpInside" id="312-ed-mDG"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="new password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Qo-il-kw5">
-                                <rect key="frame" x="464" y="293" width="97" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="new password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Qo-il-kw5">
+                                <rect key="frame" x="446" y="293" width="133" height="30"/>
                                 <color key="backgroundColor" red="0.897882297" green="0.897882297" blue="0.897882297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1044,6 +1044,7 @@
                             <constraint firstItem="twD-W7-ato" firstAttribute="centerX" secondItem="WAs-6G-Nnp" secondAttribute="centerX" id="Wst-Kf-wKV"/>
                             <constraint firstItem="6Qo-il-kw5" firstAttribute="width" secondItem="zns-vY-0zL" secondAttribute="width" id="aXT-SY-hC3"/>
                             <constraint firstItem="XQB-G0-YkS" firstAttribute="centerX" secondItem="WAs-6G-Nnp" secondAttribute="centerX" id="bvX-1c-wIg"/>
+                            <constraint firstItem="6Qo-il-kw5" firstAttribute="top" secondItem="XQB-G0-YkS" secondAttribute="top" id="luD-4o-guT"/>
                             <constraint firstItem="LPu-Be-Pyu" firstAttribute="centerX" secondItem="WAs-6G-Nnp" secondAttribute="centerX" id="n8w-wX-fA7"/>
                             <constraint firstItem="6Qo-il-kw5" firstAttribute="leading" secondItem="zns-vY-0zL" secondAttribute="leading" id="oM2-Gl-1Pt"/>
                             <constraint firstItem="aMs-KP-Y8r" firstAttribute="trailing" secondItem="WAs-6G-Nnp" secondAttribute="trailingMargin" constant="8" id="tGP-ps-vig"/>
@@ -1057,6 +1058,7 @@
                         <outlet property="newPassword2TF" destination="6Qo-il-kw5" id="P3M-SL-Ljc"/>
                         <outlet property="newPasswordTF" destination="zns-vY-0zL" id="Bc6-BS-MEF"/>
                         <outlet property="oldPasswordTF" destination="LPu-Be-Pyu" id="BhU-q0-izo"/>
+                        <outlet property="saveButtonRef" destination="6Kx-Kc-ebp" id="LyO-yB-PCl"/>
                         <outlet property="studentAccountButton" destination="EtE-Pm-Bbs" id="5cz-on-ezU"/>
                         <outlet property="teacherAccountButton" destination="XQB-G0-YkS" id="RmI-6K-Jwh"/>
                         <outlet property="titleLabel" destination="twD-W7-ato" id="4CA-rj-eFp"/>

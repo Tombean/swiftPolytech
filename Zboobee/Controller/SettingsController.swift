@@ -21,8 +21,10 @@ class SettingsController : UIViewController{
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var studentAccountButton: UIButton!
     
+    @IBOutlet weak var saveButtonRef: UIButton!
     @IBAction func saveButton(_ sender: Any) {
     }
+    
     @IBOutlet weak var teacherAccountButton: UIButton!
     //sign out
     @IBAction func logoutButton(_ sender: Any) {
@@ -41,18 +43,38 @@ class SettingsController : UIViewController{
         guard self.userloged != nil else{
             fatalError("No user selected!!!")
         }
-        if(self.userloged is Office){
+        if (self.userloged is Office){
             self.teacherAccountButton.isHidden = false
             self.studentAccountButton.isHidden = false
+            self.saveButtonRef.isHidden = true
             self.oldPasswordTF.isHidden = true
             self.newPasswordTF.isHidden = true
             self.newPassword2TF.isHidden = true
         }else{
-            self.teacherAccountButton.isHidden = true
-            self.studentAccountButton.isHidden = true
-            self.oldPasswordTF.isHidden = false
-            self.newPasswordTF.isHidden = false
-            self.newPassword2TF.isHidden = false
+            if (self.userloged is Teacher){
+                if ((Teacher.isManager(email:(self.userloged?.mailUniv)!))){
+                    self.teacherAccountButton.isHidden = false
+                    self.studentAccountButton.isHidden = false
+                    self.saveButtonRef.isHidden = true
+                    self.oldPasswordTF.isHidden = true
+                    self.newPasswordTF.isHidden = true
+                    self.newPassword2TF.isHidden = true
+                }else{
+                    self.teacherAccountButton.isHidden = true
+                    self.studentAccountButton.isHidden = true
+                    self.saveButtonRef.isHidden = false
+                    self.oldPasswordTF.isHidden = false
+                    self.newPasswordTF.isHidden = false
+                    self.newPassword2TF.isHidden = false
+                }
+            }else{
+                self.teacherAccountButton.isHidden = true
+                self.studentAccountButton.isHidden = true
+                self.saveButtonRef.isHidden = false
+                self.oldPasswordTF.isHidden = false
+                self.newPasswordTF.isHidden = false
+                self.newPassword2TF.isHidden = false
+            }
         }
         super.viewDidLoad()
     }

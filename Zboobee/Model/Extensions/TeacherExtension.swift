@@ -60,6 +60,11 @@ extension Teacher{
         return newTeacher
         }
     
+    static func isManager(email:String)->Bool{
+        let teach : Teacher? = UsersSet.findTeacher(email: email)
+        return (teach?.specialtyManager)!
+    }
+    
     static func updateTeacher(teacher: Teacher,accountValidate: Bool)->NSError?{
         let context = CoreDataManager.context
         teacher.accountValidate = accountValidate

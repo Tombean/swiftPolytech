@@ -69,21 +69,36 @@ class SettingsStudentsController : UIViewController, UITableViewDataSource,UITab
         let validate  = UITableViewRowAction(style: .normal, title: "Validate") { (rowAction, indexPath) in
             self.studTable.beginUpdates()
             //TODO update account validate in usersSet
-            Student.updateStudent(student:student,accountValidate:true)
+            let okV = Student.updateStudent(student:student,accountValidate:true)
+            guard (okV == nil) else {
+                DialogBoxHelper.alert(view: self, withTitle: "Validation Failed", andMessage: "The student account is not active")
+                return
+            }
+            DialogBoxHelper.alert(view: self, withTitle: "Validation Succeed", andMessage: "The student account is active")
             self.studTable.endUpdates()
             self.studTable.reloadData()
         }
         let desactive  = UITableViewRowAction(style: .normal, title: "Desactive") { (rowAction, indexPath) in
             self.studTable.beginUpdates()
             //TODO update account validate in usersSet
-            Student.updateStudent(student:student,accountValidate:false)
+            let okD = Student.updateStudent(student:student,accountValidate:false)
+            guard (okD == nil) else {
+                DialogBoxHelper.alert(view: self, withTitle: "Desactivation Failed", andMessage: "The student account is still active")
+                return
+            }
+            DialogBoxHelper.alert(view: self, withTitle: "Desactivation Succeed", andMessage: "The student account is desactivated")
             self.studTable.endUpdates()
             self.studTable.reloadData()
         }
         let deleteAction  = UITableViewRowAction(style: .default, title: "Delete") { (rowAction, indexPath) in
             self.studTable.beginUpdates()
             //TODO delete account in usersSet
-            Student.deleteStudent(student:student)
+            let okDel = Student.deleteStudent(student:student)
+            guard (okDel == nil) else {
+                DialogBoxHelper.alert(view: self, withTitle: "Deletion Failed", andMessage: "The student account still exists")
+                return
+            }
+            DialogBoxHelper.alert(view: self, withTitle: "Deletion Succeed", andMessage: "The student account has been deleted")
             self.studTable.endUpdates()
             self.studTable.reloadData()
         }
