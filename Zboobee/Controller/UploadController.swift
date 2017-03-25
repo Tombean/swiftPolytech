@@ -32,6 +32,13 @@ class UploadController : UIViewController, UITextFieldDelegate, UIPickerViewDele
             DialogBoxHelper.alert(view: self, withTitle: "No URL", andMessage: "You must write the url of the file")
             return
         }
+        
+        //verif url to do
+        guard isCorrectURL(link:url!) else{
+            DialogBoxHelper.alert(view: self, withTitle: "URL incorrect", andMessage: "You must write a correct URL (beginning by http or www)")
+            return
+        }
+        
         //Get the groups of the pickerView
         if pickerData[indexOfGroup] == ""{
             DialogBoxHelper.alert(view: self, withTitle: "Pas de groupe", andMessage: "Vous devez selectionner un groupe auquel partager")
@@ -128,4 +135,15 @@ class UploadController : UIViewController, UITextFieldDelegate, UIPickerViewDele
         textField.resignFirstResponder()
         return true
     }
+    
+    func isCorrectURL(link:String)->Bool{
+        //TODO
+//        let urlRegEx = "http*|www.+[A-Z0-9a-z._%+-]+.[A-Z0-9a-z._%+-]+@etu.umontpellier.fr"
+//        
+//        let urlTest = NSPredicate(format:"SELF MATCHES %@", urlRegEx)
+//        return urlTest.evaluate(with: link)
+        return true
+
+    }
+    
 }

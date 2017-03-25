@@ -12,6 +12,7 @@ class fileTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var urlToDoc: UITextView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

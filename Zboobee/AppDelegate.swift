@@ -76,6 +76,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("couldn't save context when saving promos")
             }
         }
+        
+        //library keyboard added
+        IQKeyboardManager.sharedManager().enable = true
+        
         return true
     }
 

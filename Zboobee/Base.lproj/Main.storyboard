@@ -763,10 +763,19 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Label" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="r3Y-Hf-Xe5">
+                                                    <rect key="frame" x="281" y="0.0" width="240" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                                </textView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="title" destination="XNg-vo-LyJ" id="wwi-Mo-R5g"/>
+                                            <outlet property="urlToDoc" destination="r3Y-Hf-Xe5" id="lJN-Iu-F6B"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -805,7 +814,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="90h-n7-0De" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-246" y="-1356"/>
+            <point key="canvasLocation" x="-246.09374999999997" y="-1356.25"/>
         </scene>
         <!--Upload-->
         <scene sceneID="AB2-yw-cfW">

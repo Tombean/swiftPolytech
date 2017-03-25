@@ -21,7 +21,7 @@ class FolderController : UIViewController, UITableViewDataSource,UITableViewDele
     //Variables needed to know the group selected
     var indexOfGroup : Int = 0
     var selectedGroup : String = ""
-    //Messages in the table view
+    //Doc in the table view
     var files: [Document] = []
     
     
@@ -61,18 +61,9 @@ class FolderController : UIViewController, UITableViewDataSource,UITableViewDele
         super.viewDidLoad()
         self.channelPicker.dataSource = self
         self.channelPicker.delegate = self
-        var i = 0
-        var firstGroupName : String = ""
         for g in groups  {
             let group = g as! Group
-            if i == 0 {
-                firstGroupName = group.name!
-            }
-            i += 1
             self.pickerData.append(group.name ?? "no group name")
-        }
-        guard firstGroupName != "" else {
-            fatalError("No first group")
         }
         self.selectedGroup = self.pickerData[indexOfGroup]
         self.updateFiles(predicate: [])
@@ -116,6 +107,7 @@ class FolderController : UIViewController, UITableViewDataSource,UITableViewDele
         let cell = self.filesTable.dequeueReusableCell(withIdentifier: "fileCell", for: indexPath) as! fileTableViewCell
         let file = self.filesFetched.object(at: indexPath)
         cell.title.text = file.title!
+        cell.urlToDoc.text = file.url!
 
         return cell
     }

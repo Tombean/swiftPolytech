@@ -24,7 +24,7 @@ class SettingsController : UIViewController, UITableViewDataSource,UITableViewDe
     //Students
     fileprivate lazy var studentsFetched : NSFetchedResultsController<Student> = {
         let request :  NSFetchRequest<Student> =  Student.fetchRequest()
-        request.predicate = NSPredicate(format: "accountValidate == %@", 0)
+        request.predicate = NSPredicate(format: "accountValidate == false")
         request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Student.lastname),ascending:true)]
         let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultController.delegate = self
@@ -34,7 +34,7 @@ class SettingsController : UIViewController, UITableViewDataSource,UITableViewDe
     //Teachers
     fileprivate lazy var teachersFetched : NSFetchedResultsController<Teacher> = {
         let request :  NSFetchRequest<Teacher> =  Teacher.fetchRequest()
-        request.predicate = NSPredicate(format: "accountValidate == %@", 0)
+        request.predicate = NSPredicate(format: "accountValidate == false")
         request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Teacher.lastname),ascending:true)]
         let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultController.delegate = self
@@ -129,13 +129,13 @@ class SettingsController : UIViewController, UITableViewDataSource,UITableViewDe
     //Students
     func updateStudents(predicate : [NSPredicate]){
         if predicate == []{
-            self.studentsFetched = NSFetchResultUpdater.updateStudentPredicate(predicate: NSPredicate(format: "accountValidate == %@", 0))
+            self.studentsFetched = NSFetchResultUpdater.updateStudentPredicate(predicate: NSPredicate(format: "accountValidate == false"))
         }else{
             var predicates : [NSPredicate] = []
             for p in predicate{
                 predicates.append(p)
             }
-            predicates.append(NSPredicate(format: "accountValidate == %@", 0))
+            predicates.append(NSPredicate(format: "accountValidate == false"))
             self.studentsFetched = NSFetchResultUpdater.updateStudentPredicate(predicates: predicates)
         }
         do{
@@ -149,13 +149,13 @@ class SettingsController : UIViewController, UITableViewDataSource,UITableViewDe
     //Teachers
     func updateTeachers(predicate : [NSPredicate]){
         if predicate == []{
-            self.teachersFetched = NSFetchResultUpdater.updateTeacherPredicate(predicate: NSPredicate(format: "accountValidate == %@", 0))
+            self.teachersFetched = NSFetchResultUpdater.updateTeacherPredicate(predicate: NSPredicate(format: "accountValidate == false"))
         }else{
             var predicates : [NSPredicate] = []
             for p in predicate{
                 predicates.append(p)
             }
-            predicates.append(NSPredicate(format: "accountValidate == %@", 0))
+            predicates.append(NSPredicate(format: "accountValidate == false"))
             self.teachersFetched = NSFetchResultUpdater.updateTeacherPredicate(predicates: predicates)
         }
         do{

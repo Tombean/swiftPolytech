@@ -126,9 +126,9 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         //self.updateMessages()
         let cell = self.messagesTable.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! messageTableViewCell
         let message = self.messagesFetched.object(at: indexPath)
-        cell.messageLabel.text = message.content!
-        let userM = message.isPosted!
-        cell.userLabel.text = userM.lastname
+        cell.messageLabel.text = message.content
+        let userM = message.isPosted
+        cell.userLabel.text = userM?.lastname
         return cell
     }
     
