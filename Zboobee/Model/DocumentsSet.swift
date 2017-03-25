@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+/// Class that manages a collection of Documents in the core
 class DocumentsSet{
     
     /// Add an Document to the collection

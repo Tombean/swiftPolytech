@@ -8,13 +8,14 @@
 
 import Foundation
 
+///extension of the object Event in the core
 extension Event{
     
     
     /// create a Message
     ///
     /// - Parameters:
-    ///   - title: titre
+    ///   - title: title
     ///   - text: content
     ///   - date: date emission
     ///   - lengthMax: max length of characters

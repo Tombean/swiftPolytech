@@ -8,11 +8,17 @@
 
 import Foundation
 
+///extension of the object Document in the core
 extension Document{
     
     
     /// create a Document
     ///
+    /// - Parameters:
+    ///   - title: title of the document
+    ///   - url: url of the document
+    ///   - originator: user who posted the document
+    ///   - groups: groups who can see the document
     /// - Returns: a Document
     static func createDocument(title:String,url:String,originator:User,groups: NSSet)->Document{
         

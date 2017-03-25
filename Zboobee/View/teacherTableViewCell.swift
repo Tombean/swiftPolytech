@@ -8,12 +8,15 @@
 
 import UIKit
 
+/// Class that describes the cell of the teachers displayed on table
 class teacherTableViewCell: UITableViewCell {
     
-
-    
+    /// lastname of the teacher
     @IBOutlet weak var lastname: UILabel!
+    /// firstname of the teacher
     @IBOutlet weak var firstname: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

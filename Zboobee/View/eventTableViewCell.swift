@@ -8,12 +8,18 @@
 
 import UIKit
 
+/// Class that describes the cell of the events displayed on table
 class eventTableViewCell: UITableViewCell {
     
+    ///title of the event
     @IBOutlet weak var title: UILabel!
+    ///date of the event
     @IBOutlet weak var date: UILabel!
+    ///duration of the event
     @IBOutlet weak var duration: UILabel!
+    ///user who posted the event
     @IBOutlet weak var user: UILabel!
+    ///location of the event
     @IBOutlet weak var location: UILabel!
     
     override func awakeFromNib() {

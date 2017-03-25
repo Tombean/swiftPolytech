@@ -8,9 +8,12 @@
 
 import UIKit
 
+/// Class that describes the cell of the messages displayed on table
 class messageTableViewCell: UITableViewCell {
 
+    ///content of the message
     @IBOutlet weak var messageLabel: UILabel!
+    ///user who send the message
     @IBOutlet weak var userLabel: UILabel!
     
     override func awakeFromNib() {

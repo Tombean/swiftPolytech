@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+///extension of the object User in the core
 extension User{
     
     /// creates a new user

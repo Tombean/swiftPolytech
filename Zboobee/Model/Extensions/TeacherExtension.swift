@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+///extension of the object Teacher in the core
 extension Teacher{
         
         /// creates a new teacher
@@ -60,11 +61,21 @@ extension Teacher{
         return newTeacher
         }
     
+    /// says if the teacher is manager of a specialty
+    ///
+    /// - Parameter email: email of the teacher
+    /// - Returns: Bool that says if the taecher is a manager
     static func isManager(email:String)->Bool{
         let teach : Teacher? = UsersSet.findTeacher(email: email)
         return (teach?.specialtyManager)!
     }
     
+    /// updates the validation of the teacher's account
+    ///
+    /// - Parameters:
+    ///   - teacher: teacher object
+    ///   - accountValidate: bool of the validation of the teacher's account
+    /// - Returns: an error or nil if it works
     static func updateTeacher(teacher: Teacher,accountValidate: Bool)->NSError?{
         let context = CoreDataManager.context
         teacher.accountValidate = accountValidate
@@ -78,6 +89,10 @@ extension Teacher{
         }
     }
     
+    /// deletes the teacher's account
+    ///
+    /// - Parameter teacher: teacher object
+    /// - Returns: an error or nil if it works
     static func deleteTeacher(teacher:Teacher)->NSError?{
         let context = CoreDataManager.context
         //TODO

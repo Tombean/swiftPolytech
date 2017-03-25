@@ -8,11 +8,17 @@
 
 import UIKit
 
+/// Class that describes the cell of the files displayed on table
 class fileTableViewCell: UITableViewCell {
 
     
+    /// title of the file
     @IBOutlet weak var title: UILabel!
+    
+    /// url of the file
     @IBOutlet weak var urlToDoc: UITextView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

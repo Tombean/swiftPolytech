@@ -9,8 +9,13 @@
 import Foundation
 import CoreData
 
+//Class that manages a collection of groups in the core
 class GroupsSet{
     
+    /// fing one group
+    ///
+    /// - Parameter name: name of the group
+    /// - Returns: group
     static func findGroupByName(name: String)->Group?{
         var groups : [Group] = []
         let context = CoreDataManager.context
@@ -26,6 +31,9 @@ class GroupsSet{
 
     }
     
+    /// find all groups
+    ///
+    /// - Returns: an array of groups
     static func findAllGroups()->[Group]?{
         var groups : [Group] = []
         let context = CoreDataManager.context

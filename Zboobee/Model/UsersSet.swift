@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+///Class that manages the collection of users in the core
 class UsersSet{
     
     // MARK: - User management -
@@ -65,17 +66,19 @@ class UsersSet{
     }
     
     
-    /// check if a user can login based on email and password
+    /// check if a student's account is valide
     ///
-    /// - Parameter email: email address of the user
-    /// - Parameter password: password of the user
-    /// - Returns: Returns the user who has the email given as a parameter, nothing if no user was found
+    /// - Parameter email: email address of the student
+    /// - Returns: Returns true if he can login or false
     static func isValideStud(email: String)->Bool{
         let stud : Student? = self.findStudent(email: email)
         return (stud?.accountValidate)!
     }
     
-    
+    /// find a teacher
+    ///
+    /// - Parameter email: email of the teacher
+    /// - Returns: the teacher found
     static func findTeacher(email: String)->Teacher?{
         var teachers : [Teacher] = []
         let context = CoreDataManager.context
@@ -95,11 +98,10 @@ class UsersSet{
     }
     
     
-    /// check if a user can login based on email and password
+    /// check if a teacher's account is valide
     ///
-    /// - Parameter email: email address of the user
-    /// - Parameter password: password of the user
-    /// - Returns: Returns the user who has the email given as a parameter, nothing if no user was found
+    /// - Parameter email: email address of the teacher
+    /// - Returns: Returns true if he can login or false
     static func isValideTeach(email: String)->Bool{
         let teach : Teacher? = self.findTeacher(email: email)
         return (teach?.accountValidate)!
@@ -137,26 +139,23 @@ class UsersSet{
     ///
     /// - Parameter officeToAdd: object office
     /// - Returns: true if the office is added
-    static func addOffice(officeToAdd : Office?)->Bool{
-        //let context = CoreDataManager.context
-        guard officeToAdd != nil else{
+    static func addOffice(officeToAdd : Office)->Bool{
+        let context = officeToAdd.managedObjectContext
+        do {
+            try context?.save()
+        } catch {
             return false
         }
-        /*
-        var user : Office =  Office(context: context)
-        user  =  officeToAdd!
-        */
-        if CoreDataManager.save() == nil{ // no error
-            return true
-        }
-        else{
-            //CoreDataManager.context.rollback()
-            return false
-        }
+        return true
     }
 
     
     // MARK: - Promo management -
+    
+    
+    /// find all the prom in the core
+    ///
+    /// - Returns: an array of promotion
     static func findAllPromotion()->[Promotion]?{
         var promo : [Promotion] = []
         let requestPromo: NSFetchRequest<Promotion> = Promotion.fetchRequest()
@@ -175,6 +174,12 @@ class UsersSet{
         
     }
     
+    /// find a promo
+    ///
+    /// - Parameters:
+    ///   - specialty: specialty
+    ///   - year: graduation year
+    /// - Returns: promotion found
     static func findOnePromotion(specialty : String, year : Int)->Promotion?{
         var promo : [Promotion] = []
         let requestPromo: NSFetchRequest<Promotion> = Promotion.fetchRequest()
@@ -195,6 +200,10 @@ class UsersSet{
     
     //MARK : Office management
     
+    /// find an office
+    ///
+    /// - Parameter email: email of the office
+    /// - Returns: Office found
     static func findOffice(email:String)->Office?{
         var office : [Office] = []
         let requestOffice: NSFetchRequest<Office> = Office.fetchRequest()
@@ -213,6 +222,11 @@ class UsersSet{
         }
     }
     
+    //MARK : Teacher management
+    
+    /// get all the teachers
+    ///
+    /// - Returns: an array of teachers
     static func getAllTeachers()->[Teacher]{
         var teachers : [Teacher] = []
         let requestTeacher: NSFetchRequest<Teacher> = Teacher.fetchRequest()

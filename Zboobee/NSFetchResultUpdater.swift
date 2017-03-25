@@ -14,7 +14,8 @@ import CoreData
 /// Utility class providing methods to manage message objects
 class NSFetchResultUpdater {
     
-    //MARK Updater for Messages
+    //MARK - Updater for Messages
+    
     /// Returns a NSFetchedResultsController according to different predicates
     ///
     /// - Parameter withPredicates: an array of predicates to apply
@@ -28,6 +29,10 @@ class NSFetchResultUpdater {
         return fetchResultController
     }
     
+    /// Returns a NSFetchedResultsController according to different predicates
+    ///
+    /// - Parameter withPredicates: predicate to apply
+    /// - Returns: a NSFetchedResultController object containing all the posts concerned by the predicates
     class func updateMessagePredicate(predicate: NSPredicate) -> NSFetchedResultsController<Message>{
         
         let request: NSFetchRequest<Message> = Message.fetchRequest()
@@ -37,7 +42,12 @@ class NSFetchResultUpdater {
         return fetchResultController
     }
     
-    //MARK updater for Events
+    //MARK - updater for Events
+    
+    /// Returns a NSFetchedResultsController according to different predicates
+    ///
+    /// - Parameter withPredicates: an array of predicates to apply
+    /// - Returns: a NSFetchedResultController object containing all the posts concerned by the predicates
     class func updateEventPredicate(predicates: [NSPredicate]) -> NSFetchedResultsController<Event>{
         
         let request: NSFetchRequest<Event> = Event.fetchRequest()
@@ -47,6 +57,10 @@ class NSFetchResultUpdater {
         return fetchResultController
     }
     
+    /// Returns a NSFetchedResultsController according to different predicates
+    ///
+    /// - Parameter withPredicates: predicate to apply
+    /// - Returns: a NSFetchedResultController object containing all the posts concerned by the predicates
     class func updateEventPredicate(predicate: NSPredicate) -> NSFetchedResultsController<Event>{
         
         let request: NSFetchRequest<Event> = Event.fetchRequest()
@@ -56,7 +70,12 @@ class NSFetchResultUpdater {
         return fetchResultController
     }
     
-    //MARK updater for Students
+    //MARK - updater for Students
+    
+    /// Returns a NSFetchedResultsController according to different predicates
+    ///
+    /// - Parameter withPredicates: an array of predicates to apply
+    /// - Returns: a NSFetchedResultController object containing all the posts concerned by the predicates
     class func updateStudentPredicate(predicates: [NSPredicate]) -> NSFetchedResultsController<Student>{
         
         let request: NSFetchRequest<Student> = Student.fetchRequest()
@@ -66,6 +85,10 @@ class NSFetchResultUpdater {
         return fetchResultController
     }
     
+    /// Returns a NSFetchedResultsController according to different predicates
+    ///
+    /// - Parameter withPredicates: predicate to apply
+    /// - Returns: a NSFetchedResultController object containing all the posts concerned by the predicates
     class func updateStudentPredicate(predicate: NSPredicate) -> NSFetchedResultsController<Student>{
         
         let request: NSFetchRequest<Student> = Student.fetchRequest()
@@ -75,7 +98,12 @@ class NSFetchResultUpdater {
         return fetchResultController
     }
     
-    //MARK updater for Teachers
+    //MARK - updater for Teachers
+    
+    /// Returns a NSFetchedResultsController according to different predicates
+    ///
+    /// - Parameter withPredicates: an array of predicates to apply
+    /// - Returns: a NSFetchedResultController object containing all the posts concerned by the predicates
     class func updateTeacherPredicate(predicates: [NSPredicate]) -> NSFetchedResultsController<Teacher>{
         
         let request: NSFetchRequest<Teacher> = Teacher.fetchRequest()
@@ -85,6 +113,10 @@ class NSFetchResultUpdater {
         return fetchResultController
     }
     
+    /// Returns a NSFetchedResultsController according to different predicates
+    ///
+    /// - Parameter withPredicates: predicate to apply
+    /// - Returns: a NSFetchedResultController object containing all the posts concerned by the predicates
     class func updateTeacherPredicate(predicate: NSPredicate) -> NSFetchedResultsController<Teacher>{
         
         let request: NSFetchRequest<Teacher> = Teacher.fetchRequest()
@@ -94,7 +126,12 @@ class NSFetchResultUpdater {
         return fetchResultController
     }
     
-    //MARK updater for Files
+    //MARK - updater for Files
+    
+    /// Returns a NSFetchedResultsController according to different predicates
+    ///
+    /// - Parameter withPredicates: an array of predicates to apply
+    /// - Returns: a NSFetchedResultController object containing all the posts concerned by the predicates
     class func updateFilePredicate(predicates: [NSPredicate]) -> NSFetchedResultsController<Document>{
         
         let request: NSFetchRequest<Document> = Document.fetchRequest()
@@ -104,6 +141,10 @@ class NSFetchResultUpdater {
         return fetchResultController
     }
     
+    /// Returns a NSFetchedResultsController according to different predicates
+    ///
+    /// - Parameter withPredicates: predicate to apply
+    /// - Returns: a NSFetchedResultController object containing all the posts concerned by the predicates
     class func updateFilePredicate(predicate: NSPredicate) -> NSFetchedResultsController<Document>{
         
         let request: NSFetchRequest<Document> = Document.fetchRequest()

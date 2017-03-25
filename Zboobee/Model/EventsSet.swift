@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+/// Class that manages a collection of events in the core
 class EventsSet{
     
     /// Add an event to the collection

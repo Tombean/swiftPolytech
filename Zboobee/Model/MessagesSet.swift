@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+///Class that manages a collection of messages in the core
 class MessagesSet{
     
     /// Add a message to the collection
@@ -26,6 +27,9 @@ class MessagesSet{
         return true
     }
     
+    /// find all the messages
+    ///
+    /// - Returns: an array of messages
     static func findAllMessages()->[Message]{
         var messages : [Message] = []
         let context = CoreDataManager.context
@@ -38,6 +42,10 @@ class MessagesSet{
         return messages
     }
     
+    /// find all the messages to one group
+    ///
+    /// - Parameter groupName: name of the group
+    /// - Returns: an array of messages
     static func findAllMessagesForGroup(groupName : String)->[Message]?{
         var messages : [Message] = []
         let context = CoreDataManager.context

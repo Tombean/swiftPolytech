@@ -8,6 +8,7 @@
 
 import Foundation
 
+///Singleton that is used to know the user everywhere in the application
 class UserSession {
     static let instance = UserSession()
     var user : User? = nil

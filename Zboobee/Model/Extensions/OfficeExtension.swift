@@ -8,6 +8,7 @@
 
 import Foundation
 
+///extension of the object Office in the core
 extension Office{
     
     /// creates a new office

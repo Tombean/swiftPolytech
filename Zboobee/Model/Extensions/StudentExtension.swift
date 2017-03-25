@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 
+///extension of the object Student in the core
 extension Student{
     
     /// creates a new student
@@ -31,6 +32,7 @@ extension Student{
         newStudent.password = password
         newStudent.accountValidate = accountValidate
         newStudent.promotion = promotion
+        // in function of the promotion assigns the groups
         var  groups : NSSet
         if promotion == nil{
             groups = [GroupsSet.findGroupByName(name: "Students")!]
@@ -62,6 +64,12 @@ extension Student{
         return newStudent
     }
     
+    /// update the validation of the student's account
+    ///
+    /// - Parameters:
+    ///   - student: student
+    ///   - accountValidate: the boolean for the validation of the account
+    /// - Returns: an error or nothing if it works
     static func updateStudent(student: Student,accountValidate: Bool)->NSError?{
         let context = CoreDataManager.context
         student.accountValidate = accountValidate
@@ -75,6 +83,11 @@ extension Student{
         }
     }
     
+    /// delete a student's account
+    ///
+    /// - Parameters:
+    ///   - student: student
+    /// - Returns: an error or nothing if it works
     static func deleteStudent(student:Student)->NSError?{
         let context = CoreDataManager.context
         //TODO

@@ -8,6 +8,7 @@
 
 import Foundation
 
+///Class that manages object message in the coreData
 extension Message{
     
     

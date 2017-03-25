@@ -9,24 +9,35 @@
 import UIKit
 import CoreData
 
+/// Class that controls the registration view
 class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
-
+    ///firstNameTF
     @IBOutlet weak var firstNameTF: UITextField!
+    ///lastNameTF
     @IBOutlet weak var lastNameTF: UITextField!
+    ///emailTF
     @IBOutlet weak var emailTF: UITextField!
+    ///passwordTF
     @IBOutlet weak var passwordTF: UITextField!
+    ///confirmedpasswordTF
     @IBOutlet weak var confirmpasswordTF: UITextField!
+    ///index of the role selected on the pickerView
     var indexOfRole : Int = 0
     
+    /// validate button to verify all the TF to register
+    ///
+    /// - Parameter sender: no need to know
     @IBAction func validateButton(_ sender: Any) {
     
+        //get the text of the TF
         let firstName : String? = self.firstNameTF.text
         let lastName : String? = self.lastNameTF.text
         let email : String? = self.emailTF.text
         let password : String? = self.passwordTF.text
         let passwordConfirmation : String? = self.confirmpasswordTF.text
 
+        //Verify that all the fields are not empty
         guard firstName != "" else{
             DialogBoxHelper.alert(view: self, withTitle: "Registration is incomplete", andMessage: "No first name")
             return
@@ -35,18 +46,22 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
             DialogBoxHelper.alert(view: self, withTitle: "Registration is incomplete", andMessage: "No last name")
             return
         }
+        //Verify the format of the email
         guard email != "" && isValidEmail(testStr: email!) else{
             DialogBoxHelper.alert(view: self, withTitle: "Registration is incomplete", andMessage: "No email or invalid format : please use your @etu.umontpellier.fr email address")
             return
         }
+        //Verify that the password makes more than 6 characters
         guard password != "" && (password?.characters.count)! >= 6 else{
             DialogBoxHelper.alert(view: self, withTitle: "Registration is incomplete", andMessage: "No password, password must contain at least 6 characters")
             return
         }
+        //Verify that the confirmedpassword makes more than 6 characters
         guard passwordConfirmation != "" && (passwordConfirmation?.characters.count)! >= 6 else{
            DialogBoxHelper.alert(view: self, withTitle: "Registration is incomplete", andMessage: "No password confirmation, password confirmation must contain at least 6 characters")
             return
         }
+        //Verify that the password corresponds to the confirmedpassword-
         guard passwordConfirmation == password else{
             DialogBoxHelper.alert(view: self, withTitle: "Registration is incomplete", andMessage: "Password does not match password confirmation")
             return
@@ -60,6 +75,7 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
         guard self.selectedRole != nil else{
             return
         }
+        //assigs the promo and the role
         let rowOfPromo : Int = Int(self.indexOfRole)
         let promos = UsersSet.findAllPromotion()
         guard promos != nil else{
@@ -83,26 +99,37 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
             return
             }
         }
-
+        //display a box if the registration works and on the ok the box is dismiss to go to the login view
         let dismissAction = UIAlertAction(title: "Ok", style: .default, handler: self.dismissSelf)
         DialogBoxHelper.alert(view: self, withTitle: "Register complete", andMessage: "Thank you for your registration ! You can now login and enjoy Zboobee", action: dismissAction)
         return
     }
     
     
+    /// cancel the registration and go back to the login view
+    ///
+    /// - Parameter sender: no need to know
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    //pickerview with roles
     @IBOutlet weak var promoPV: UIPickerView!
+    //Variable of the role selected on the pickerView
     var selectedRole: String?
+    //Variable for the data in the pickerview
     var pickerData : [String] = []
     
+    
+    /// dismiss this screen and go back to the old one
+    ///
+    /// - Parameter _: action that must be done
     private func dismissSelf(_ :UIAlertAction) -> Void{
         self.dismiss(animated: true, completion: nil)
     }
-        
+    ///Lunch the view
     override func viewDidLoad() {
         super.viewDidLoad()
+        //initialize the pickerView
         let promos = UsersSet.findAllPromotion()
         guard promos != nil else{
             return
@@ -161,6 +188,10 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
         return true
     }
     
+    /// tests if the email format is ok
+    ///
+    /// - Parameter testStr: email tested
+    /// - Returns: true if the email format is ok and false if not
     func isValidEmail(testStr:String) -> Bool {
         // print("validate calendar: \(testStr)")
         let emailRegEx = "[A-Z0-9a-z._%+-]+.[A-Z0-9a-z._%+-]+@etu.umontpellier.fr"

@@ -8,11 +8,14 @@
 
 import UIKit
 
+/// Class that describes the cell of the students displayed on table
 class studentTableViewCell: UITableViewCell {
     
-    
+    /// firstname of the student
     @IBOutlet weak var firstname: UILabel!
+    /// lastname of the student
     @IBOutlet weak var lastname: UILabel!
+    /// promotion of the student
     @IBOutlet weak var promotion: UILabel!
     
     override func awakeFromNib() {
