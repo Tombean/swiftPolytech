@@ -23,8 +23,10 @@ class FolderController : UIViewController, UITableViewDataSource,UITableViewDele
         switch segmentedControl.selectedSegmentIndex{
         case 0:
             self.displayNonPermanentDoc = true
+            self.updateFiles(predicate: [])
         case 1:
             self.displayNonPermanentDoc = false
+            self.updateFiles(predicate: [])
         default:
             break
         }
