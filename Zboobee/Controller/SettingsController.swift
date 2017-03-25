@@ -32,7 +32,7 @@ class SettingsController : UIViewController{
     
     override func viewDidLoad() {
         self.userloged = UserSession.instance.user
-        guard self.userloged == nil else{
+        guard self.userloged != nil else{
             fatalError("No user selected!!!")
         }
         super.viewDidLoad()
