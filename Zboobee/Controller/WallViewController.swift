@@ -84,6 +84,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
         //set the TF to empty
         self.messageTF.text = ""
+        self.titleTF.text = ""
         //update the request
         self.updateMessages(predicate: [])
         //inform the user that his message has been posted
