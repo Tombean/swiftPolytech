@@ -29,6 +29,8 @@ class CalendarController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     var events: [Event] = []
     //Variable user get from the login
     var userloged : User?
+    let segueShowEvent = "showEventSegue"
+
     
     ///Closure to get the events we want to see and sort them by date
     fileprivate lazy var eventsFetched : NSFetchedResultsController<Event> = {
@@ -119,7 +121,7 @@ class CalendarController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         let cell = self.eventsTable.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! eventTableViewCell
         let event = self.eventsFetched.object(at: indexPath)
         cell.title.text = event.title!
-        cell.duration.text = event.duration
+        cell.duration.text = "\((event.duration)!)h"
         cell.date.text = Helper.getFormattedDate(date:event.date as! Date)
         cell.location.text = event.place!
         let userE = event.isCreated!
@@ -173,6 +175,26 @@ class CalendarController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int{
         return 1
+    }
+    
+    //MARK - Navigation
+    
+    /// prepare the segue
+    ///
+    /// - Parameters:
+    ///   - segue: segue that displays the view
+    ///   - sender: no need to know
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object
+        if segue.identifier == self.segueShowEvent{
+            if let indexPath = self.eventsTable.indexPathForSelectedRow{
+                let showEventViewController = segue.destination as! showEventViewController
+                showEventViewController.event = self.eventsFetched.object(at: indexPath)
+                self.eventsTable.deselectRow(at: indexPath, animated: true)
+            }
+            
+        }
     }
     
     //MARK: Delegates
