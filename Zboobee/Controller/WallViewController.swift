@@ -34,6 +34,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     //Variable user get from the login
     var user : User?
+    //segue to show all the details of a message
     let segueShowMessage = "segueShowMessage"
     ///Closure to get the messages we want to see and sort them by date
     fileprivate lazy var messagesFetched : NSFetchedResultsController<Message> = {
@@ -176,6 +177,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        //set the color of the message to see where it comes
         let message = self.messagesFetched.object(at: indexPath)
         if (message.isPosted is Office){
             cell.contentView.backgroundColor = UIColor.magenta
@@ -244,6 +246,13 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK - Navigation
+    
+    /// prepare the segue
+    ///
+    /// - Parameters:
+    ///   - segue: segue that displays the view
+    ///   - sender: no need to know
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object
