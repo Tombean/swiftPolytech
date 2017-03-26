@@ -9,15 +9,24 @@
 import Foundation
 import UIKit
 
-/// Class that controls the detailed message view
+/// Class that controls the detailed event view
 class showEventViewController: UIViewController{
     
- 
+    ///author
     @IBOutlet weak var author: UILabel!
+    ///eventTitle
     @IBOutlet weak var eventTitle: UITextView!
+    ///eventDesc
     @IBOutlet weak var eventDesc: UITextView!
+    ///date
     @IBOutlet weak var date: UILabel!
+    ///location
     @IBOutlet weak var location: UILabel!
+    
+    
+    /// action to return to the old view
+    ///
+    /// - Parameter sender: no need to know
     @IBAction func backButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
