@@ -34,7 +34,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     //Variable user get from the login
     var user : User?
-    
+    let segueShowMessage = "segueShowMessage"
     ///Closure to get the messages we want to see and sort them by date
     fileprivate lazy var messagesFetched : NSFetchedResultsController<Message> = {
         let request :  NSFetchRequest<Message> =  Message.fetchRequest()
@@ -247,6 +247,14 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object
+        if segue.identifier == self.segueShowMessage{
+            if let indexPath = self.messagesTable.indexPathForSelectedRow{
+                let showMessageViewController = segue.destination as! showMessageViewController
+                showMessageViewController.message = self.messagesFetched.object(at: indexPath)
+                self.messagesTable.deselectRow(at: indexPath, animated: true)
+            }
+ 
+        }
     }
 
     /// function needed to take off the keyboard
@@ -324,5 +332,4 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
     }
 
-    
 }

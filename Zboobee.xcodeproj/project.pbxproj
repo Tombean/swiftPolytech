@@ -59,6 +59,7 @@
 		647D6C0E1E770B3500B2BABD /* MessageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D6C0D1E770B3500B2BABD /* MessageExtension.swift */; };
 		647D6C101E770B4900B2BABD /* MessagesSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647D6C0F1E770B4900B2BABD /* MessagesSet.swift */; };
 		64EE5F441E8032A000A46D3D /* messageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EE5F431E8032A000A46D3D /* messageTableViewCell.swift */; };
+		6F0E9A101E880D7A003C800F /* showMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0E9A0F1E880D7A003C800F /* showMessageViewController.swift */; };
 		6FB88BCC1E853BBA00030B54 /* CalendarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB88BCB1E853BBA00030B54 /* CalendarController.swift */; };
 		6FB88BCE1E85406200030B54 /* EventExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB88BCD1E85406200030B54 /* EventExtension.swift */; };
 		6FB88BD01E85418200030B54 /* EventsSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB88BCF1E85418200030B54 /* EventsSet.swift */; };
@@ -143,6 +144,7 @@
 		647D6C0D1E770B3500B2BABD /* MessageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageExtension.swift; path = Model/Extensions/MessageExtension.swift; sourceTree = "<group>"; };
 		647D6C0F1E770B4900B2BABD /* MessagesSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesSet.swift; path = Model/MessagesSet.swift; sourceTree = "<group>"; };
 		64EE5F431E8032A000A46D3D /* messageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = messageTableViewCell.swift; path = View/messageTableViewCell.swift; sourceTree = "<group>"; };
+		6F0E9A0F1E880D7A003C800F /* showMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = showMessageViewController.swift; path = Controller/showMessageViewController.swift; sourceTree = "<group>"; };
 		6FB88BCB1E853BBA00030B54 /* CalendarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarController.swift; path = Controller/CalendarController.swift; sourceTree = "<group>"; };
 		6FB88BCD1E85406200030B54 /* EventExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventExtension.swift; path = Model/Extensions/EventExtension.swift; sourceTree = "<group>"; };
 		6FB88BCF1E85418200030B54 /* EventsSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventsSet.swift; path = Model/EventsSet.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				530FBB941E8275DE00FEFC07 /* loginController.swift */,
 				530FBB951E8275DE00FEFC07 /* RegistrationController.swift */,
 				6FB88BCB1E853BBA00030B54 /* CalendarController.swift */,
+				6F0E9A0F1E880D7A003C800F /* showMessageViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				245C84FB1E6817AB00862038 /* UserExtension.swift in Sources */,
 				53C3C2DB1E868B6E0007BC53 /* IQUIView+IQKeyboardToolbar.swift in Sources */,
 				245C85011E68264800862038 /* UsersSet.swift in Sources */,
+				6F0E9A101E880D7A003C800F /* showMessageViewController.swift in Sources */,
 				64EE5F441E8032A000A46D3D /* messageTableViewCell.swift in Sources */,
 				6FB88BCE1E85406200030B54 /* EventExtension.swift in Sources */,
 				6443B9A11E82F9D300240103 /* UserSession.swift in Sources */,
