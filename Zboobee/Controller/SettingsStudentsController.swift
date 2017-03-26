@@ -10,36 +10,45 @@ import Foundation
 import UIKit
 import CoreData
 
+/// Class that controls the settings account of students view
 class SettingsStudentsController : UIViewController, UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate{
     
-    
+    ///titleStudents
     @IBOutlet weak var titleStudents: UILabel!
+    ///studTable
     @IBOutlet weak var studTable: UITableView!
 
     
+    /// Stop the action and return to the old view
+    ///
+    /// - Parameter sender: no need to know
     @IBAction func cancelButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    //Students
+    ///Closure to get the students we want to see and sort them by lastname
     fileprivate lazy var studentsFetched : NSFetchedResultsController<Student> = {
         let request :  NSFetchRequest<Student> =  Student.fetchRequest()
-        //request.predicate = NSPredicate(format: "accountValidate == false")
         request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Student.lastname),ascending:true)]
         let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath: nil, cacheName: nil)
         fetchResultController.delegate = self
         return fetchResultController
     }()
-    
+    //students in the table view
     var students: [Student] = []
 
+    ///Launch the view
     override func viewDidLoad() {
         super.viewDidLoad()
+        //update the request and the table
         self.updateStudents(predicate: [])
     }
     
     //MARK: - Delegates and data sources
-    //MARK: Data Sources tableview
+    
+    //MARK : Table View
+    
+    //MARK: Data Sources
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //self.updateStudents()
         let cell = self.studTable.dequeueReusableCell(withIdentifier: "studentCell", for: indexPath) as! studentTableViewCell
@@ -64,47 +73,58 @@ class SettingsStudentsController : UIViewController, UITableViewDataSource,UITab
         return true
     }
     
+    ///Allows to have swipe and actions on one line of the table
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        //student concerned (line on the table)
         let student = self.studentsFetched.object(at: indexPath)
+        //action on validate button
         let validate  = UITableViewRowAction(style: .normal, title: "Validate") { (rowAction, indexPath) in
             self.studTable.beginUpdates()
-            //TODO update account validate in usersSet
             let okV = Student.updateStudent(student:student,accountValidate:true)
+            //inform the user that it works or not
             guard (okV == nil) else {
                 DialogBoxHelper.alert(view: self, withTitle: "Validation Failed", andMessage: "The student account is not active")
                 return
             }
             DialogBoxHelper.alert(view: self, withTitle: "Validation Succeed", andMessage: "The student account is active")
             self.studTable.endUpdates()
+            //refresh the table
             self.studTable.reloadData()
         }
+        //action on desactivate button
         let desactive  = UITableViewRowAction(style: .normal, title: "Desactive") { (rowAction, indexPath) in
             self.studTable.beginUpdates()
-            //TODO update account validate in usersSet
             let okD = Student.updateStudent(student:student,accountValidate:false)
+            //inform the user that it works or not
             guard (okD == nil) else {
                 DialogBoxHelper.alert(view: self, withTitle: "Desactivation Failed", andMessage: "The student account is still active")
                 return
             }
             DialogBoxHelper.alert(view: self, withTitle: "Desactivation Succeed", andMessage: "The student account is desactivated")
             self.studTable.endUpdates()
+            //refresh the table
             self.studTable.reloadData()
         }
+        //action on delete button
         let deleteAction  = UITableViewRowAction(style: .default, title: "Delete") { (rowAction, indexPath) in
             self.studTable.beginUpdates()
             //TODO delete account in usersSet
             let okDel = Student.deleteStudent(student:student)
+            //inform the user that it works or not
             guard (okDel == nil) else {
                 DialogBoxHelper.alert(view: self, withTitle: "Deletion Failed", andMessage: "The student account still exists")
                 return
             }
             DialogBoxHelper.alert(view: self, withTitle: "Deletion Succeed", andMessage: "The student account has been deleted")
             self.studTable.endUpdates()
+            //refresh the table
             self.studTable.reloadData()
         }
+        //set the color
         desactive.backgroundColor = UIColor.orange
         validate.backgroundColor = UIColor.green
         deleteAction.backgroundColor = UIColor.red
+        //in functionof the account give 2 differents possibilities
         if student.accountValidate{
             return [deleteAction,desactive]
         }else{
@@ -112,18 +132,6 @@ class SettingsStudentsController : UIViewController, UITableViewDataSource,UITab
         }
     }
     
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        if(editingStyle == UITableViewCellEditingStyle.delete){
-//            self.studTable.beginUpdates()
-//            //TODO : UsersSet delete
-//            self.studTable.endUpdates()
-//        }
-//        if(editingStyle == UITableViewCellEditingStyle.validate){
-//            self.studTable.beginUpdates()
-//            //TODO : UsersSet delete
-//            self.studTable.endUpdates()
-//        }
-//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         guard let section = self.studentsFetched.sections?[section] else {
@@ -134,7 +142,7 @@ class SettingsStudentsController : UIViewController, UITableViewDataSource,UITab
     }
     
     
-    //MARK NSFecthResultController
+    //MARK - NSFecthResultController
     
     //MARK: - Controller methods
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -161,16 +169,16 @@ class SettingsStudentsController : UIViewController, UITableViewDataSource,UITab
         }
     }
     
-    //Students
+    /// update the request and so the table of students
+    ///
+    /// - Parameter predicate: predicate of the request
     func updateStudents(predicate : [NSPredicate]){
         if predicate == []{
-            //self.studentsFetched = NSFetchResultUpdater.updateStudentPredicate(predicate: NSPredicate(format: "accountValidate == false"))
         }else{
             var predicates : [NSPredicate] = []
             for p in predicate{
                 predicates.append(p)
             }
-            //predicates.append(NSPredicate(format: "accountValidate == false"))
             self.studentsFetched = NSFetchResultUpdater.updateStudentPredicate(predicates: predicates)
         }
         do{

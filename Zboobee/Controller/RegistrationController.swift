@@ -149,6 +149,8 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     //MARK: - Delegates and data sources
+    //MARK - Picker View
+    
     //MARK: Data Sources
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
@@ -163,11 +165,7 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     //MARK: Delegates
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        print("row : ")
-        print(row)
         self.selectedRole = pickerData[row]
-        print("role :")
-        print(selectedRole ?? "no value")
         self.indexOfRole = row
         return self.selectedRole
         
@@ -180,9 +178,13 @@ class RegistrationController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
-        // Pass the selected objec
+        // Pass the selected object
     }
     
+    /// function needed to take off the keyboard
+    ///
+    /// - Parameter textField: TF that we want to resign
+    /// - Returns: always true
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

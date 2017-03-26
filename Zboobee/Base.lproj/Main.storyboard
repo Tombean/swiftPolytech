@@ -758,25 +758,36 @@
                                         <rect key="frame" x="0.0" y="28" width="880" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nTh-Mw-CPQ" id="KfY-HA-qd4">
-                                            <rect key="frame" x="0.0" y="0.0" width="880" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="880" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNg-vo-LyJ" userLabel="title">
-                                                    <rect key="frame" x="137" y="11" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XNg-vo-LyJ" userLabel="title">
+                                                    <rect key="frame" x="18" y="11" width="100" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="5E7-Of-nJu"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Label" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="r3Y-Hf-Xe5">
-                                                    <rect key="frame" x="281" y="0.0" width="240" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Label" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="r3Y-Hf-Xe5">
+                                                    <rect key="frame" x="318" y="0.0" width="300" height="43"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="300" id="haZ-7l-i6w"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                                 </textView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="r3Y-Hf-Xe5" firstAttribute="leading" secondItem="XNg-vo-LyJ" secondAttribute="trailing" constant="200" id="8Q9-w6-iEX"/>
+                                                <constraint firstItem="r3Y-Hf-Xe5" firstAttribute="centerY" secondItem="XNg-vo-LyJ" secondAttribute="centerY" id="COQ-Lb-CpK"/>
+                                                <constraint firstItem="r3Y-Hf-Xe5" firstAttribute="centerY" secondItem="KfY-HA-qd4" secondAttribute="centerY" id="M88-4k-AZ5"/>
+                                                <constraint firstItem="XNg-vo-LyJ" firstAttribute="leading" secondItem="KfY-HA-qd4" secondAttribute="leadingMargin" constant="10" id="Xue-1w-kbS"/>
+                                                <constraint firstItem="r3Y-Hf-Xe5" firstAttribute="top" secondItem="KfY-HA-qd4" secondAttribute="top" id="uEU-73-vtt"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="title" destination="XNg-vo-LyJ" id="wwi-Mo-R5g"/>
@@ -792,8 +803,8 @@
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9v-r1-vOJ">
                                 <rect key="frame" x="0.0" y="94" width="1024" height="216"/>
                             </pickerView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EYl-MA-8hJ">
-                                <rect key="frame" x="432" y="628" width="161" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EYl-MA-8hJ">
+                                <rect key="frame" x="72" y="502" width="881" height="29"/>
                                 <segments>
                                     <segment title="All"/>
                                     <segment title="Permanent"/>
@@ -1014,7 +1025,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Kx-Kc-ebp">
                                 <rect key="frame" x="487" y="536" width="50" height="33"/>
@@ -1035,14 +1046,14 @@
                                 <color key="backgroundColor" red="0.897882297" green="0.897882297" blue="0.897882297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="old password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LPu-Be-Pyu">
                                 <rect key="frame" x="446" y="153" width="133" height="30"/>
                                 <color key="backgroundColor" red="0.89788229695431476" green="0.89788229695431476" blue="0.89788229695431476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

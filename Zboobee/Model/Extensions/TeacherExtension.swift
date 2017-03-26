@@ -89,7 +89,7 @@ extension Teacher{
         }
     }
     
-    /// updates the validation of the teacher's account
+    /// updates the IsManager of the teacher's account
     ///
     /// - Parameters:
     ///   - teacher: teacher object

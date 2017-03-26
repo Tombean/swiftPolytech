@@ -10,11 +10,12 @@ import UIKit
 import CoreData
 
 @UIApplicationMain
+///Main Class that launch all the application
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let context =  CoreDataManager.context
         //set the promotions in the base at the start of the application

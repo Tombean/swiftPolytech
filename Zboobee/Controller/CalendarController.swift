@@ -10,12 +10,16 @@ import Foundation
 import UIKit
 import CoreData
 
+/// Class that controls the calendar (table of events) view
 class CalendarController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDataSource,UITableViewDelegate,NSFetchedResultsControllerDelegate, UISearchBarDelegate{
     
-    
+    ///titleLabel
     @IBOutlet weak var titleLabel: UILabel!
+    ///channelPicker (groups of the user)
     @IBOutlet weak var channelPicker: UIPickerView!
+    ///eventsTable
     @IBOutlet weak var eventsTable: UITableView!
+    ///searchBar
     @IBOutlet weak var searchBar: UISearchBar!
     
     //Variables needed to know the group selected
@@ -26,6 +30,7 @@ class CalendarController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     //Variable user get from the login
     var userloged : User?
     
+    ///Closure to get the events we want to see and sort them by date
     fileprivate lazy var eventsFetched : NSFetchedResultsController<Event> = {
         let request :  NSFetchRequest<Event> =  Event.fetchRequest()
         //request.predicate = NSPredicate(format: "ANY group.name == %@", self.selectedGroup)
@@ -41,31 +46,41 @@ class CalendarController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         return fetchResultController
     }()
     
-    //sign out
+    /// action to sign out : shows 2 possibilities : really sign out on "OK" and cancel this action on "Cancel"
+    ///
+    /// - Parameter sender: no need to know
     @IBAction func logoutButton(_ sender: Any) {
         let dismissAction = UIAlertAction(title: "Ok", style: .default, handler: self.dismissSelf)
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         DialogBoxHelper.alert(view: self, withTitle: "Confirmation", andMessage: "Are you sure you want to log out ?", actions: [dismissAction,cancelAction])
     }
+    /// dismiss this screen and go back to the old one
+    ///
+    /// - Parameter _: action that must be done
     private func dismissSelf(_ :UIAlertAction) -> Void{
         UserSession.instance.user = nil
         self.dismiss(animated: true, completion: nil)
     }
     
+    //array of data in the pickerView
     var pickerData : [String] = []
     
+    ///Lunch the view
     override func viewDidLoad() {
+        //get the user who is logged
         self.userloged = UserSession.instance.user
+        //Verify that the user is get fine
         guard let user = self.userloged else{
             fatalError("No user selected !!!")
         }
+        //Verify that the user has groups
         guard let groups = user.groups else {
             fatalError("No group for this user !!!")
         }
         super.viewDidLoad()
         self.channelPicker.dataSource = self
         self.channelPicker.delegate = self
-        
+        //initialize the pickerView with his groups
         var i = 0
         var firstGroupName : String = ""
         for g in groups  {
@@ -76,13 +91,14 @@ class CalendarController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             i += 1
             self.pickerData.append(group.name ?? "no group name")
         }
+        //Verify that there is at least one group
         guard firstGroupName != "" else {
             fatalError("No first group")
         }
+        //get the first group selected in the pickerview to see the events
         self.selectedGroup = self.pickerData[indexOfGroup]
-        
+        //update the request and the table
         self.updateEvents(predicate: [])
-        // Do any additional setup after loading the view, typically from a nib.
 
         
     }
@@ -95,9 +111,11 @@ class CalendarController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     
     //MARK: - Delegates and data sources
-    //MARK: Data Sources tableview
+    
+    // MARK - tableview
+    
+    //MARK: Data Sources
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //self.updateMessages()
         let cell = self.eventsTable.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! eventTableViewCell
         let event = self.eventsFetched.object(at: indexPath)
         cell.title.text = event.title!
@@ -116,7 +134,10 @@ class CalendarController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         return section.numberOfObjects
     }
 
-    //MARK: Data Sources Picker View
+    
+    //MARK - Picker View
+    
+    //MARK: Data Sources
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -168,6 +189,9 @@ class CalendarController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
     }
     
+    /// update the request and so the table of events
+    ///
+    /// - Parameter predicate: predicate of the request
     func updateEvents(predicate : [NSPredicate]){
         if predicate == []{
             self.eventsFetched = NSFetchResultUpdater.updateEventPredicate(predicate: NSPredicate(format: "ANY group.name == %@", self.selectedGroup))
@@ -187,8 +211,13 @@ class CalendarController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
     }
     
-    //MARK Search Bar
+    //MARK - Search Bar
     
+    /// function that update table of events when a research is made
+    ///
+    /// - Parameters:
+    ///   - _: the search bar
+    ///   - textDidChange: change of the text
     func searchBar(_: UISearchBar, textDidChange: String){
         if textDidChange != "" {
             let predicate =  NSPredicate(format: "title CONTAINS[c] %@", textDidChange)

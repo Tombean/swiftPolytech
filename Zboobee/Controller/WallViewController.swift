@@ -6,18 +6,23 @@
 //  Copyright © 2017 Laure MARCHAL. All rights reserved.
 //
 
-// A LIRE
-
 import UIKit
 import CoreData
 
+/// Class that controls the wall (sending, searching messages) view
 class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UITableViewDataSource,UITableViewDelegate, NSFetchedResultsControllerDelegate, UISearchBarDelegate{
 
+    ///tittleLabel
     @IBOutlet weak var tittleLabel: UILabel!
+    ///channelPicker (groups of the user)
     @IBOutlet weak var channelPicker: UIPickerView!
+    ///messageToPostLabel
     @IBOutlet weak var messageToPostLabel: UILabel!
+    ///messageTF
     @IBOutlet weak var messageTF: UITextField!
+    ///messagesTable
     @IBOutlet weak var messagesTable: UITableView!
+    ///searchBarEntry
     @IBOutlet weak var searchBarEntry: UISearchBar!
 
     //Variables needed to know the group selected
@@ -29,6 +34,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     //Variable user get from the login
     var user : User?
     
+    ///Closure to get the messages we want to see and sort them by date
     fileprivate lazy var messagesFetched : NSFetchedResultsController<Message> = {
         let request :  NSFetchRequest<Message> =  Message.fetchRequest()
         request.predicate = NSPredicate(format: "ANY groups.name == %@", self.selectedGroup)
@@ -38,10 +44,16 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         return fetchResultController
     }()
     
+    
+    /// action of sending a message, button that verifies every field
+    ///
+    /// - Parameter sender: no need to know
     @IBAction func sendButton(_ sender: Any) {
         
+        //get the text of TF : the message
         let textMessage : String? = self.messageTF.text
         
+        //Verify that the message is not empty
         guard textMessage != "" else{
             DialogBoxHelper.alert(view: self, withTitle: "Post incomplete", andMessage: "No Message")
             return
@@ -54,7 +66,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             self.selectedGroup = pickerData[indexOfGroup]
             print(self.selectedGroup)
         }
-        
+        //assign the right group to send
         let groups : NSSet = [GroupsSet.findGroupByName(name: self.selectedGroup)!]
         //create the message
         let jour : Date = NSDate.init() as Date
@@ -64,43 +76,56 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             DialogBoxHelper.alert(view: self, withTitle: "Sending message Failed", andMessage: "Verify your message")
             return
         }
+        //set the TF to empty
         self.messageTF.text = ""
+        //update the request
         self.updateMessages(predicate: [])
+        //inform the user that his message has been posted
         DialogBoxHelper.alert(view: self, withTitle: "Message Posted", andMessage: ("Your message will shortly appear in " + self.pickerData[self.indexOfGroup]))
+        //refresh the view to see the new message
         self.messagesTable.reloadData()
         
     }
     
-    //sign out 
-    
+    /// action to sign out : shows 2 possibilities : really sign out on "OK" and cancel this action on "Cancel"
+    ///
+    /// - Parameter sender: no need to know
     @IBAction func logoutButton(_ sender: Any) {
         let dismissAction = UIAlertAction(title: "Ok", style: .default, handler: self.dismissSelf)
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         DialogBoxHelper.alert(view: self, withTitle: "Confirmation", andMessage: "Are you sure you want to log out ?", actions: [dismissAction,cancelAction])
     }
     
+    /// dismiss this screen and go back to the old one
+    ///
+    /// - Parameter _: action that must be done
     private func dismissSelf(_ :UIAlertAction) -> Void{
         UserSession.instance.user = nil
         self.dismiss(animated: true, completion: nil)
     }
-    // Temporary :  needs to be changed with channel allowed from DB
     
+    //array of data in the pickerView
     var pickerData : [String] = []
     
-    
+    ///Lunch the view
     override func viewDidLoad() {
+        //get the user who is logged
         self.user = UserSession.instance.user
+        //Verify that the user is get fine
         guard let user = self.user else{
             fatalError("No user selected !!!")
         }
+        //Verify that the user has groups
         guard let groups = user.groups else {
             fatalError("No group for this user !!!")
         }
         super.viewDidLoad()
+        
         self.channelPicker.dataSource = self
         self.channelPicker.delegate = self
         self.messageTF.delegate = self
         var i = 0
+        //initialize the pickerView with his groups
         var firstGroupName : String = ""
         for g in groups  {
             let group = g as! Group
@@ -110,20 +135,23 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             i += 1
             self.pickerData.append(group.name ?? "no group name")
         }
+        //Verify that there is at least one group
         guard firstGroupName != "" else {
             fatalError("No first group")
         }
+        //get the first group selected in the pickerview to see the messages
         self.selectedGroup = self.pickerData[indexOfGroup]
+        //update the request and the table
         self.updateMessages(predicate: [])
-        // Do any additional setup after loading the view, typically from a nib.
-        //self.messages = MessagesSet.findAllMessagesForGroup(groupName: firstGroupName) ?? []
     }
     
     
     //MARK: - Delegates and data sources
-    //MARK: Data Sources tableview
+    
+    //MARK : Table View
+    
+    //MARK: Data Sources
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //self.updateMessages()
         let cell = self.messagesTable.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! messageTableViewCell
         let message = self.messagesFetched.object(at: indexPath)
         cell.messageLabel.text = message.content
@@ -145,7 +173,9 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             cell.contentView.backgroundColor = UIColor.magenta
         }
     }
-    //MARK: Data Sources Picker View
+    //MARK - Picker View
+    
+    //MARK: Data Sources
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -164,7 +194,6 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         self.indexOfGroup = row
-        print("Dans le picker view, on est sur : "+self.pickerData[row])
         self.selectedGroup = self.pickerData[row]
         self.updateMessages(predicate: [])
         
@@ -176,14 +205,20 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object
     }
 
+    /// function needed to take off the keyboard
+    ///
+    /// - Parameter textField: TF that we want to resign
+    /// - Returns: always true
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    //MARK NSFecthResultController
+    //MARK - NSFecthResultController
     
     //MARK: - Controller methods
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -210,6 +245,9 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
     }
     
+    /// update the request and so the table of messages
+    ///
+    /// - Parameter predicate: predicate of the request
     func updateMessages(predicate : [NSPredicate]){
         if predicate == []{
             self.messagesFetched = NSFetchResultUpdater.updateMessagePredicate(predicate: NSPredicate(format: "ANY groups.name == %@", self.selectedGroup))
@@ -229,8 +267,13 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
     }
     
-    //MARK Search Bar
+    //MARK - Search Bar
     
+    /// function that update table of messages when a research is made
+    ///
+    /// - Parameters:
+    ///   - _: the search bar
+    ///   - textDidChange: change of the text
     func searchBar(_: UISearchBar, textDidChange: String){
         if textDidChange != "" {
             let predicate =  NSPredicate(format: "content CONTAINS[c] %@", textDidChange)

@@ -10,15 +10,26 @@ import Foundation
 import UIKit
 import CoreData
 
+/// Class that controls the Folder (files) view
 class FolderController : UIViewController, UITableViewDataSource,UITableViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,NSFetchedResultsControllerDelegate,UISearchBarDelegate{
     
+    //Variable user get from the login
     var userloged : User?
     
+    ///channelPicker (groups of the user)
     @IBOutlet weak var channelPicker: UIPickerView!
+    ///titleLabel
     @IBOutlet weak var titleLabel: UILabel!
+    ///searchBar
     @IBOutlet weak var searchBar: UISearchBar!
+    ///filesTable
     @IBOutlet weak var filesTable: UITableView!
+    ///segmentedControl (permanent or other files)
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    /// set the files in function of position
+    ///
+    /// - Parameter sender: no need to know
     @IBAction func permanentToggle(_ sender: Any) {
         switch segmentedControl.selectedSegmentIndex{
         case 0:
@@ -37,9 +48,10 @@ class FolderController : UIViewController, UITableViewDataSource,UITableViewDele
     var selectedGroup : String = ""
     //Doc in the table view
     var files: [Document] = []
+    //bool to say wich file to display
     var displayNonPermanentDoc : Bool = true
     
-    
+    ///Closure to get the files we want to see and sort them by title
     fileprivate lazy var filesFetched : NSFetchedResultsController<Document> = {
         let request :  NSFetchRequest<Document> =  Document.fetchRequest()
         request.predicate = NSPredicate(format: "ANY groups.name == %@", self.selectedGroup)
@@ -50,37 +62,49 @@ class FolderController : UIViewController, UITableViewDataSource,UITableViewDele
     }()
     
     
-    //sign out
+    /// action to sign out : shows 2 possibilities : really sign out on "OK" and cancel this action on "Cancel"
+    ///
+    /// - Parameter sender: no need to know
     @IBAction func logoutButton(_ sender: Any) {
         let dismissAction = UIAlertAction(title: "Ok", style: .default, handler: self.dismissSelf)
         let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         DialogBoxHelper.alert(view: self, withTitle: "Confirmation", andMessage: "Are you sure you want to log out ?", actions: [dismissAction,cancelAction])
     }
-    
+    /// dismiss this screen and go back to the old one
+    ///
+    /// - Parameter _: action that must be done
     private func dismissSelf(_ :UIAlertAction) -> Void{
         UserSession.instance.user = nil
         self.dismiss(animated: true, completion: nil)
     }
     
-    
+    //array of data in the pickerView
     var pickerData : [String] = []
     
+    
+    ///Lunch the view
     override func viewDidLoad() {
+        //get the user who is logged
         self.userloged = UserSession.instance.user
+        //Verify that the user is get fine
         guard let user = self.userloged else{
             fatalError("No user selected!!!")
         }
+        //Verify that the user has groups
         guard let groups = user.groups else {
             fatalError("No group for this user !!!")
         }
         super.viewDidLoad()
         self.channelPicker.dataSource = self
         self.channelPicker.delegate = self
+        //initialize the pickerView with his groups
         for g in groups  {
             let group = g as! Group
             self.pickerData.append(group.name ?? "no group name")
         }
+        //get the first group selected in the pickerview to see the files
         self.selectedGroup = self.pickerData[indexOfGroup]
+        //update the request and the table
         self.updateFiles(predicate: [])
     }
     
@@ -91,7 +115,11 @@ class FolderController : UIViewController, UITableViewDataSource,UITableViewDele
         
     }
     
-    //MARK: Data Sources Picker View
+    //MARK: - Delegates and data sources
+    
+    //MARK -  Picker View
+    
+    //MARK: Data Sources
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -116,7 +144,9 @@ class FolderController : UIViewController, UITableViewDataSource,UITableViewDele
         
     }
     
-    //MARK: Data Sources tableview
+    //MARK -  Table View
+    
+    //MARK: Data Sources
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //self.updateMessages()
         let cell = self.filesTable.dequeueReusableCell(withIdentifier: "fileCell", for: indexPath) as! fileTableViewCell
@@ -166,6 +196,9 @@ class FolderController : UIViewController, UITableViewDataSource,UITableViewDele
         }
     }
     
+    /// update the request and so the table of files
+    ///
+    /// - Parameter predicate: predicate of the request
     func updateFiles(predicate : [NSPredicate]){
         if predicate == []{
             self.filesFetched = NSFetchResultUpdater.updateFilePredicate(predicate: NSPredicate(format: "ANY groups.name == %@", self.selectedGroup))
@@ -186,8 +219,13 @@ class FolderController : UIViewController, UITableViewDataSource,UITableViewDele
     }
     
     
-    //MARK Search Bar
+    //MARK - Search Bar
     
+    /// function that update table of messages when a research is made
+    ///
+    /// - Parameters:
+    ///   - _: the search bar
+    ///   - textDidChange: change of the text
     func searchBar(_: UISearchBar, textDidChange: String){
         if textDidChange != "" {
             let predicate =  NSPredicate(format: "content CONTAINS[c] %@", textDidChange)

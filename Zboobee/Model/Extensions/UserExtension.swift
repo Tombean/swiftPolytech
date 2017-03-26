@@ -30,4 +30,23 @@ extension User{
         
         return newUser
     }
+    
+    /// update the password of a user
+    ///
+    /// - Parameters:
+    ///   - user: user
+    ///   - newpassword: the new password
+    /// - Returns: an error or nothing if it works
+    static func updatePassword(user: User,newpassword:String)->NSError?{
+        let context = CoreDataManager.context
+        user.password = newpassword
+        if let error = CoreDataManager.save() {
+            context.rollback()
+            return error
+        }
+        else {
+            print("User updated successfully")
+            return nil
+        }
+    }
 }
