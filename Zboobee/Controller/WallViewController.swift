@@ -177,8 +177,11 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let message = self.messagesFetched.object(at: indexPath)
-        if (message.isPosted is Teacher || message.isPosted is Office){
+        if (message.isPosted is Office){
             cell.contentView.backgroundColor = UIColor.magenta
+        }
+        if (message.isPosted is Teacher ){
+            cell.contentView.backgroundColor = UIColor.orange
         }
     }
     

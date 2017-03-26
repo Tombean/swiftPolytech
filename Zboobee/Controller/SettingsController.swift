@@ -28,6 +28,9 @@ class SettingsController : UIViewController{
     @IBOutlet weak var teacherAccountButton: UIButton!
     ///saveButtonRef
     @IBOutlet weak var saveButtonRef: UIButton!
+    @IBOutlet weak var currentPassLabel: UILabel!
+    @IBOutlet weak var newPassLabel: UILabel!
+    @IBOutlet weak var confirmPassLabel: UILabel!
     
     /// action to save the new password of a user
     ///
@@ -98,6 +101,9 @@ class SettingsController : UIViewController{
             self.oldPasswordTF.isHidden = true
             self.newPasswordTF.isHidden = true
             self.newPassword2TF.isHidden = true
+            self.currentPassLabel.isHidden = true
+            self.newPassLabel.isHidden = true
+            self.confirmPassLabel.isHidden = true
         }else{
             if (self.userloged is Teacher ){
                 if ((Teacher.isManager(email:(self.userloged?.mailUniv)!))){
@@ -107,6 +113,9 @@ class SettingsController : UIViewController{
                     self.oldPasswordTF.isHidden = true
                     self.newPasswordTF.isHidden = true
                     self.newPassword2TF.isHidden = true
+                    self.currentPassLabel.isHidden = true
+                    self.newPassLabel.isHidden = true
+                    self.confirmPassLabel.isHidden = true
                 }else{ //If he's not he can change his password
                     self.teacherAccountButton.isHidden = true
                     self.studentAccountButton.isHidden = true
@@ -114,6 +123,9 @@ class SettingsController : UIViewController{
                     self.oldPasswordTF.isHidden = false
                     self.newPasswordTF.isHidden = false
                     self.newPassword2TF.isHidden = false
+                    self.currentPassLabel.isHidden = false
+                    self.newPassLabel.isHidden = false
+                    self.confirmPassLabel.isHidden = false
                 }
             }else{
                 self.teacherAccountButton.isHidden = true
@@ -122,6 +134,9 @@ class SettingsController : UIViewController{
                 self.oldPasswordTF.isHidden = false
                 self.newPasswordTF.isHidden = false
                 self.newPassword2TF.isHidden = false
+                self.currentPassLabel.isHidden = false
+                self.newPassLabel.isHidden = false
+                self.confirmPassLabel.isHidden = false
             }
         }
         super.viewDidLoad()

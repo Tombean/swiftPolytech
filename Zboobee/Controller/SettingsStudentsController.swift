@@ -55,7 +55,7 @@ class SettingsStudentsController : UIViewController, UITableViewDataSource,UITab
         let student = self.studentsFetched.object(at: indexPath)
         cell.lastname.text = student.lastname
         cell.firstname.text = student.firstname
-        let promo : String = "\((student.promotion?.specialty)!) \(String(describing: student.promotion?.graduationYear))"
+        let promo : String = "\((student.promotion?.specialty)!) \(String(describing: (student.promotion?.graduationYear)!))"
         cell.promotion.text = promo
         return cell
     }
