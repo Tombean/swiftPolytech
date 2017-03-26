@@ -37,5 +37,16 @@ extension Event{
         return newEvent
     }
     
-    
+    static func deleteEvent(event:Event)->NSError?{
+        let context = CoreDataManager.context
+        context.delete(event)
+        if let error = CoreDataManager.save() {
+            context.rollback()
+            return error
+        }
+        else {
+            print("User deleted successfully")
+            return nil
+        }
+    }
 }

@@ -114,7 +114,7 @@ extension Teacher{
     /// - Returns: an error or nil if it works
     static func deleteTeacher(teacher:Teacher)->NSError?{
         let context = CoreDataManager.context
-        //TODO
+        context.delete(teacher)
         if let error = CoreDataManager.save() {
             context.rollback()
             return error

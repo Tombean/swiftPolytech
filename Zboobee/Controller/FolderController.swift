@@ -169,6 +169,34 @@ class FolderController : UIViewController, UITableViewDataSource,UITableViewDele
         }
         return section.numberOfObjects
     }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        //student concerned (line on the table)
+        let doc = self.filesFetched.object(at: indexPath)
+        let deleteAction  = UITableViewRowAction(style: .default, title: "Delete") { (rowAction, indexPath) in
+            self.filesTable.beginUpdates()
+            //TODO delete account in usersSet
+            let okDel = Document.deleteDocument(document: doc)
+            //inform the user that it works or not
+            guard (okDel == nil) else {
+                DialogBoxHelper.alert(view: self, withTitle: "Deletion Failed", andMessage: "The file still exists")
+                return
+            }
+            DialogBoxHelper.alert(view: self, withTitle: "Deletion Succeed", andMessage: "The file has been deleted")
+            self.filesTable.endUpdates()
+            //refresh the table
+            self.updateFiles(predicate: [])
+        }
+        //set the color
+        deleteAction.backgroundColor = UIColor.red
+        //in functionof the account give 2 differents possibilities
+        if self.userloged is Office{
+            return [deleteAction]
+        }else{
+            return []
+        }
+    }
+    
     //MARK NSFecthResultController
     
     //MARK: - Controller methods

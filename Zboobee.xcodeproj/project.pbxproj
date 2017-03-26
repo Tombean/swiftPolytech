@@ -416,7 +416,7 @@
 				TargetAttributes = {
 					53D3BE341E51A395000D3B87 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 6BTW3K782P;
+						DevelopmentTeam = QCT37DNYCM;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
@@ -688,7 +688,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 6BTW3K782P;
+				DEVELOPMENT_TEAM = QCT37DNYCM;
 				INFOPLIST_FILE = Zboobee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zboobee.Zboobee;
@@ -705,7 +705,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 6BTW3K782P;
+				DEVELOPMENT_TEAM = QCT37DNYCM;
 				INFOPLIST_FILE = Zboobee/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zboobee.Zboobee;

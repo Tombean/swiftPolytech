@@ -90,7 +90,7 @@ extension Student{
     /// - Returns: an error or nothing if it works
     static func deleteStudent(student:Student)->NSError?{
         let context = CoreDataManager.context
-        //TODO
+        context.delete(student)
         if let error = CoreDataManager.save() {
             context.rollback()
             return error

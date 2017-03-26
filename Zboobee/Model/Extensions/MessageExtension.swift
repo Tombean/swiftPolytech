@@ -36,5 +36,16 @@ extension Message{
         return newMessage
     }
 
-    
+    static func deleteMessage(message: Message)->NSError?{
+        let context = CoreDataManager.context
+        context.delete(message)
+        if let error = CoreDataManager.save() {
+            context.rollback()
+            return error
+        }
+        else {
+            print("Message deleted successfully")
+            return nil
+        }
+    }
 }

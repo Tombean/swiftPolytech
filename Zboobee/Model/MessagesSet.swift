@@ -57,6 +57,5 @@ class MessagesSet{
             return nil
         }
         return messages
-    }
-    
+    }    
 }

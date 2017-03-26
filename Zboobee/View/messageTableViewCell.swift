@@ -16,6 +16,8 @@ class messageTableViewCell: UITableViewCell {
     ///user who send the message
     @IBOutlet weak var userLabel: UILabel!
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

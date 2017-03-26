@@ -24,6 +24,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var messagesTable: UITableView!
     ///searchBarEntry
     @IBOutlet weak var searchBarEntry: UISearchBar!
+    @IBOutlet weak var titleTF: UITextField!
 
     //Variables needed to know the group selected
     var indexOfGroup : Int = 0
@@ -52,10 +53,15 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         //get the text of TF : the message
         let textMessage : String? = self.messageTF.text
-        
+        let titleMessage : String? = self.titleTF.text
         //Verify that the message is not empty
         guard textMessage != "" else{
             DialogBoxHelper.alert(view: self, withTitle: "Post incomplete", andMessage: "No Message")
+            return
+        }
+        
+        guard titleMessage != "" else{
+            DialogBoxHelper.alert(view: self, withTitle: "Post incomplete", andMessage: "No Title")
             return
         }
         
@@ -70,7 +76,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         let groups : NSSet = [GroupsSet.findGroupByName(name: self.selectedGroup)!]
         //create the message
         let jour : Date = NSDate.init() as Date
-        let message : Message = Message.createMessage(title: "msg1", text: textMessage!, date: jour, lengthMax: 500, originator: user!, groups: groups)
+        let message : Message = Message.createMessage(title: titleMessage!, text: textMessage!, date: jour, lengthMax: 500, originator: user!, groups: groups)
         //add a message in the base
         guard MessagesSet.addMessage(messageToAdd: message) else{
             DialogBoxHelper.alert(view: self, withTitle: "Sending message Failed", andMessage: "Verify your message")
@@ -157,6 +163,7 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         cell.messageLabel.text = message.content
         let userM = message.isPosted
         cell.userLabel.text = userM?.lastname
+        cell.titleLabel.text = message.title
         return cell
     }
     
@@ -173,6 +180,35 @@ class WallViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             cell.contentView.backgroundColor = UIColor.magenta
         }
     }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        //student concerned (line on the table)
+        let message = self.messagesFetched.object(at: indexPath)
+        let deleteAction  = UITableViewRowAction(style: .default, title: "Delete") { (rowAction, indexPath) in
+            self.messagesTable.beginUpdates()
+            //TODO delete account in usersSet
+            let okDel = Message.deleteMessage(message: message)
+            //inform the user that it works or not
+            guard (okDel == nil) else {
+                DialogBoxHelper.alert(view: self, withTitle: "Deletion Failed", andMessage: "The message still exists")
+                return
+            }
+            DialogBoxHelper.alert(view: self, withTitle: "Deletion Succeed", andMessage: "The message has been deleted")
+            self.messagesTable.endUpdates()
+            //refresh the table
+            self.updateMessages(predicate: [])
+        }
+        //set the color
+        deleteAction.backgroundColor = UIColor.red
+        //in functionof the account give 2 differents possibilities
+        if self.user is Office{
+            return [deleteAction]
+        }else{
+            return []
+        }
+    }
+
+    
     //MARK - Picker View
     
     //MARK: Data Sources

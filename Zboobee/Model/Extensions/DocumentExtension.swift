@@ -32,5 +32,16 @@ extension Document{
         return newDocument
     }
     
-    
+    static func deleteDocument(document: Document)->NSError?{
+        let context = CoreDataManager.context
+        context.delete(document)
+        if let error = CoreDataManager.save() {
+            context.rollback()
+            return error
+        }
+        else {
+            print("User deleted successfully")
+            return nil
+        }
+    }
 }

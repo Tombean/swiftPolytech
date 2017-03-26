@@ -134,6 +134,32 @@ class CalendarController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         return section.numberOfObjects
     }
 
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        //student concerned (line on the table)
+        let event = self.eventsFetched.object(at: indexPath)
+        let deleteAction  = UITableViewRowAction(style: .default, title: "Delete") { (rowAction, indexPath) in
+            self.eventsTable.beginUpdates()
+            //TODO delete account in usersSet
+            let okDel = Event.deleteEvent(event: event)
+            //inform the user that it works or not
+            guard (okDel == nil) else {
+                DialogBoxHelper.alert(view: self, withTitle: "Deletion Failed", andMessage: "The event still exists")
+                return
+            }
+            DialogBoxHelper.alert(view: self, withTitle: "Deletion Succeed", andMessage: "The event has been deleted")
+            self.eventsTable.endUpdates()
+            //refresh the table
+            self.updateEvents(predicate: [])
+        }
+        //set the color
+        deleteAction.backgroundColor = UIColor.red
+        //in functionof the account give 2 differents possibilities
+        if self.userloged is Office{
+            return [deleteAction]
+        }else{
+            return []
+        }
+    }
     
     //MARK - Picker View
     
