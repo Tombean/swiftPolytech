@@ -60,7 +60,12 @@ class SettingsTeachersController : UIViewController, UITableViewDataSource,UITab
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let teacher = self.teachersFetched.object(at: indexPath)
         if teacher.accountValidate == false{
-            cell.contentView.backgroundColor = UIColor.orange
+            
+            if teacher.specialtyManager{
+                cell.contentView.backgroundColor = UIColor.blue
+            }else{
+                cell.contentView.backgroundColor = UIColor.orange
+            }
         }else{
             cell.contentView.backgroundColor = UIColor.magenta
         }
@@ -113,7 +118,7 @@ class SettingsTeachersController : UIViewController, UITableViewDataSource,UITab
                 DialogBoxHelper.alert(view: self, withTitle: "Manager change Failed", andMessage: "The teacher account hasn't been set to manager")
                 return
             }
-            DialogBoxHelper.alert(view: self, withTitle: "Change succesful", andMessage: "\(teacher.lastname) is now a specialty manager")
+            DialogBoxHelper.alert(view: self, withTitle: "Change succesful", andMessage: "\((teacher.lastname)!) is now a specialty manager")
             self.teachTable.endUpdates()
             //refresh the table
             self.teachTable.reloadData()
@@ -126,7 +131,7 @@ class SettingsTeachersController : UIViewController, UITableViewDataSource,UITab
                 DialogBoxHelper.alert(view: self, withTitle: "Manager change Failed", andMessage: "The teacher account is still set to manager")
                 return
             }
-            DialogBoxHelper.alert(view: self, withTitle: "Change succesful", andMessage: "\(teacher.lastname) is not a specialty manager anymore")
+            DialogBoxHelper.alert(view: self, withTitle: "Change succesful", andMessage: "\((teacher.lastname)!) is not a specialty manager anymore")
             self.teachTable.endUpdates()
             //refresh the table
             self.teachTable.reloadData()
@@ -148,8 +153,8 @@ class SettingsTeachersController : UIViewController, UITableViewDataSource,UITab
             self.teachTable.reloadData()
         }
         desactive.backgroundColor = UIColor.orange
-        validate.backgroundColor = UIColor.red
-        deleteAction.backgroundColor = UIColor.green
+        validate.backgroundColor = UIColor.green
+        deleteAction.backgroundColor = UIColor.red
         setManager.backgroundColor = UIColor.cyan
         unsetManager.backgroundColor = UIColor.purple
         if teacher.accountValidate{
