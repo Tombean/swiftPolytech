@@ -39,7 +39,7 @@ class showEventViewController: UIViewController{
         if let aEvent = self.event{
             self.author.text = ("\((aEvent.isCreated?.firstname)!) \((aEvent.isCreated?.lastname)!)")
             self.eventTitle.text = aEvent.title
-            self.eventDesc.text = aEvent.description
+            self.eventDesc.text = aEvent.desc
             self.date.text = Helper.getFormattedDate(date:aEvent.date as! Date)
             self.location.text = aEvent.place
         }

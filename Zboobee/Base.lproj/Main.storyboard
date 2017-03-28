@@ -306,9 +306,9 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Se1-Q2-BUd">
-                                <rect key="frame" x="352" y="169.5" width="320" height="60"/>
+                                <rect key="frame" x="352" y="149.5" width="320" height="90"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="IxZ-2k-6Hd"/>
+                                    <constraint firstAttribute="height" constant="90" id="IxZ-2k-6Hd"/>
                                 </constraints>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message to post : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7qE-yC-sj7">
@@ -334,7 +334,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zboobee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmV-il-e6x">
-                                <rect key="frame" x="426.5" y="110" width="171.5" height="51.5"/>
+                                <rect key="frame" x="426.5" y="90" width="171.5" height="51.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="43"/>
                                 <color key="textColor" red="1" green="0.34424301981925964" blue="0.87443298101425171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -457,11 +457,11 @@
                             <constraint firstAttribute="trailingMargin" secondItem="vUK-0a-ykN" secondAttribute="trailing" constant="85" id="bK9-Q1-8jH"/>
                             <constraint firstItem="DFb-60-msZ" firstAttribute="top" secondItem="GqA-ev-5lC" secondAttribute="bottom" constant="8" id="cmg-cZ-k74"/>
                             <constraint firstItem="bmV-il-e6x" firstAttribute="centerX" secondItem="CZj-QC-GBe" secondAttribute="centerX" id="err-h7-YhI"/>
-                            <constraint firstItem="7qE-yC-sj7" firstAttribute="top" secondItem="bmV-il-e6x" secondAttribute="bottom" constant="140" id="gE7-Jl-Eth"/>
+                            <constraint firstItem="7qE-yC-sj7" firstAttribute="top" secondItem="bmV-il-e6x" secondAttribute="bottom" constant="160" id="gE7-Jl-Eth"/>
                             <constraint firstItem="AEo-RH-1W4" firstAttribute="top" secondItem="vUK-0a-ykN" secondAttribute="bottom" constant="12" id="h33-Gg-FiN"/>
                             <constraint firstItem="cOR-Ww-yhR" firstAttribute="top" secondItem="DFb-60-msZ" secondAttribute="bottom" constant="194" id="hTG-gI-zmD"/>
                             <constraint firstItem="Se1-Q2-BUd" firstAttribute="centerX" secondItem="CZj-QC-GBe" secondAttribute="centerX" id="lhX-zX-ZhQ"/>
-                            <constraint firstItem="bmV-il-e6x" firstAttribute="top" secondItem="GqA-ev-5lC" secondAttribute="bottom" constant="38" id="n3L-E3-vDO"/>
+                            <constraint firstItem="bmV-il-e6x" firstAttribute="top" secondItem="GqA-ev-5lC" secondAttribute="bottom" constant="18" id="n3L-E3-vDO"/>
                             <constraint firstItem="GqA-ev-5lC" firstAttribute="top" secondItem="QxJ-B4-fQz" secondAttribute="bottom" constant="8" id="n8o-bD-cm7"/>
                             <constraint firstItem="ztI-Bp-Dcy" firstAttribute="top" secondItem="qKf-zH-fY7" secondAttribute="bottom" constant="8" id="nJV-9l-oSK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ztI-Bp-Dcy" secondAttribute="trailing" constant="85" id="oiF-Cc-xRV"/>
@@ -541,14 +541,14 @@
                                 </connections>
                             </searchBar>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z42-b5-95y" userLabel="Channel Picker">
-                                <rect key="frame" x="352" y="146" width="320" height="60"/>
+                                <rect key="frame" x="352" y="146" width="320" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="320" id="6cX-iM-OgO"/>
-                                    <constraint firstAttribute="height" constant="60" id="AKx-7h-YND"/>
+                                    <constraint firstAttribute="height" constant="90" id="AKx-7h-YND"/>
                                 </constraints>
                             </pickerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fnS-eu-Cw7" userLabel="Events Table">
-                                <rect key="frame" x="28" y="226" width="968" height="404"/>
+                                <rect key="frame" x="28" y="256" width="968" height="374"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventCell" id="C5u-Pd-Vw8" userLabel="eventCell" customClass="eventTableViewCell" customModule="Zboobee" customModuleProvider="target">
